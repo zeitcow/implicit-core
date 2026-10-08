@@ -1,3 +1,4 @@
+# Advisory copy: crawlers read robots.txt at the origin root.
 User-agent: OAI-SearchBot
 Allow: /
 

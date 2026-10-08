@@ -4,52 +4,84 @@
 
 Virtualize large agent environments. Materialize only the state each experience actually needs.
 
-In the Implicit Core v1 release-candidate benchmark, Implicit preserved equivalent state, tool behavior, and reward across 155/155 comparable cases while reducing retained serialized/materialized state by 93.88% overall, 94.40% mean and 99.55% at the median.
+```console
+pip install implicit-ai
+```
 
-Implicit added approximately 0.554 seconds of mean full-pipeline latency per case in this benchmark.
+[Website and docs](https://zeitcow.github.io/implicit-core/) · [PyPI](https://pypi.org/project/implicit-ai/) · [60-second quickstart](QUICKSTART.md) · [Measured evidence](BENCHMARKS.md) · [Connect a coding agent](docs/MCP_QUICKSTART.md)
 
-These measurements belong to rc1, not the toy demo or new MCP interface. Serialized bytes are not RAM. [Benchmarks](BENCHMARKS.md) explains the population, methodology and limitations.
+## Why virtualize an experience?
 
-## Install Implicit Core 1.0.0
+Large agent environments often contain far more possible state than one interaction needs. A warehouse may contain millions of orders; processing one order needs only its inventory and policy records. Implicit keeps versioned addresses and loads pages when your adapter requests them.
 
-Python 3.11+; zero third-party runtime dependencies. Use a fresh virtual environment:
+An experience is one addressable interaction: instruction, required state, execution and evaluation. The address identifies the environment version and coordinate. Your adapter chooses pages; your existing agent executes; your native evaluator verifies the result. Core records execution state, provenance and explicit recovery.
+
+Use Implicit for large separable state, repeatable identities, expensive environment construction or durable execution evidence. Measure overhead for small, already lazy or mostly accessed environments.
+
+## Try it in 60 seconds
+
+Python 3.11+; zero third-party runtime dependencies. In a fresh virtual environment:
 
 ```console
 pip install implicit-ai
-implicit --help
 implicit --version
 implicit demo
 implicit benchmark
 ```
 
-The distribution is `implicit-ai`; the import is `implicit`. Isolate it from the unrelated `implicit` distribution, which shares the import namespace. [GitHub Releases](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0) provides verified wheel and sdist assets for manual installation. [Installation](INSTALL.md) includes source-build instructions.
+The public toy compares eager and selective serialized state, verifies the shipping result and prints a provenance hash. Its output is its own workload measurement.
 
-Stable 1.0.0 promotes the validated RC2 runtime lineage. Historical [RC2](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0rc2) evidence remains unchanged.
+The distribution is `implicit-ai`; the import is `implicit`. Use an isolated environment because the unrelated `implicit` recommendation library shares that import namespace. [Installation](INSTALL.md) includes Windows setup and verified [release artifacts](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0).
 
-## Why virtualize an experience?
+## Measured evidence and its limits
 
-An experience is one versioned, addressable environment interaction with an instruction, required state, execution and evaluation. A warehouse may contain millions of orders; processing one order needs only its inventory and policy records. Implicit retains lightweight addresses and loads pages when your adapter requests them.
+In the preserved **rc1** native systems population, 155/155 comparable cases preserved equivalent state, tool behavior and reward.
 
-Use it when environments have large unused state, repeatable identities, expensive construction, or need durable execution evidence. It can add overhead when state is small, most pages are needed, or your adapter cannot separate state. Measure your workload, including full-pipeline latency and every storage category.
+| Measurement | Result |
+| --- | ---: |
+| Aggregate retained serialized/materialized-state reduction | 93.88% |
+| Mean case reduction | 94.40% |
+| Median case reduction | 99.55% |
+| Mean full-pipeline latency overhead | approximately +0.554 seconds/case |
+
+Serialized/materialized bytes are **not RAM**. The measurements belong to rc1, not a new 1.0.0 native replay or the toy/MCP demo. The public numeric summary supports arithmetic verification; restricted native replay assets are not shipped. [Methodology, hashes and limitations](BENCHMARKS.md).
 
 ## Keep your existing stack
 
-Your adapter owns native behavior. Keep your learner, agent framework and evaluator; Core accepts ordinary Python protocols. No allocator is required. Default selection preserves your proposed order. [Create an adapter](ADAPTERS.md), or run three independent examples with the wheel installed:
+Keep your agent, learner, framework and evaluator. Build an adapter in your project using ordinary Python protocols:
+
+```text
+Universe proposes versioned addresses
+  -> Environment plans required pages
+  -> ResourceSource loads pages as needed
+  -> existing agent executes
+  -> native Evaluator verifies
+  -> Core records provenance and recovery state
+```
+
+[Adapter contract](ADAPTERS.md), [agent integration prompts](docs/AGENT_INTEGRATION.md) and [three public adapter shapes](examples/core_adapters.py) show the mapping. With the public repository downloaded and the package installed:
 
 ```console
 python -I examples/core_adapters.py
 ```
 
-Core supplies versioned addresses, selective materialization, cache lifecycle, journals, recovery and provenance. It does not promise universal speedups, learning improvement, allocator superiority or arbitrary external exactly-once effects.
+No allocator or new learner is required. Default selection preserves your proposed order. Core does not establish improved learning, general speedups, allocator superiority or universal infrastructure guarantees.
+
+## Let a coding agent try Implicit
+
+The package includes eight bounded local stdio MCP tools for synthetic addressing, paging, provenance and validation. [MCP quickstart](docs/MCP_QUICKSTART.md) gives Codex, Claude Code, VS Code and Cursor configurations. Real environment adapters use the Python SDK.
+
+[Repository plugin](PLUGIN_READINESS.md) packages integration guidance and local MCP configuration. Public directory acceptance and hosted ChatGPT connectivity are separate; see the dated [ecosystem status](docs/ECOSYSTEMS.md).
 
 ## Documentation
 
-- [Quickstart](QUICKSTART.md) and [Installation](INSTALL.md)
-- [Architecture](ARCHITECTURE.md), [Adapters](ADAPTERS.md) and [Configuration](CONFIGURATION.md)
-- [Benchmarks](BENCHMARKS.md), [FAQ](docs/FAQ.md) and [Troubleshooting](TROUBLESHOOTING.md)
-- [Security and privacy](SECURITY.md), [Local MCP](MCP.md) and [Agent integration](docs/AGENT_INTEGRATION.md)
-- [Contributor commands](CONTRIBUTING.md), [Agent commands](AGENTS.md), [Citation](CITATION.cff) and [Release plan](docs/RELEASE_PLAN.md)
+- [Quickstart](QUICKSTART.md), [installation](INSTALL.md) and [architecture](ARCHITECTURE.md)
+- [Adapters](ADAPTERS.md), [configuration](CONFIGURATION.md) and [agent integration](docs/AGENT_INTEGRATION.md)
+- [Benchmarks](BENCHMARKS.md), [citation guide](docs/CITING.md) and [FAQ](docs/FAQ.md)
+- [Local MCP](MCP.md), [MCP quickstart](docs/MCP_QUICKSTART.md) and [ecosystem status](docs/ECOSYSTEMS.md)
+- [Security and privacy](SECURITY.md), [troubleshooting](TROUBLESHOOTING.md) and [contributing](CONTRIBUTING.md)
+- [Agent commands](AGENTS.md), [release history](CHANGELOG.md) and [public adoption measurement](docs/ADOPTION.md)
 
-Demo, benchmark and local MCP make no outbound connections. Python adapters are trusted code and may use your services. See SECURITY.md for persisted fields, cleanup and trust boundaries.
+Demo, benchmark and local MCP make no outbound connections. Python adapters are trusted application code and may use your services. There is no product telemetry. Journals may retain application data; see [SECURITY.md](SECURITY.md).
 
-Implicit Core is licensed under [Apache-2.0](LICENSE). [Licensing inventory](LICENSING_REVIEW.md) describes included assets and [NOTICE](NOTICE) preserves attribution.
+Implicit Core 1.0.0 is licensed under [Apache-2.0](LICENSE). [Licensing inventory](LICENSING_REVIEW.md) and [NOTICE](NOTICE) describe included assets.

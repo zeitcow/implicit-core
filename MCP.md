@@ -2,6 +2,8 @@
 
 Install with `pip install implicit-ai` in a fresh environment; see INSTALL.md. implicit-mcp --version and --help work independently; implicit-mcp serves newline-delimited UTF-8 JSON-RPC on stdio. No cloud or authentication is required.
 
+See the [MCP quickstart](docs/MCP_QUICKSTART.md) for absolute executable paths, current client-specific commands and first tool workflow.
+
 ## Client configuration
 
 Codex config snippet (merge into your config, with executable on PATH):

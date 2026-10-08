@@ -1,36 +1,77 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Implicit | Implicit</title><meta name="description" content="Implicit experience virtualization: Implicit"><link rel="canonical" href="https://zeitcow.github.io/implicit-core/index.html"><style>body{max-width:980px;margin:3rem auto;padding:0 1.5rem;font:18px/1.6 system-ui;color:#19282c;background:#f8fbfa}nav{display:flex;gap:1rem;flex-wrap:wrap}a{color:#00675d}pre{overflow:auto;background:#e9efed;padding:1rem;border-radius:8px}h1{font-size:2.8rem;line-height:1.2}h2{margin-top:2rem}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:.5rem;border-bottom:1px solid #b7cbc5}footer{margin-top:3rem;border-top:1px solid #b7cbc5}</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Implicit", "description": "The experience layer for AI agents: selective environment state materialization", "softwareVersion": "1.0.0", "applicationCategory": "DeveloperApplication", "operatingSystem": "Python 3.11+", "url": "https://zeitcow.github.io/implicit-core/index.html"}</script></head><body><nav aria-label="Documentation"><a href="index.html">Readme</a> <a href="install.html">Install</a> <a href="benchmarks.html">Benchmarks</a> <a href="architecture.html">Architecture</a> <a href="mcp.html">Mcp</a> <a href="faq.html">Faq</a></nav><main><h1>Implicit</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Implicit | Implicit</title><meta name="description" content="Implicit is the experience layer for AI agents. Virtualize large environments and materialize only required state. Install implicit-ai."><link rel="canonical" href="https://zeitcow.github.io/implicit-core/"><meta property="og:title" content="Implicit | Implicit"><meta property="og:description" content="Implicit is the experience layer for AI agents. Virtualize large environments and materialize only required state. Install implicit-ai."><meta property="og:type" content="website"><meta property="og:site_name" content="Implicit"><meta property="og:url" content="https://zeitcow.github.io/implicit-core/"><style>body{max-width:980px;margin:2rem auto;padding:0 1.5rem;font:18px/1.6 system-ui;color:#19282c;background:#f8fbfa}nav{display:flex;gap:.8rem;flex-wrap:wrap;font-size:16px}a{color:#00675d}a:hover{text-decoration-thickness:2px}pre{overflow:auto;background:#e9efed;padding:1rem;border-radius:8px}h1{font-size:2.8rem;line-height:1.2}h2{margin-top:2rem}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:.5rem;border-bottom:1px solid #b7cbc5}footer{margin-top:3rem;border-top:1px solid #b7cbc5;font-size:16px}@media(max-width:600px){body{font-size:16px}h1{font-size:2.2rem}}</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Implicit", "description": "Implicit is the experience layer for AI agents. Virtualize large environments and materialize only required state. Install implicit-ai.", "softwareVersion": "1.0.0", "applicationCategory": "DeveloperApplication", "operatingSystem": "Python 3.11+", "license": "https://www.apache.org/licenses/LICENSE-2.0", "url": "https://zeitcow.github.io/implicit-core/"}</script></head><body><nav aria-label="Documentation"><a href="index.html">Implicit</a> <a href="quickstart.html">Start</a> <a href="adapters.html">Adapters</a> <a href="benchmarks.html">Evidence</a> <a href="mcp_quickstart.html">MCP</a> <a href="faq.html">FAQ</a> <a href="https://github.com/zeitcow/implicit-core">GitHub</a> <a href="https://pypi.org/project/implicit-ai/">PyPI</a></nav><main><h1 id="implicit">Implicit</h1>
 <p><strong>The experience layer for AI agents.</strong></p>
 <p>Virtualize large agent environments. Materialize only the state each experience actually needs.</p>
-<p>In the Implicit Core v1 release-candidate benchmark, Implicit preserved equivalent state, tool behavior, and reward across 155/155 comparable cases while reducing retained serialized/materialized state by 93.88% overall, 94.40% mean and 99.55% at the median.</p>
-<p>Implicit added approximately 0.554 seconds of mean full-pipeline latency per case in this benchmark.</p>
-<p>These measurements belong to rc1, not the toy demo or new MCP interface. Serialized bytes are not RAM. <a href="benchmarks.html">Benchmarks</a> explains the population, methodology and limitations.</p>
-<h2>Install Implicit Core 1.0.0</h2>
-<p>Python 3.11+; zero third-party runtime dependencies. Use a fresh virtual environment:</p>
 <pre><code class="language-console">pip install implicit-ai
-implicit --help
+</code></pre>
+<p><a href="https://zeitcow.github.io/implicit-core/">Website and docs</a> · <a href="https://pypi.org/project/implicit-ai/">PyPI</a> · <a href="quickstart.html">60-second quickstart</a> · <a href="benchmarks.html">Measured evidence</a> · <a href="mcp_quickstart.html">Connect a coding agent</a></p>
+<h2 id="why-virtualize-an-experience">Why virtualize an experience?</h2>
+<p>Large agent environments often contain far more possible state than one interaction needs. A warehouse may contain millions of orders; processing one order needs only its inventory and policy records. Implicit keeps versioned addresses and loads pages when your adapter requests them.</p>
+<p>An experience is one addressable interaction: instruction, required state, execution and evaluation. The address identifies the environment version and coordinate. Your adapter chooses pages; your existing agent executes; your native evaluator verifies the result. Core records execution state, provenance and explicit recovery.</p>
+<p>Use Implicit for large separable state, repeatable identities, expensive environment construction or durable execution evidence. Measure overhead for small, already lazy or mostly accessed environments.</p>
+<h2 id="try-it-in-60-seconds">Try it in 60 seconds</h2>
+<p>Python 3.11+; zero third-party runtime dependencies. In a fresh virtual environment:</p>
+<pre><code class="language-console">pip install implicit-ai
 implicit --version
 implicit demo
 implicit benchmark
 </code></pre>
-<p>The distribution is <code>implicit-ai</code>; the import is <code>implicit</code>. Isolate it from the unrelated <code>implicit</code> distribution, which shares the import namespace. <a href="https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0">GitHub Releases</a> provides verified wheel and sdist assets for manual installation. <a href="install.html">Installation</a> includes source-build instructions.</p>
-<p>Stable 1.0.0 promotes the validated RC2 runtime lineage. Historical <a href="https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0rc2">RC2</a> evidence remains unchanged.</p>
-<h2>Why virtualize an experience?</h2>
-<p>An experience is one versioned, addressable environment interaction with an instruction, required state, execution and evaluation. A warehouse may contain millions of orders; processing one order needs only its inventory and policy records. Implicit retains lightweight addresses and loads pages when your adapter requests them.</p>
-<p>Use it when environments have large unused state, repeatable identities, expensive construction, or need durable execution evidence. It can add overhead when state is small, most pages are needed, or your adapter cannot separate state. Measure your workload, including full-pipeline latency and every storage category.</p>
-<h2>Keep your existing stack</h2>
-<p>Your adapter owns native behavior. Keep your learner, agent framework and evaluator; Core accepts ordinary Python protocols. No allocator is required. Default selection preserves your proposed order. <a href="adapters.html">Create an adapter</a>, or run three independent examples with the wheel installed:</p>
+<p>The public toy compares eager and selective serialized state, verifies the shipping result and prints a provenance hash. Its output is its own workload measurement.</p>
+<p>The distribution is <code>implicit-ai</code>; the import is <code>implicit</code>. Use an isolated environment because the unrelated <code>implicit</code> recommendation library shares that import namespace. <a href="install.html">Installation</a> includes Windows setup and verified <a href="https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0">release artifacts</a>.</p>
+<h2 id="measured-evidence-and-its-limits">Measured evidence and its limits</h2>
+<p>In the preserved <strong>rc1</strong> native systems population, 155/155 comparable cases preserved equivalent state, tool behavior and reward.</p>
+<table>
+<thead>
+<tr>
+<th>Measurement</th>
+<th style="text-align:right">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aggregate retained serialized/materialized-state reduction</td>
+<td style="text-align:right">93.88%</td>
+</tr>
+<tr>
+<td>Mean case reduction</td>
+<td style="text-align:right">94.40%</td>
+</tr>
+<tr>
+<td>Median case reduction</td>
+<td style="text-align:right">99.55%</td>
+</tr>
+<tr>
+<td>Mean full-pipeline latency overhead</td>
+<td style="text-align:right">approximately +0.554 seconds/case</td>
+</tr>
+</tbody>
+</table>
+<p>Serialized/materialized bytes are <strong>not RAM</strong>. The measurements belong to rc1, not a new 1.0.0 native replay or the toy/MCP demo. The public numeric summary supports arithmetic verification; restricted native replay assets are not shipped. <a href="benchmarks.html">Methodology, hashes and limitations</a>.</p>
+<h2 id="keep-your-existing-stack">Keep your existing stack</h2>
+<p>Keep your agent, learner, framework and evaluator. Build an adapter in your project using ordinary Python protocols:</p>
+<pre><code class="language-text">Universe proposes versioned addresses
+  -&gt; Environment plans required pages
+  -&gt; ResourceSource loads pages as needed
+  -&gt; existing agent executes
+  -&gt; native Evaluator verifies
+  -&gt; Core records provenance and recovery state
+</code></pre>
+<p><a href="adapters.html">Adapter contract</a>, <a href="agent_integration.html">agent integration prompts</a> and <a href="markdown/examples/core_adapters.py">three public adapter shapes</a> show the mapping. With the public repository downloaded and the package installed:</p>
 <pre><code class="language-console">python -I examples/core_adapters.py
 </code></pre>
-<p>Core supplies versioned addresses, selective materialization, cache lifecycle, journals, recovery and provenance. It does not promise universal speedups, learning improvement, allocator superiority or arbitrary external exactly-once effects.</p>
-<h2>Documentation</h2>
+<p>No allocator or new learner is required. Default selection preserves your proposed order. Core does not establish improved learning, general speedups, allocator superiority or universal infrastructure guarantees.</p>
+<h2 id="let-a-coding-agent-try-implicit">Let a coding agent try Implicit</h2>
+<p>The package includes eight bounded local stdio MCP tools for synthetic addressing, paging, provenance and validation. <a href="mcp_quickstart.html">MCP quickstart</a> gives Codex, Claude Code, VS Code and Cursor configurations. Real environment adapters use the Python SDK.</p>
+<p><a href="plugin_readiness.html">Repository plugin</a> packages integration guidance and local MCP configuration. Public directory acceptance and hosted ChatGPT connectivity are separate; see the dated <a href="ecosystems.html">ecosystem status</a>.</p>
+<h2 id="documentation">Documentation</h2>
 <ul>
-<li><a href="quickstart.html">Quickstart</a> and <a href="install.html">Installation</a></li>
-<li><a href="architecture.html">Architecture</a>, <a href="adapters.html">Adapters</a> and <a href="configuration.html">Configuration</a></li>
-<li><a href="benchmarks.html">Benchmarks</a>, <a href="faq.html">FAQ</a> and <a href="troubleshooting.html">Troubleshooting</a></li>
-<li><a href="security.html">Security and privacy</a>, <a href="mcp.html">Local MCP</a> and <a href="agent_integration.html">Agent integration</a></li>
-<li><a href="contributing.html">Contributor commands</a>, <a href="agents.html">Agent commands</a>, <a href="markdown/CITATION.cff">Citation</a> and <a href="release_plan.html">Release plan</a></li>
+<li><a href="quickstart.html">Quickstart</a>, <a href="install.html">installation</a> and <a href="architecture.html">architecture</a></li>
+<li><a href="adapters.html">Adapters</a>, <a href="configuration.html">configuration</a> and <a href="agent_integration.html">agent integration</a></li>
+<li><a href="benchmarks.html">Benchmarks</a>, <a href="citing.html">citation guide</a> and <a href="faq.html">FAQ</a></li>
+<li><a href="mcp.html">Local MCP</a>, <a href="mcp_quickstart.html">MCP quickstart</a> and <a href="ecosystems.html">ecosystem status</a></li>
+<li><a href="security.html">Security and privacy</a>, <a href="troubleshooting.html">troubleshooting</a> and <a href="contributing.html">contributing</a></li>
+<li><a href="agents.html">Agent commands</a>, <a href="changelog.html">release history</a> and <a href="adoption.html">public adoption measurement</a></li>
 </ul>
-<p>Demo, benchmark and local MCP make no outbound connections. Python adapters are trusted code and may use your services. See SECURITY.md for persisted fields, cleanup and trust boundaries.</p>
-<p>Implicit Core is licensed under <a href="markdown/LICENSE">Apache-2.0</a>. <a href="licensing_review.html">Licensing inventory</a> describes included assets and <a href="markdown/NOTICE">NOTICE</a> preserves attribution.</p>
-</main><footer>Implicit Core 1.0.0 — stable release. <a href="markdown/README.md">Source Markdown</a>. Apache-2.0.</footer></body></html>
+<p>Demo, benchmark and local MCP make no outbound connections. Python adapters are trusted application code and may use your services. There is no product telemetry. Journals may retain application data; see <a href="security.html">SECURITY.md</a>.</p>
+<p>Implicit Core 1.0.0 is licensed under <a href="markdown/LICENSE">Apache-2.0</a>. <a href="licensing_review.html">Licensing inventory</a> and <a href="markdown/NOTICE">NOTICE</a> describe included assets.</p>
+</main><footer>Implicit Core 1.0.0. <a href="markdown/README.md">Source Markdown</a>. Apache-2.0.</footer></body></html>

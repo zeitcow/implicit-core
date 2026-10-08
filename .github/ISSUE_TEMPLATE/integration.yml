@@ -1,0 +1,35 @@
+name: Adapter integration report
+description: Share a sanitized adapter question or measured integration result.
+title: "[Integration]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Use public or sanitized data only. Omit credentials, private reasoning and evaluator answers. This form does not imply a supported third-party integration."
+  - type: input
+    id: version
+    attributes:
+      label: Installed implicit-ai version and Python version
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and native agent/evaluator
+      description: Explain the separable state and immutable identity/version.
+    validations:
+      required: true
+  - type: textarea
+    id: equivalence
+    attributes:
+      label: Native equivalence and reproducibility
+      description: Record state/tool/reward comparison, seeds, versions, hashes and missing-page behavior.
+  - type: textarea
+    id: measurements
+    attributes:
+      label: Measured bytes and complete pipeline latency
+      description: Separate retained serialized/materialized bytes from index/journal/content. Bytes are not RAM. Report overhead and sample count.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question, errors or recovery observations
+      description: Preserve journals privately and reconcile interrupted effects before retrying.

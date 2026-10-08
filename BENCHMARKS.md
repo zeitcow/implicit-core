@@ -4,6 +4,10 @@ In the Implicit Core v1 release-candidate benchmark, Implicit preserved equivale
 
 Implicit added approximately 0.554 seconds of mean full-pipeline latency per case in this benchmark.
 
+## Version and citation
+
+Stable Core 1.0.0 was released 2026-10-08; the result below belongs to preserved 1.0.0rc1. The public numeric summary does not record the original measurement date. See the [citation guide](docs/CITING.md) for immutable source/version links and reproduction scope.
+
 ## RC1 validation population
 
 Native reference replay used the preserved 155 comparable ENV systems cases. All completed and were equivalent. This establishes systems equivalence, not agent capability or learning.

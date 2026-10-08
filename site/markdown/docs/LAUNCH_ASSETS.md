@@ -4,7 +4,7 @@ Canonical stable installation: `pip install implicit-ai`. Stable release: https:
 
 ## Repository and package
 
-Public repository: zeitcow/implicit-core. Description: The experience layer for AI agents â€” versioned environment addressing and selective state materialization. Topics: ai-agents, agent-environments, experience-virtualization, lazy-materialization, python, mcp, provenance. Package: implicit-ai; import implicit. See RELEASE_PLAN.md for availability/fallbacks.
+Public repository: zeitcow/implicit-core. Description: The experience layer for AI agents - versioned environment addressing and selective state materialization. Topics: ai-agents, agent-environments, experience-virtualization, lazy-materialization, python, mcp, provenance. Package: implicit-ai; import implicit. See RELEASE_PLAN.md for availability/fallbacks.
 
 ## Landing page / README hero
 
@@ -20,7 +20,7 @@ Introducing Implicit Core: the experience layer for AI agents. It represents lar
 
 ## Hacker News draft
 
-Show HN: Implicit â€” virtualize agent environments and materialize only needed state
+Show HN: Implicit - virtualize agent environments and materialize only needed state
 
 We built a Python experience layer with versioned addressing, progressive paging and durable provenance. You keep your agent/framework/evaluator. The offline toy demonstrates eager versus selective state. The rc1 native population preserved 155/155 systems cases with 93.88% aggregate retained serialized/materialized-state reduction, adding approximately +0.554 seconds/case mean full-pipeline latency. No RAM or learning claim; native replay assets are not in the public bundle. We are interested in adapters for environments with large unused state.
 

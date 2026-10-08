@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.zeitcow/implicit-core",
+  "title": "Implicit Core",
+  "description": "Bounded local synthetic experience addressing, state materialization and provenance rehearsal.",
+  "repository": {
+    "url": "https://github.com/zeitcow/implicit-core",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "implicit-ai",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

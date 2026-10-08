@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Technical registry readiness | Implicit</title><meta name="description" content="Technical registry readiness for Implicit Core 1.0.0: experience virtualization, selective state and measured integration."><link rel="canonical" href="https://zeitcow.github.io/implicit-core/registry_submissions.html"><meta property="og:title" content="Technical registry readiness | Implicit"><meta property="og:description" content="Technical registry readiness for Implicit Core 1.0.0: experience virtualization, selective state and measured integration."><meta property="og:type" content="website"><meta property="og:site_name" content="Implicit"><meta property="og:url" content="https://zeitcow.github.io/implicit-core/registry_submissions.html"><style>body{max-width:980px;margin:2rem auto;padding:0 1.5rem;font:18px/1.6 system-ui;color:#19282c;background:#f8fbfa}nav{display:flex;gap:.8rem;flex-wrap:wrap;font-size:16px}a{color:#00675d}a:hover{text-decoration-thickness:2px}pre{overflow:auto;background:#e9efed;padding:1rem;border-radius:8px}h1{font-size:2.8rem;line-height:1.2}h2{margin-top:2rem}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:.5rem;border-bottom:1px solid #b7cbc5}footer{margin-top:3rem;border-top:1px solid #b7cbc5;font-size:16px}@media(max-width:600px){body{font-size:16px}h1{font-size:2.2rem}}</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Technical registry readiness", "url": "https://zeitcow.github.io/implicit-core/registry_submissions.html", "description": "Technical registry readiness for Implicit Core 1.0.0: experience virtualization, selective state and measured integration.", "about": {"@type": "SoftwareApplication", "name": "Implicit", "softwareVersion": "1.0.0"}}</script></head><body><nav aria-label="Documentation"><a href="index.html">Implicit</a> <a href="quickstart.html">Start</a> <a href="adapters.html">Adapters</a> <a href="benchmarks.html">Evidence</a> <a href="mcp_quickstart.html">MCP</a> <a href="faq.html">FAQ</a> <a href="https://github.com/zeitcow/implicit-core">GitHub</a> <a href="https://pypi.org/project/implicit-ai/">PyPI</a></nav><main><h1 id="technical-registry-readiness">Technical registry readiness</h1>
+<p>Reviewed 2026-10-08. Canonical install: <code>pip install implicit-ai</code>. Listings remain independent of package publication.</p>
+<table>
+<thead>
+<tr>
+<th>Candidate</th>
+<th>Audience / authority</th>
+<th>Submission, cost and requirements</th>
+<th>Implicit decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PyPI</td>
+<td>Python developers; official package index</td>
+<td>Existing stable package; free index, existing project ownership</td>
+<td>LIVE 1.0.0</td>
+</tr>
+<tr>
+<td>GitHub repository and topics</td>
+<td>Developers; authoritative source</td>
+<td>Project-owned metadata/source, existing authentication</td>
+<td>LIVE</td>
+</tr>
+<tr>
+<td>Official MCP Registry</td>
+<td>MCP clients; protocol-maintained metadata registry</td>
+<td>Free metadata publication; namespace authentication and package ownership verification</td>
+<td>PREPARED; PyPI prerequisite missing</td>
+</tr>
+<tr>
+<td>OpenAI Plugins Directory</td>
+<td>ChatGPT/Codex users; official platform</td>
+<td>Verified owner identity, portal access and review; new terms require owner acceptance</td>
+<td>Separate skills-only package PREPARED; no acceptance claimed</td>
+</tr>
+<tr>
+<td>Awesome MCP Servers</td>
+<td>Developers; maintained community source list</td>
+<td>GitHub PR; public installable server, accurate categorized entry, maintainer review</td>
+<td>PREPARED entry; bounded synthetic scope must be clear</td>
+</tr>
+<tr>
+<td>Smithery</td>
+<td>MCP developers; third-party directory</td>
+<td>Current publisher/account and hosting requirements must be verified in its portal</td>
+<td>DEFERRED; published hosted connection is not available</td>
+</tr>
+<tr>
+<td>Zenodo</td>
+<td>Research/software citations; archival repository</td>
+<td>Owner login, license/identity/terms review and deposition</td>
+<td>PREPARED recommendation; no DOI created</td>
+</tr>
+</tbody>
+</table>
+<p>Sources: <a href="https://modelcontextprotocol.io/registry/quickstart">official MCP publishing</a>, <a href="https://modelcontextprotocol.io/registry/package-types">package ownership rules</a>, <a href="https://developers.openai.com/plugins/deploy/submission">OpenAI submission</a>, <a href="https://github.com/punkpeye/awesome-mcp-servers/blob/main/CONTRIBUTING.md">community contribution rules</a>, <a href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">citation/archive guidance</a>.</p>
+<h2 id="official-mcp-registry-prerequisite">Official MCP Registry prerequisite</h2>
+<p>PyPI-based registration verifies the published package description contains <code>mcp-name: io.github.zeitcow/implicit-core</code>. The immutable published 1.0.0 README lacks that marker. Changing repository Markdown does not change PyPI's release description.</p>
+<p>Prepared <a href="markdown/mcp/server.prepared.json">server manifest</a> matches the current schema. Schema validation is not successful ownership verification or publication. Its package/console executable mapping must be confirmed in the publisher/client rehearsal; the supported local launch is <code>implicit-mcp</code>, while the package name is <code>implicit-ai</code>.</p>
+<p>Exact next steps for the next properly versioned package release, if the owner chooses registry publication:</p>
+<ol>
+<li>Include <code>&lt;!-- mcp-name: io.github.zeitcow/implicit-core --&gt;</code> in the package README.</li>
+<li>Apply ordinary release/versioning verification; update both manifest versions to that release. Do not replace 1.0.0 artifacts or publish merely to decorate metadata.</li>
+<li>Verify the marker in the live PyPI JSON description.</li>
+<li>Install the official mcp-publisher CLI, validate the manifest and authenticate the zeitcow namespace through the current supported GitHub flow.</li>
+<li>Confirm that the client launches <code>implicit-mcp</code> from <code>implicit-ai</code>, publish, and verify the returned registry record before labeling SUBMITTED/LIVE.</li>
+</ol>
+<p>MCPB or OCI packaging could provide another route but is not asserted to exist and is not a reason to expand frozen Core.</p>
+<h2 id="community-entry">Community entry</h2>
+<p>Prepared concise entry:</p>
+<p><code>[zeitcow/implicit-core](https://github.com/zeitcow/implicit-core) - Python stdio MCP for bounded synthetic experience addressing, selective state materialization, provenance and fixed benchmark/adapter rehearsal. Real environment adapters use the SDK.</code></p>
+<p>Place it in the relevant developer-tools category in alphabetical order, preserve the repository's entry conventions, disclose the limited synthetic scope in the PR, and wait for maintainer review. No paid placement, bulk submissions or endorsements are involved.</p>
+</main><footer>Implicit Core 1.0.0. <a href="markdown/docs/REGISTRY_SUBMISSIONS.md">Source Markdown</a>. Apache-2.0.</footer></body></html>

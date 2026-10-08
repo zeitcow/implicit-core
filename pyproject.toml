@@ -17,6 +17,9 @@ classifiers = ["Development Status :: 5 - Production/Stable", "Programming Langu
 [project.urls]
 "Repository" = "https://github.com/zeitcow/implicit-core"
 "Documentation" = "https://zeitcow.github.io/implicit-core/"
+"Issues" = "https://github.com/zeitcow/implicit-core/issues"
+"Changelog" = "https://github.com/zeitcow/implicit-core/blob/main/CHANGELOG.md"
+"Benchmarks" = "https://zeitcow.github.io/implicit-core/benchmarks.html"
 
 [project.optional-dependencies]
 dev = ["pytest>=8.4,<10", "ruff>=0.12,<1", "mypy>=1.16,<3", "build>=1.2,<2", "twine>=6,<8", "pip-audit>=2.9,<3", "jsonschema>=4.23,<5", "PyYAML>=6,<7", "markdown-it-py>=3,<5"]
@@ -29,7 +32,7 @@ implicit-mcp = "implicit.mcp:main"
 packages = ["src/implicit"]
 
 [tool.hatch.build.targets.sdist]
-only-include = ["src", "tests", "examples", "benchmarks", "docs", "tools", "plugin", "mcp", "site", ".github", ".agents", ".gitignore", ".gitattributes", "pyproject.toml", "README.md", "QUICKSTART.md", "INSTALL.md", "ARCHITECTURE.md", "ADAPTERS.md", "CONFIGURATION.md", "TROUBLESHOOTING.md", "BENCHMARKS.md", "SECURITY.md", "CONTRIBUTING.md", "CHANGELOG.md", "AGENTS.md", "MCP.md", "PLUGIN_READINESS.md", "LICENSING_REVIEW.md", "AI_DISCOVERABILITY.md", "AGENT_INTEGRATION_BENCHMARK.md", "CITATION.cff", "LICENSE", "NOTICE", "PUBLIC_EXPORT_MANIFEST.json", "llms.txt", "llms-full.txt", "robots.txt", "sitemap.xml"]
+only-include = ["src", "tests", "examples", "benchmarks", "docs", "tools", "plugin", "mcp", "site", ".github", ".agents", ".gitignore", ".gitattributes", "pyproject.toml", "README.md", "QUICKSTART.md", "INSTALL.md", "ARCHITECTURE.md", "ADAPTERS.md", "CONFIGURATION.md", "TROUBLESHOOTING.md", "BENCHMARKS.md", "SECURITY.md", "CONTRIBUTING.md", "CHANGELOG.md", "AGENTS.md", "MCP.md", "PLUGIN_READINESS.md", "LICENSING_REVIEW.md", "AI_DISCOVERABILITY.md", "AGENT_INTEGRATION_BENCHMARK.md", "CITATION.cff", "LICENSE", "NOTICE", "PUBLIC_EXPORT_MANIFEST.json", "llms.txt", "llms-full.txt", "robots.txt", "sitemap.xml", "ADOPTION_BASELINE.md", "ADOPTION_METRICS.json"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

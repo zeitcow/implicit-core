@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Install and try Implicit
+    url: https://zeitcow.github.io/implicit-core/quickstart.html
+    about: Canonical PyPI install and the offline toy.
+  - name: Adapter contract and evidence limits
+    url: https://zeitcow.github.io/implicit-core/adapters.html
+    about: Keep your native agent/evaluator; compare semantics before bytes.
+  - name: Security reporting
+    url: https://github.com/zeitcow/implicit-core/security/policy
+    about: Follow SECURITY.md for sensitive reports.

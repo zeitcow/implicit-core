@@ -1,0 +1,132 @@
+{
+  "schema": 1,
+  "timestamp_utc": "2026-10-08T22:09:36.209356+00:00",
+  "repository": "zeitcow/implicit-core",
+  "package": "implicit-ai",
+  "interpretation": "Aggregate signals, not active users; owner checks and CI may contribute.",
+  "github": {
+    "source": "https://api.github.com/repos/zeitcow/implicit-core",
+    "http_status": 200,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "subscribers_count": 0,
+    "open_issues_count": 0,
+    "has_discussions": false
+  },
+  "releases": {
+    "source": "https://api.github.com/repos/zeitcow/implicit-core/releases?per_page=100",
+    "http_status": 200,
+    "first_100_releases": [
+      {
+        "tag": "v1.0.0",
+        "downloads": 27,
+        "assets": [
+          {
+            "name": "checksums.txt",
+            "downloads": 6
+          },
+          {
+            "name": "implicit-core-docs-1.0.0.zip",
+            "downloads": 3
+          },
+          {
+            "name": "implicit-core-plugin-1.0.0.zip",
+            "downloads": 3
+          },
+          {
+            "name": "implicit-core-public-source-1.0.0.zip",
+            "downloads": 3
+          },
+          {
+            "name": "implicit_ai-1.0.0-py3-none-any.whl",
+            "downloads": 6
+          },
+          {
+            "name": "implicit_ai-1.0.0.tar.gz",
+            "downloads": 6
+          }
+        ]
+      },
+      {
+        "tag": "v1.0.0rc2",
+        "downloads": 21,
+        "assets": [
+          {
+            "name": "checksums.txt",
+            "downloads": 4
+          },
+          {
+            "name": "implicit-core-docs-1.0.0rc2.zip",
+            "downloads": 3
+          },
+          {
+            "name": "implicit-core-plugin-1.0.0rc2.zip",
+            "downloads": 3
+          },
+          {
+            "name": "implicit-core-public-source-1.0.0rc2.zip",
+            "downloads": 3
+          },
+          {
+            "name": "implicit_ai-1.0.0rc2-py3-none-any.whl",
+            "downloads": 4
+          },
+          {
+            "name": "implicit_ai-1.0.0rc2.tar.gz",
+            "downloads": 4
+          }
+        ]
+      }
+    ]
+  },
+  "issues_total": {
+    "source": "https://api.github.com/search/issues?q=repo%3Azeitcow%2Fimplicit-core+is%3Aissue&per_page=1",
+    "http_status": 200,
+    "count": 0,
+    "incomplete_results": false
+  },
+  "pull_requests_total": {
+    "source": "https://api.github.com/search/issues?q=repo%3Azeitcow%2Fimplicit-core+is%3Apr&per_page=1",
+    "http_status": 200,
+    "count": 0,
+    "incomplete_results": false
+  },
+  "contributors": {
+    "count": 1,
+    "external_non_bot_count": 0,
+    "source": "https://api.github.com/repos/zeitcow/implicit-core/contributors",
+    "pages": 1,
+    "reason": null,
+    "scope": "Commit authors recognized by GitHub; names are not recorded."
+  },
+  "pypi_downloads": {
+    "source": "https://pypistats.org/api/packages/implicit-ai/recent",
+    "http_status": 404,
+    "data": null,
+    "reason": "Not Found"
+  },
+  "citations": {
+    "value": null,
+    "reason": "Not measured by this aggregate snapshot"
+  },
+  "backlinks": {
+    "value": null,
+    "reason": "Not measured by this aggregate snapshot"
+  },
+  "public_mentions": {
+    "value": null,
+    "reason": "Not measured by this aggregate snapshot"
+  },
+  "active_users": {
+    "value": null,
+    "reason": "Not measured by this aggregate snapshot"
+  },
+  "search_indexing": {
+    "value": null,
+    "reason": "Not measured by this aggregate snapshot"
+  },
+  "discussions": {
+    "count": 0,
+    "reason": "Disabled"
+  }
+}

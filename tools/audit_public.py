@@ -61,7 +61,7 @@ def audit():
         assert f'User-agent: {bot}\nAllow: /' in (ROOT/'site/robots.txt').read_text(encoding='utf-8')
     for p in (ROOT/'site').glob('*.html'):
         text = p.read_text(encoding='utf-8')
-        assert '<main>' in text and '<h1>' in text and 'rel="canonical"' in text
+        assert '<main>' in text and re.search(r'<h1(?:\s[^>]*)?>', text) and 'rel="canonical"' in text
         assert 'application/ld+json' in text and '<script src' not in text
     print(json.dumps({'status':'PASS','manifested_files':len(expected),'scope':'hashes, exact tree, leak patterns, runtime imports, links, benchmark arithmetic, plugin paths, crawler/static HTML; not formal security certification'}))
 

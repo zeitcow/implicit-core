@@ -1,16 +1,33 @@
 # Implicit
 
-> The experience layer for AI agents. Stable 1.0.0 release. Install with pip install implicit-ai.
+> The experience layer for AI agents. Virtualize large environments; materialize required state.
+
+Stable 1.0.0. Python 3.11+. Install: pip install implicit-ai. Import: implicit. Use isolation to avoid the unrelated implicit distribution.
+
+Use for large separable state, versioned experiences and durable evidence; measure overhead for small/already lazy state. Keep the existing agent/framework/evaluator; adapters live in the application.
+
+Historical rc1: 155/155 equivalent cases, 93.88% aggregate/94.40% mean/99.55% median retained serialized-state reduction; approximately +0.554 seconds/case mean pipeline overhead. Bytes are not RAM. Restricted native replay assets are not shipped.
+
+MCP is local stdio with eight bounded synthetic tools. Custom adapters use SDK tests. Repository plugin source is separate from public directory acceptance. No hosted endpoint is claimed.
+
+## Start here
+
+- [Quickstart](https://zeitcow.github.io/implicit-core/markdown/QUICKSTART.md)
+- [Install](https://zeitcow.github.io/implicit-core/markdown/INSTALL.md)
+- [Adapters](https://zeitcow.github.io/implicit-core/markdown/ADAPTERS.md)
+- [Agent Integration](https://zeitcow.github.io/implicit-core/markdown/docs/AGENT_INTEGRATION.md)
+- [Benchmarks](https://zeitcow.github.io/implicit-core/markdown/BENCHMARKS.md)
+- [Mcp Quickstart](https://zeitcow.github.io/implicit-core/markdown/docs/MCP_QUICKSTART.md)
+- [Security](https://zeitcow.github.io/implicit-core/markdown/SECURITY.md)
+- [Ecosystems](https://zeitcow.github.io/implicit-core/markdown/docs/ECOSYSTEMS.md)
+- [Citing](https://zeitcow.github.io/implicit-core/markdown/docs/CITING.md)
+
+## Further reference
 
 - [README](https://zeitcow.github.io/implicit-core/markdown/README.md)
-- [QUICKSTART](https://zeitcow.github.io/implicit-core/markdown/QUICKSTART.md)
-- [INSTALL](https://zeitcow.github.io/implicit-core/markdown/INSTALL.md)
 - [ARCHITECTURE](https://zeitcow.github.io/implicit-core/markdown/ARCHITECTURE.md)
-- [ADAPTERS](https://zeitcow.github.io/implicit-core/markdown/ADAPTERS.md)
 - [CONFIGURATION](https://zeitcow.github.io/implicit-core/markdown/CONFIGURATION.md)
 - [TROUBLESHOOTING](https://zeitcow.github.io/implicit-core/markdown/TROUBLESHOOTING.md)
-- [BENCHMARKS](https://zeitcow.github.io/implicit-core/markdown/BENCHMARKS.md)
-- [SECURITY](https://zeitcow.github.io/implicit-core/markdown/SECURITY.md)
 - [CONTRIBUTING](https://zeitcow.github.io/implicit-core/markdown/CONTRIBUTING.md)
 - [CHANGELOG](https://zeitcow.github.io/implicit-core/markdown/CHANGELOG.md)
 - [AGENTS](https://zeitcow.github.io/implicit-core/markdown/AGENTS.md)
@@ -20,6 +37,11 @@
 - [AI_DISCOVERABILITY](https://zeitcow.github.io/implicit-core/markdown/AI_DISCOVERABILITY.md)
 - [AGENT_INTEGRATION_BENCHMARK](https://zeitcow.github.io/implicit-core/markdown/AGENT_INTEGRATION_BENCHMARK.md)
 - [FAQ](https://zeitcow.github.io/implicit-core/markdown/docs/FAQ.md)
-- [AGENT_INTEGRATION](https://zeitcow.github.io/implicit-core/markdown/docs/AGENT_INTEGRATION.md)
 - [RELEASE_PLAN](https://zeitcow.github.io/implicit-core/markdown/docs/RELEASE_PLAN.md)
 - [LAUNCH_ASSETS](https://zeitcow.github.io/implicit-core/markdown/docs/LAUNCH_ASSETS.md)
+- [REGISTRY_SUBMISSIONS](https://zeitcow.github.io/implicit-core/markdown/docs/REGISTRY_SUBMISSIONS.md)
+- [ADOPTION](https://zeitcow.github.io/implicit-core/markdown/docs/ADOPTION.md)
+- [ADOPTION_BASELINE](https://zeitcow.github.io/implicit-core/markdown/ADOPTION_BASELINE.md)
+
+- [GitHub](https://github.com/zeitcow/implicit-core)
+- [PyPI](https://pypi.org/project/implicit-ai/)

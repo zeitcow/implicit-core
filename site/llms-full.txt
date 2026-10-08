@@ -4,55 +4,87 @@
 
 Virtualize large agent environments. Materialize only the state each experience actually needs.
 
-In the Implicit Core v1 release-candidate benchmark, Implicit preserved equivalent state, tool behavior, and reward across 155/155 comparable cases while reducing retained serialized/materialized state by 93.88% overall, 94.40% mean and 99.55% at the median.
+```console
+pip install implicit-ai
+```
 
-Implicit added approximately 0.554 seconds of mean full-pipeline latency per case in this benchmark.
+[Website and docs](https://zeitcow.github.io/implicit-core/) · [PyPI](https://pypi.org/project/implicit-ai/) · [60-second quickstart](QUICKSTART.md) · [Measured evidence](BENCHMARKS.md) · [Connect a coding agent](docs/MCP_QUICKSTART.md)
 
-These measurements belong to rc1, not the toy demo or new MCP interface. Serialized bytes are not RAM. [Benchmarks](BENCHMARKS.md) explains the population, methodology and limitations.
+## Why virtualize an experience?
 
-## Install Implicit Core 1.0.0
+Large agent environments often contain far more possible state than one interaction needs. A warehouse may contain millions of orders; processing one order needs only its inventory and policy records. Implicit keeps versioned addresses and loads pages when your adapter requests them.
 
-Python 3.11+; zero third-party runtime dependencies. Use a fresh virtual environment:
+An experience is one addressable interaction: instruction, required state, execution and evaluation. The address identifies the environment version and coordinate. Your adapter chooses pages; your existing agent executes; your native evaluator verifies the result. Core records execution state, provenance and explicit recovery.
+
+Use Implicit for large separable state, repeatable identities, expensive environment construction or durable execution evidence. Measure overhead for small, already lazy or mostly accessed environments.
+
+## Try it in 60 seconds
+
+Python 3.11+; zero third-party runtime dependencies. In a fresh virtual environment:
 
 ```console
 pip install implicit-ai
-implicit --help
 implicit --version
 implicit demo
 implicit benchmark
 ```
 
-The distribution is `implicit-ai`; the import is `implicit`. Isolate it from the unrelated `implicit` distribution, which shares the import namespace. [GitHub Releases](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0) provides verified wheel and sdist assets for manual installation. [Installation](INSTALL.md) includes source-build instructions.
+The public toy compares eager and selective serialized state, verifies the shipping result and prints a provenance hash. Its output is its own workload measurement.
 
-Stable 1.0.0 promotes the validated RC2 runtime lineage. Historical [RC2](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0rc2) evidence remains unchanged.
+The distribution is `implicit-ai`; the import is `implicit`. Use an isolated environment because the unrelated `implicit` recommendation library shares that import namespace. [Installation](INSTALL.md) includes Windows setup and verified [release artifacts](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0).
 
-## Why virtualize an experience?
+## Measured evidence and its limits
 
-An experience is one versioned, addressable environment interaction with an instruction, required state, execution and evaluation. A warehouse may contain millions of orders; processing one order needs only its inventory and policy records. Implicit retains lightweight addresses and loads pages when your adapter requests them.
+In the preserved **rc1** native systems population, 155/155 comparable cases preserved equivalent state, tool behavior and reward.
 
-Use it when environments have large unused state, repeatable identities, expensive construction, or need durable execution evidence. It can add overhead when state is small, most pages are needed, or your adapter cannot separate state. Measure your workload, including full-pipeline latency and every storage category.
+| Measurement | Result |
+| --- | ---: |
+| Aggregate retained serialized/materialized-state reduction | 93.88% |
+| Mean case reduction | 94.40% |
+| Median case reduction | 99.55% |
+| Mean full-pipeline latency overhead | approximately +0.554 seconds/case |
+
+Serialized/materialized bytes are **not RAM**. The measurements belong to rc1, not a new 1.0.0 native replay or the toy/MCP demo. The public numeric summary supports arithmetic verification; restricted native replay assets are not shipped. [Methodology, hashes and limitations](BENCHMARKS.md).
 
 ## Keep your existing stack
 
-Your adapter owns native behavior. Keep your learner, agent framework and evaluator; Core accepts ordinary Python protocols. No allocator is required. Default selection preserves your proposed order. [Create an adapter](ADAPTERS.md), or run three independent examples with the wheel installed:
+Keep your agent, learner, framework and evaluator. Build an adapter in your project using ordinary Python protocols:
+
+```text
+Universe proposes versioned addresses
+  -> Environment plans required pages
+  -> ResourceSource loads pages as needed
+  -> existing agent executes
+  -> native Evaluator verifies
+  -> Core records provenance and recovery state
+```
+
+[Adapter contract](ADAPTERS.md), [agent integration prompts](docs/AGENT_INTEGRATION.md) and [three public adapter shapes](examples/core_adapters.py) show the mapping. With the public repository downloaded and the package installed:
 
 ```console
 python -I examples/core_adapters.py
 ```
 
-Core supplies versioned addresses, selective materialization, cache lifecycle, journals, recovery and provenance. It does not promise universal speedups, learning improvement, allocator superiority or arbitrary external exactly-once effects.
+No allocator or new learner is required. Default selection preserves your proposed order. Core does not establish improved learning, general speedups, allocator superiority or universal infrastructure guarantees.
+
+## Let a coding agent try Implicit
+
+The package includes eight bounded local stdio MCP tools for synthetic addressing, paging, provenance and validation. [MCP quickstart](docs/MCP_QUICKSTART.md) gives Codex, Claude Code, VS Code and Cursor configurations. Real environment adapters use the Python SDK.
+
+[Repository plugin](PLUGIN_READINESS.md) packages integration guidance and local MCP configuration. Public directory acceptance and hosted ChatGPT connectivity are separate; see the dated [ecosystem status](docs/ECOSYSTEMS.md).
 
 ## Documentation
 
-- [Quickstart](QUICKSTART.md) and [Installation](INSTALL.md)
-- [Architecture](ARCHITECTURE.md), [Adapters](ADAPTERS.md) and [Configuration](CONFIGURATION.md)
-- [Benchmarks](BENCHMARKS.md), [FAQ](docs/FAQ.md) and [Troubleshooting](TROUBLESHOOTING.md)
-- [Security and privacy](SECURITY.md), [Local MCP](MCP.md) and [Agent integration](docs/AGENT_INTEGRATION.md)
-- [Contributor commands](CONTRIBUTING.md), [Agent commands](AGENTS.md), [Citation](CITATION.cff) and [Release plan](docs/RELEASE_PLAN.md)
+- [Quickstart](QUICKSTART.md), [installation](INSTALL.md) and [architecture](ARCHITECTURE.md)
+- [Adapters](ADAPTERS.md), [configuration](CONFIGURATION.md) and [agent integration](docs/AGENT_INTEGRATION.md)
+- [Benchmarks](BENCHMARKS.md), [citation guide](docs/CITING.md) and [FAQ](docs/FAQ.md)
+- [Local MCP](MCP.md), [MCP quickstart](docs/MCP_QUICKSTART.md) and [ecosystem status](docs/ECOSYSTEMS.md)
+- [Security and privacy](SECURITY.md), [troubleshooting](TROUBLESHOOTING.md) and [contributing](CONTRIBUTING.md)
+- [Agent commands](AGENTS.md), [release history](CHANGELOG.md) and [public adoption measurement](docs/ADOPTION.md)
 
-Demo, benchmark and local MCP make no outbound connections. Python adapters are trusted code and may use your services. See SECURITY.md for persisted fields, cleanup and trust boundaries.
+Demo, benchmark and local MCP make no outbound connections. Python adapters are trusted application code and may use your services. There is no product telemetry. Journals may retain application data; see [SECURITY.md](SECURITY.md).
 
-Implicit Core is licensed under [Apache-2.0](LICENSE). [Licensing inventory](LICENSING_REVIEW.md) describes included assets and [NOTICE](NOTICE) preserves attribution.
+Implicit Core 1.0.0 is licensed under [Apache-2.0](LICENSE). [Licensing inventory](LICENSING_REVIEW.md) and [NOTICE](NOTICE) describe included assets.
 
 
 # Quickstart
@@ -173,6 +205,10 @@ In the Implicit Core v1 release-candidate benchmark, Implicit preserved equivale
 
 Implicit added approximately 0.554 seconds of mean full-pipeline latency per case in this benchmark.
 
+## Version and citation
+
+Stable Core 1.0.0 was released 2026-10-08; the result below belongs to preserved 1.0.0rc1. The public numeric summary does not record the original measurement date. See the [citation guide](docs/CITING.md) for immutable source/version links and reproduction scope.
+
 ## RC1 validation population
 
 Native reference replay used the preserved 155 comparable ENV systems cases. All completed and were equivalent. This establishes systems equivalence, not agent capability or learning.
@@ -290,6 +326,8 @@ After integration verify addressed state, tool behavior/reward against native ea
 
 Install with `pip install implicit-ai` in a fresh environment; see INSTALL.md. implicit-mcp --version and --help work independently; implicit-mcp serves newline-delimited UTF-8 JSON-RPC on stdio. No cloud or authentication is required.
 
+See the [MCP quickstart](docs/MCP_QUICKSTART.md) for absolute executable paths, current client-specific commands and first tool workflow.
+
 ## Client configuration
 
 Codex config snippet (merge into your config, with executable on PATH):
@@ -331,11 +369,22 @@ Generic stdio is tested from the wheel. No marketplace install or hosted ChatGPT
 
 # Plugin readiness
 
-Public source includes portable plugin.json and mcp.json, Codex compatibility manifests, a reusable integration skill and a repository marketplace catalog. Install with `pip install implicit-ai`. Local clients require Python and the installed implicit-ai package with implicit-mcp on PATH. No credentials or remote service are needed for local stdio MCP.
+Public source includes portable plugin.json/mcp.json, Codex manifests, a repository marketplace and an integration skill. Install the runtime with `pip install implicit-ai`; local MCP requires Python 3.11+ and the correct executable PATH.
 
-Add the repository marketplace in a supported client with `codex plugin marketplace add zeitcow/implicit-core --ref main`. Source/schema and installed-wheel stdio validation cover the local package; actual desktop installation and hosted ChatGPT connectivity remain not yet verified.
+For a supported local Codex client:
 
-The current [official packaging guidance](https://developers.openai.com/plugins/build/plugins) distinguishes repository marketplaces from the universal public directory. The [submission process](https://developers.openai.com/plugins/deploy/submission) requires developer-dashboard access. MCP review requires a real server connection/domain verification, website/support/privacy/terms URLs, review cases and a demo recording. This release supplies local stdio MCP and does not fabricate a server ID or hosted endpoint. Owner action and platform review remain necessary before directory acceptance; source publication is not marketplace availability.
+```console
+codex plugin marketplace add zeitcow/implicit-core --ref main
+codex plugin add implicit-core@implicit-core
+```
+
+The skill's bundled references contain the adapter contract and integration guide. Runtime installation is separate. If a client cannot resolve `implicit-mcp`, use the absolute executable path from the [MCP quickstart](docs/MCP_QUICKSTART.md).
+
+[Official packaging](https://developers.openai.com/plugins/build/plugins) describes repository marketplaces. The [dated ecosystem review](docs/ECOSYSTEMS.md) separates LIVE source, manual local configuration and public directory status. Manifest/schema and installed-package stdio checks do not prove desktop UI installation.
+
+A separate skills-only ZIP is prepared for owner submission through the [current OpenAI portal](https://developers.openai.com/plugins/deploy/submission). It contains no local MCP connection. Directory acceptance remains unverified and requires owner publishing identity/access. A future MCP plugin is a separate submission: this release has no remote endpoint, hosted authentication or directory-listed server.
+
+No listing, platform endorsement or hosted ChatGPT connection follows from repository source publication. [Registry materials](docs/REGISTRY_SUBMISSIONS.md).
 
 
 # Licensing inventory
@@ -349,11 +398,33 @@ The pending-license marker and package metadata were replaced under owner author
 
 # AI and search discovery
 
-Canonical documentation: https://zeitcow.github.io/implicit-core/. Static HTML, mirrored Markdown, robots.txt, sitemap.xml, llms.txt, llms-full.txt and SoftwareApplication metadata describe Implicit without requiring client JavaScript. CITATION.cff names the version, author, license and public repository.
+Canonical documentation: https://zeitcow.github.io/implicit-core/. Crawlable HTML and mirrored Markdown explain the same product, evidence and limitations. Permanent install, benchmark, adapter and MCP pages have canonical links, descriptive titles, OpenGraph metadata and a sitemap.
 
-Stable pages include installation, architecture, adapters, benchmarks, security, MCP, FAQ, troubleshooting and agent integration. The benchmark page cites the rc1 population: 155/155 equivalent cases, 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction with approximately +0.554 seconds/case mean full-pipeline latency overhead. Bytes are not RAM; the sanitized summary permits arithmetic checks, not native replay.
+## Crawler access
 
-robots.txt allows OAI-SearchBot, PerplexityBot and other retrieval crawlers. These assets support discovery once their public HTTP surfaces are verified. DISCOVERABLE_SURFACES_READY is separate from ACTUALLY_INDEXED: indexing remains unknown until observed externally. No search ranking or retrieval guarantee is made.
+Checked against current official guidance on 2026-10-08:
+
+- [OpenAI crawler guidance](https://developers.openai.com/api/docs/bots): OAI-SearchBot controls ChatGPT search crawling. Search and model-training controls are separate. Accessibility does not guarantee retrieval.
+- [Perplexity crawler guidance](https://docs.perplexity.ai/docs/resources/perplexity-crawlers): PerplexityBot supports search discovery. Site operators with WAFs should verify official IP ranges as well as user agents.
+- [Google robots guidance](https://developers.google.com/search/docs/crawling-indexing/robots/intro): robots.txt belongs at the origin root.
+- [Google sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap): list canonical public URLs.
+- [Google AI search guidance](https://developers.google.com/search/docs/appearance/ai-features): useful visible text and normal SEO remain applicable; no special AI markup guarantees inclusion.
+
+On GitHub project Pages, `/implicit-core/robots.txt` is an advisory copy. Crawlers read `https://zeitcow.github.io/robots.txt`. The origin root returned 404 at the audit, so there is no robots disallow policy there. Project pages are accessible. If an origin-level site is added later, its robots policy must allow `/implicit-core/` and may advertise this project's sitemap. A project-path robots file cannot override origin restrictions.
+
+No crawler-specific product claims, authentication walls or JavaScript requirement are introduced. Check HTTP status and X-Robots-Tag along with HTML metadata.
+
+## Agent retrieval
+
+[llms.txt](https://zeitcow.github.io/implicit-core/llms.txt) is a concise curated map with installation, when to use, benchmark scope and integration links. It is an optional convenience, not an official ranking requirement. [llms-full.txt](https://zeitcow.github.io/implicit-core/llms-full.txt) preserves readable documentation.
+
+Facts: stable distribution `implicit-ai==1.0.0`, import `implicit`, canonical install `pip install implicit-ai`; eight local synthetic MCP tools. The unrelated `implicit` recommendation package shares the import namespace; use a fresh environment.
+
+The preserved rc1 result is 155/155 equivalent cases, 93.88% aggregate/94.40% mean/99.55% median retained serialized/materialized-state reduction and approximately +0.554 seconds/case mean full-pipeline overhead. Bytes are not RAM. The numeric summary permits arithmetic checking, not independent native replay.
+
+## Discovery status
+
+DISCOVERY_SURFACES_READY means the public documents, links and crawler access have been verified. INDEXED requires an actual matching search observation. No ranking, ChatGPT recommendation, Perplexity recommendation or independent directory acceptance follows from publishing these files. The [ecosystem review](docs/ECOSYSTEMS.md) distinguishes local configuration from public directory publication.
 
 
 # Agent integration benchmark protocol
@@ -418,17 +489,41 @@ Trusted adapters/parents, immutable versions, thread-affine sessions, admission 
 
 # Agent integration
 
-For “Use Implicit to virtualize this environment” or “Create an adapter”, identify immutable identity/coordinate, minimal pages, source version and native verifier. Install with `pip install implicit-ai` in a fresh environment, read ADAPTERS.md/examples/core_adapters.py, and copy a resource shape into the application.
+Implicit is the experience layer for AI agents. Use it when an environment has large separable state, repeatable versioned experiences or reproducible operations. Measure overhead for small, already lazy or mostly accessed state.
 
-Map cheap metadata to Universe.propose/probe. Environment.plan selects initial pages. Source.load returns finite JSON; dependencies identifies more pages. Environment.execute calls the existing agent via PagedState; Evaluator.verify preserves authoritative semantics. No Core modification or custom learner is required.
+## Install Implicit
 
-For “Benchmark eager vs Implicit”, use identical coordinates, seeds, versions, tools and verifier. Count canonical retained state separately from index/journal/content and time the complete pipeline. Verify state/tool/reward equivalence before interpreting reduction. Disclose latency regressions. The toy benchmark teaches methodology, not your application result.
+Prompt: “Install Implicit in a fresh environment with `pip install implicit-ai`. Verify version 1.0.0, import `implicit`, and run `implicit --help`, `implicit demo` and `implicit benchmark`. Report the package/version and toy scope. Avoid the unrelated `implicit` distribution.”
 
-For “Inspect provenance”, use public Session events/metrics. Choose durable storage explicitly. Preserve address, versions, seed, page hashes and reconciliation receipts. Keep business data out of public logs.
+## Integrate this environment
 
-For MCP enumerate tools and use create_universe -> address_experience -> materialize -> inspect_state/get_provenance. Custom Python adapters use SDK tests, never uploaded code.
+Prompt: “Read the [adapter contract](../ADAPTERS.md) and [three external adapter shapes](../examples/core_adapters.py). Map this environment's immutable identity, coordinate, minimal pages, source version and native verifier. Keep our agent, framework, learner and evaluator. Implement the adapter in our project with zero Core edits. Measure before recommending adoption.”
 
-An integration report records install, tool selection, adapter LOC, Core modifications (expected zero), equivalence, bytes, latency, provenance, errors and human interventions. Do not infer RAM, allocator, learning or universal guarantees.
+Universe.propose/probe expose cheap address metadata. Environment.plan chooses initial pages. ResourceSource.load returns finite JSON and dependencies names additional pages. Environment.execute calls the existing agent through PagedState. Evaluator.verify preserves the authoritative state/tool/reward semantics.
+
+## Create an Implicit adapter
+
+Prompt: “Create Universe, Environment, ResourceSource and Evaluator implementations for this application. Tie source versions to contents, keep probes lightweight, raise KeyError for missing pages, and use explicit SDK storage paths. Verify addresses and versions, state/tool/reward equivalence, deterministic hashes and missing-page failures. Exclude credentials, evaluator answers and private reasoning from journaled fields.”
+
+Reuse a shape from `examples/core_adapters.py`. Import PagedState from `implicit.materialization`; MissingStateError subclasses KeyError. Ordinary integration changes no Core runtime.
+
+## Benchmark eager versus Implicit
+
+Prompt: “Compare native eager and Implicit execution using identical coordinates, seeds, tools, data versions and verifier. Confirm equivalence first. Record retained canonical serialized/materialized bytes separately from index, journal, content and reconstruction storage. Time the complete pipeline on both paths. Report sample count, per-case/aggregate bytes, pipeline latency delta, reproducible hashes, missing-page failures and all limitations.”
+
+Report full-pipeline overhead, including regressions. Bytes are not RAM. The public toy teaches methodology and does not reproduce the restricted rc1 population. Historical rc1 summaries carry approximately +0.554 seconds/case mean pipeline overhead.
+
+## Use the local Implicit MCP
+
+Prompt: “Follow the [MCP quickstart](MCP_QUICKSTART.md). Enumerate tools, create a synthetic universe, address one experience, materialize inventory/policy, inspect state/provenance, and run the fixed benchmark. Explain the built-in validation scope. Use SDK tests for custom adapters.”
+
+MCP does not accept custom Python execution or application datasets. Use the SDK for real adapters and durable execution.
+
+## Preserve execution evidence
+
+Choose durable storage explicitly. Record addresses, versions, seeds, page hashes and reconciliation receipts; preserve user journals. Reconcile interrupted external effects before explicit abandonment or replay. [Troubleshooting](../TROUBLESHOOTING.md) explains recovery.
+
+An integration report records installation, adapter LOC, Core modification count (expected zero), addressed state, native equivalence, bytes, latency, provenance, errors and human interventions. Do not infer learning, allocator, RAM or universal guarantees. Share only sanitized public evidence.
 
 
 # Release plan
@@ -450,7 +545,7 @@ Canonical stable installation: `pip install implicit-ai`. Stable release: https:
 
 ## Repository and package
 
-Public repository: zeitcow/implicit-core. Description: The experience layer for AI agents â€” versioned environment addressing and selective state materialization. Topics: ai-agents, agent-environments, experience-virtualization, lazy-materialization, python, mcp, provenance. Package: implicit-ai; import implicit. See RELEASE_PLAN.md for availability/fallbacks.
+Public repository: zeitcow/implicit-core. Description: The experience layer for AI agents - versioned environment addressing and selective state materialization. Topics: ai-agents, agent-environments, experience-virtualization, lazy-materialization, python, mcp, provenance. Package: implicit-ai; import implicit. See RELEASE_PLAN.md for availability/fallbacks.
 
 ## Landing page / README hero
 
@@ -466,7 +561,7 @@ Introducing Implicit Core: the experience layer for AI agents. It represents lar
 
 ## Hacker News draft
 
-Show HN: Implicit â€” virtualize agent environments and materialize only needed state
+Show HN: Implicit - virtualize agent environments and materialize only needed state
 
 We built a Python experience layer with versioned addressing, progressive paging and durable provenance. You keep your agent/framework/evaluator. The offline toy demonstrates eager versus selective state. The rc1 native population preserved 155/155 systems cases with 93.88% aggregate retained serialized/materialized-state reduction, adding approximately +0.554 seconds/case mean full-pipeline latency. No RAM or learning claim; native replay assets are not in the public bundle. We are interested in adapters for environments with large unused state.
 
@@ -491,4 +586,225 @@ If environment state construction or recovery makes your agent workflow difficul
 Implicit Core supplies experience virtualization: a versioned address plane, selective state loading, lifecycle evidence and explicit recovery. RC1's 155-case systems comparison showed 155/155 equivalence, 93.88% aggregate/99.55% median retained serialized/materialized-state reduction and approximately +0.554 seconds/case mean full-pipeline latency overhead. No RAM, learning, allocator or universal advantage is established. Adoption hypotheses concern large separable environments; product evidence includes clean installation, independent adapter shapes and local MCP rehearsal. No commercial traction, revenue or private research result is asserted.
 
 Repository/release copy is approved for launch. Social and outreach drafts remain unsent; sending requires explicit account/channel and recipient authorization. No paid assets are used.
+
+
+# MCP quickstart
+
+Install stable Core in a fresh Python 3.11+ environment:
+
+```console
+pip install implicit-ai
+implicit --version
+implicit-mcp --version
+```
+
+Find the installed server executable:
+
+```console
+python -c "import shutil; print(shutil.which('implicit-mcp'))"
+```
+
+Use that absolute executable path if the client does not inherit your activated environment. On Windows it ends in `Scripts/implicit-mcp.exe`; on Unix, `bin/implicit-mcp`. JSON paths on Windows can use forward slashes. Do not paste a placeholder without replacing it.
+
+## Codex local clients
+
+With the executable on PATH:
+
+```console
+codex mcp add implicit -- implicit-mcp
+codex mcp list
+```
+
+Or merge this into your Codex `config.toml`:
+
+```toml
+[mcp_servers.implicit]
+command = "/absolute/path/to/implicit-mcp"
+args = []
+```
+
+The [current official MCP guidance](https://learn.chatgpt.com/docs/extend/mcp?surface=cli) covers local Codex CLI, IDE and desktop configuration. Restart the client after editing. These instructions describe documented support; the public deterministic stdio client is the executable compatibility check.
+
+## Claude Code
+
+```console
+claude mcp add --transport stdio implicit -- implicit-mcp
+claude mcp list
+```
+
+Replace `implicit-mcp` with its absolute path when necessary. See [official Claude Code MCP setup](https://code.claude.com/docs/en/mcp).
+
+## VS Code
+
+Merge into workspace `.vscode/mcp.json`:
+
+```json
+{"servers":{"implicit":{"type":"stdio","command":"/absolute/path/to/implicit-mcp","args":[]}}}
+```
+
+Use MCP: List Servers to start it and inspect tools. See [official configuration reference](https://code.visualstudio.com/docs/agents/reference/mcp-configuration). Client trust/approval remains the developer's choice.
+
+## Cursor or compatible local clients
+
+Merge into the client's MCP configuration; Cursor uses `.cursor/mcp.json`:
+
+```json
+{"mcpServers":{"implicit":{"command":"/absolute/path/to/implicit-mcp","args":[]}}}
+```
+
+See [official Cursor MCP documentation](https://docs.cursor.com/context/model-context-protocol). This is documented configuration, not an asserted end-to-end UI test of every client.
+
+## First tool workflow
+
+Ask the agent: “List Implicit's tools. Create a synthetic universe with count 1000. Address coordinate 7 without loading pages. Materialize inventory and policy, inspect the state, and retrieve provenance. Report resource counts and hashes. Run the fixed benchmark and built-in adapter validation; identify their scope.”
+
+Expected tools:
+
+- `implicit_create_universe`
+- `implicit_inspect_universe`
+- `implicit_address_experience`
+- `implicit_materialize`
+- `implicit_inspect_state`
+- `implicit_get_provenance`
+- `implicit_benchmark`
+- `implicit_validate_adapter`
+
+Use the returned universe handle. Raw clients initialize, send notifications/initialized, then tools/list. With the public checkout downloaded, verify all eight from the installed package:
+
+```console
+python -I examples/mcp_client.py
+```
+
+## Scope and troubleshooting
+
+The server waits on stdio; running it alone does not open a web service. No authentication, network or hosted endpoint is required. State is bounded synthetic process memory and disappears on restart. `validate_adapter` checks the built-in contract; custom adapters need SDK tests.
+
+If launch fails, verify the absolute executable path, Python 3.11+ and installed version in that environment. Keep stdout reserved for JSON-RPC. If only the skill appears, install the wheel and check the client's PATH. [MCP protocol and bounds](../MCP.md), [security](../SECURITY.md) and [recovery guidance](../TROUBLESHOOTING.md).
+
+ChatGPT web and public plugin submission have different transport and account requirements; [ecosystem status](ECOSYSTEMS.md) records them. No hosted connection or public directory listing is claimed.
+
+
+# Agent ecosystem status
+
+Reviewed 2026-10-08. Install Core with `pip install implicit-ai`. “LIVE” refers to an observed public artifact or endpoint; it does not imply directory approval, client UI verification or users.
+
+| Surface | Status | Available path and limits |
+| --- | --- | --- |
+| PyPI package | LIVE | Stable 1.0.0; Python SDK, CLI and eight local MCP tools |
+| Public repository plugin | LIVE source; MANUAL-CONFIGURATION-ONLY | Local skill/configuration under plugin/ and repository marketplace; Python installation remains required |
+| Codex CLI, IDE, desktop local host | MANUAL-CONFIGURATION-ONLY | Documented local stdio configuration; deterministic installed-wheel MCP validation |
+| ChatGPT desktop local plugin | MANUAL-CONFIGURATION-ONLY | Repository marketplace on a local host; actual desktop UI installation not asserted |
+| ChatGPT web custom MCP | NOT CURRENTLY SUPPORTED by this release | Web connection requires supported HTTP/SSE transport or a compatible Secure MCP Tunnel; Core ships local stdio only |
+| OpenAI public skills-only plugin | PREPARED; REQUIRES OWNER ACTION | Owner chooses verified publishing identity and submits the separate skills-only ZIP; acceptance is unverified |
+| OpenAI public MCP plugin | REQUIRES OWNER ACTION | Needs approved reachable transport, ownership, policies and review; no remote service is deployed |
+| Claude Code | MANUAL-CONFIGURATION-ONLY | Official stdio syntax; see MCP quickstart |
+| VS Code / GitHub Copilot | MANUAL-CONFIGURATION-ONLY | Official servers configuration; see MCP quickstart |
+| Cursor | MANUAL-CONFIGURATION-ONLY | Official mcpServers configuration; see MCP quickstart |
+| Official MCP Registry | PREPARED | Current PyPI description lacks its ownership marker; see registry prerequisites |
+
+[Current OpenAI MCP guidance](https://learn.chatgpt.com/docs/extend/mcp?surface=cli) documents local client configuration. [Plugin packaging](https://developers.openai.com/plugins/build/plugins) distinguishes repository marketplaces from workspace and universal directory publication.
+
+[Current OpenAI submission flow](https://developers.openai.com/plugins/deploy/submission) requires a verified publishing identity and portal access. Skills-only submissions do not require MCP review cases or a recording; adding MCP to an existing skills-only plugin is unsupported, so preserve separate package identities. No acceptance is implied.
+
+[ChatGPT custom MCP guidance](https://developers.openai.com/api/docs/guides/custom-mcp-server) describes remote/tunnel connection; a local stdio executable alone is insufficient. A hosted service would require a separate scope, hosting/security design and owner decisions. Do not expose it merely to market this release.
+
+[Claude Code](https://code.claude.com/docs/en/mcp), [VS Code](https://code.visualstudio.com/docs/agents/reference/mcp-configuration) and [Cursor](https://docs.cursor.com/context/model-context-protocol) are the configuration references. [MCP quickstart](MCP_QUICKSTART.md) contains exact snippets. Client approval and configuration remain local to the developer.
+
+
+# Technical registry readiness
+
+Reviewed 2026-10-08. Canonical install: `pip install implicit-ai`. Listings remain independent of package publication.
+
+| Candidate | Audience / authority | Submission, cost and requirements | Implicit decision |
+| --- | --- | --- | --- |
+| PyPI | Python developers; official package index | Existing stable package; free index, existing project ownership | LIVE 1.0.0 |
+| GitHub repository and topics | Developers; authoritative source | Project-owned metadata/source, existing authentication | LIVE |
+| Official MCP Registry | MCP clients; protocol-maintained metadata registry | Free metadata publication; namespace authentication and package ownership verification | PREPARED; PyPI prerequisite missing |
+| OpenAI Plugins Directory | ChatGPT/Codex users; official platform | Verified owner identity, portal access and review; new terms require owner acceptance | Separate skills-only package PREPARED; no acceptance claimed |
+| Awesome MCP Servers | Developers; maintained community source list | GitHub PR; public installable server, accurate categorized entry, maintainer review | PREPARED entry; bounded synthetic scope must be clear |
+| Smithery | MCP developers; third-party directory | Current publisher/account and hosting requirements must be verified in its portal | DEFERRED; published hosted connection is not available |
+| Zenodo | Research/software citations; archival repository | Owner login, license/identity/terms review and deposition | PREPARED recommendation; no DOI created |
+
+Sources: [official MCP publishing](https://modelcontextprotocol.io/registry/quickstart), [package ownership rules](https://modelcontextprotocol.io/registry/package-types), [OpenAI submission](https://developers.openai.com/plugins/deploy/submission), [community contribution rules](https://github.com/punkpeye/awesome-mcp-servers/blob/main/CONTRIBUTING.md), [citation/archive guidance](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content).
+
+## Official MCP Registry prerequisite
+
+PyPI-based registration verifies the published package description contains `mcp-name: io.github.zeitcow/implicit-core`. The immutable published 1.0.0 README lacks that marker. Changing repository Markdown does not change PyPI's release description.
+
+Prepared [server manifest](../mcp/server.prepared.json) matches the current schema. Schema validation is not successful ownership verification or publication. Its package/console executable mapping must be confirmed in the publisher/client rehearsal; the supported local launch is `implicit-mcp`, while the package name is `implicit-ai`.
+
+Exact next steps for the next properly versioned package release, if the owner chooses registry publication:
+
+1. Include `<!-- mcp-name: io.github.zeitcow/implicit-core -->` in the package README.
+2. Apply ordinary release/versioning verification; update both manifest versions to that release. Do not replace 1.0.0 artifacts or publish merely to decorate metadata.
+3. Verify the marker in the live PyPI JSON description.
+4. Install the official mcp-publisher CLI, validate the manifest and authenticate the zeitcow namespace through the current supported GitHub flow.
+5. Confirm that the client launches `implicit-mcp` from `implicit-ai`, publish, and verify the returned registry record before labeling SUBMITTED/LIVE.
+
+MCPB or OCI packaging could provide another route but is not asserted to exist and is not a reason to expand frozen Core.
+
+## Community entry
+
+Prepared concise entry:
+
+`[zeitcow/implicit-core](https://github.com/zeitcow/implicit-core) - Python stdio MCP for bounded synthetic experience addressing, selective state materialization, provenance and fixed benchmark/adapter rehearsal. Real environment adapters use the SDK.`
+
+Place it in the relevant developer-tools category in alphabetical order, preserve the repository's entry conventions, disclose the limited synthetic scope in the PR, and wait for maintainer review. No paid placement, bulk submissions or endorsements are involved.
+
+
+# Citing Implicit
+
+Core 1.0.0 was released on 2026-10-08. Cite the software with [CITATION.cff](../CITATION.cff) and the immutable [v1.0.0 source](https://github.com/zeitcow/implicit-core/tree/v1.0.0). The stable source SHA is cac3e72e1f4958d1873d3a6d28d320131169324f.
+
+Suggested citation: Jean C. Martinez. Implicit: the experience layer for AI agents. Version 1.0.0, 2026-10-08. Apache-2.0. https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0.
+
+Benchmark citations must separately identify **rc1**, its 155 comparable native ENV systems cases, the [sanitized numeric summary](../benchmarks/rc1-summary.json), and [methodology/limitations](../BENCHMARKS.md). The stable publication date is not asserted to be the original benchmark measurement date. The preserved public summary does not record that measurement date.
+
+The rc1 population preserved 155/155 equivalent state/tool/reward cases, with 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction, and approximately +0.554 seconds/case mean full-pipeline latency overhead. Bytes are not RAM. Public users can verify arithmetic and run the separate toy; restricted native assets are not distributed.
+
+[GitHub's citation and archive guidance](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content) describes software citation and Zenodo archival integration. Archival DOI creation is prepared for the owner: sign into Zenodo, review its terms and ownership, connect only the public repository, select the existing stable release for archival, check author/version/license/benchmark scope, then approve deposition. No DOI or academic endorsement is claimed here.
+
+
+# Public adoption measurement
+
+Implicit has no hidden product telemetry. Measure public aggregate signals and voluntary integration evidence.
+
+The timestamped [baseline](../ADOPTION_BASELINE.md) and [machine-readable snapshot](../ADOPTION_METRICS.json) are observations, not counts of active users. Stars, forks and downloads cannot establish production adoption. Our own installation checks, automation and CI can affect downloads and traffic.
+
+Run the optional measurement tool from a public source checkout:
+
+```console
+python tools/adoption_snapshot.py
+```
+
+It writes a new timestamped JSON file under `dist/adoption/`; existing snapshots are not overwritten. It fetches GitHub repository counts, release downloads, issue/PR totals, contributor counts and PyPIStats aggregates. It is separate from the SDK and CLI runtime.
+
+GitHub anonymous rate limits may apply. An optional GITHUB_TOKEN can provide project-owner API access; it is never recorded. `--owner-traffic` requests only aggregate views/clones over the API's rolling window. Keep that output private unless the owner chooses to publish it. No visitors, anonymous downloaders or personal identities are inferred.
+
+Unavailable metrics are null with an HTTP status/reason, not zero. Discussions, citations, backlinks, public mentions and search indexing need separate observations. Search indexing and retrieval readiness are independent. [Discovery guidance](../AI_DISCOVERABILITY.md).
+
+For follow-up, preserve weekly snapshots and compare the same windows, noting releases and our own verification activity. Count voluntary public adapter reports, external PRs and reproducible issue reports separately. Capture no private data and send no unsolicited follow-up.
+
+
+# Adoption baseline
+
+Observed 2026-10-08T22:09:36.209356+00:00. This is the first distribution baseline, not active users or production adoption.
+
+| Signal | Observed |
+| --- | ---: |
+| Stars | 0 |
+| Forks | 0 |
+| Watchers | 0 |
+| Issues (all) | 0 |
+| Pull requests (all) | 0 |
+| External non-bot commit contributors | 0 |
+| Discussions | 0 |
+
+Release asset downloads: [{"tag": "v1.0.0", "downloads": 27, "assets": [{"name": "checksums.txt", "downloads": 6}, {"name": "implicit-core-docs-1.0.0.zip", "downloads": 3}, {"name": "implicit-core-plugin-1.0.0.zip", "downloads": 3}, {"name": "implicit-core-public-source-1.0.0.zip", "downloads": 3}, {"name": "implicit_ai-1.0.0-py3-none-any.whl", "downloads": 6}, {"name": "implicit_ai-1.0.0.tar.gz", "downloads": 6}]}, {"tag": "v1.0.0rc2", "downloads": 21, "assets": [{"name": "checksums.txt", "downloads": 4}, {"name": "implicit-core-docs-1.0.0rc2.zip", "downloads": 3}, {"name": "implicit-core-plugin-1.0.0rc2.zip", "downloads": 3}, {"name": "implicit-core-public-source-1.0.0rc2.zip", "downloads": 3}, {"name": "implicit_ai-1.0.0rc2-py3-none-any.whl", "downloads": 4}, {"name": "implicit_ai-1.0.0rc2.tar.gz", "downloads": 4}]}]
+
+PyPIStats recent download observation: {"source": "https://pypistats.org/api/packages/implicit-ai/recent", "http_status": 404, "data": null, "reason": "Not Found"}
+
+GitHub views/clones are available only through owner access and are preserved privately. Search indexing, citations, backlinks, public mentions and active users are not measured by these counters; unavailable values are null, not zero. Our install checks and CI can contribute to download/traffic counters. No hidden telemetry or identification of anonymous users is used.
+
+[Machine-readable snapshot](ADOPTION_METRICS.json), [measurement method](docs/ADOPTION.md), [repeatable script](tools/adoption_snapshot.py). Install: `pip install implicit-ai`.
 
