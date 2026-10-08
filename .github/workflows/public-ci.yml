@@ -26,8 +26,6 @@ jobs:
         run: python tools/build_site.py --canonical https://zeitcow.github.io/implicit-core/
       - run: python tools/audit_public.py
       - run: python tools/audit_discovery.py
-      - run: python tools/audit_discovery.py
-      - run: python tools/audit_discovery.py
       - run: python -m build
       - run: python -m twine check dist/*
       - name: Clean wheel smoke (no source imports)

@@ -33,8 +33,8 @@
     },
     {
       "path": ".github/workflows/public-ci.yml",
-      "sha256": "caf858d15fe2e0911fb67b8abd96f458e632c18032863a97ecd039801e2f11b7",
-      "bytes": 3356
+      "sha256": "8c0c21faa5f8f5956da6f3953005de81d55bc56442f84ecf984f37bfd290a81d",
+      "bytes": 3200
     },
     {
       "path": ".github/workflows/pypi.yml",
@@ -243,8 +243,8 @@
     },
     {
       "path": "plugin/skills/implicit-integration/references/AGENT_INTEGRATION.md",
-      "sha256": "560e64d9f3010f18cafbdbad2cb6582c78e8de1a6777fea5baf3ec8a14d4d0e3",
-      "bytes": 3931
+      "sha256": "9403f72b58eae7218ea427752178ce807a2a4954e48541a1ad32255dbd937492",
+      "bytes": 3894
     },
     {
       "path": "plugin/skills/implicit-integration/SKILL.md",
@@ -783,8 +783,8 @@
     },
     {
       "path": "tools/build_site.py",
-      "sha256": "64fe0bbf80fdb75968148a0f226ad30b1a98f19276b2cd1d182edea0e678e56c",
-      "bytes": 10689
+      "sha256": "22ccdf3d6cddc3b0151207c76244b65ff9c8f4273fc1897738ba4925e439c772",
+      "bytes": 10473
     },
     {
       "path": "tools/runtime-requirements.txt",
