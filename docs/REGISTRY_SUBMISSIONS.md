@@ -8,7 +8,7 @@ Reviewed 2026-10-08. Canonical install: `pip install implicit-ai`. Listings rema
 | GitHub repository and topics | Developers; authoritative source | Project-owned metadata/source, existing authentication | LIVE |
 | Official MCP Registry | MCP clients; protocol-maintained metadata registry | Free metadata publication; namespace authentication and package ownership verification | PREPARED; PyPI prerequisite missing |
 | OpenAI Plugins Directory | ChatGPT/Codex users; official platform | Verified owner identity, portal access and review; new terms require owner acceptance | Separate skills-only package PREPARED; no acceptance claimed |
-| Awesome MCP Servers | Developers; maintained community source list | GitHub PR; public installable server, accurate categorized entry, maintainer review | PREPARED entry; bounded synthetic scope must be clear |
+| Awesome MCP Servers | Developers; maintained community source list | GitHub PR; public installable server, accurate categorized entry, maintainer review | SUBMITTED [PR #16015](https://github.com/punkpeye/awesome-mcp-servers/pull/16015); acceptance pending |
 | Smithery | MCP developers; third-party directory | Current publisher/account and hosting requirements must be verified in its portal | DEFERRED; published hosted connection is not available |
 | Zenodo | Research/software citations; archival repository | Owner login, license/identity/terms review and deposition | PREPARED recommendation; no DOI created |
 
@@ -30,9 +30,11 @@ Exact next steps for the next properly versioned package release, if the owner c
 
 MCPB or OCI packaging could provide another route but is not asserted to exist and is not a reason to expand frozen Core.
 
-## Community entry
+## Community submission
 
-Prepared concise entry:
+Submitted for maintainer review in [PR #16015](https://github.com/punkpeye/awesome-mcp-servers/pull/16015). The entry accurately scopes the server to synthetic local state. Submission is not acceptance.
+
+Concise entry:
 
 `[zeitcow/implicit-core](https://github.com/zeitcow/implicit-core) - Python stdio MCP for bounded synthetic experience addressing, selective state materialization, provenance and fixed benchmark/adapter rehearsal. Real environment adapters use the SDK.`
 

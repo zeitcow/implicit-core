@@ -14,6 +14,7 @@ Reviewed 2026-10-08. Install Core with `pip install implicit-ai`. “LIVE” ref
 | Claude Code | MANUAL-CONFIGURATION-ONLY | Official stdio syntax; see MCP quickstart |
 | VS Code / GitHub Copilot | MANUAL-CONFIGURATION-ONLY | Official servers configuration; see MCP quickstart |
 | Cursor | MANUAL-CONFIGURATION-ONLY | Official mcpServers configuration; see MCP quickstart |
+| Awesome MCP Servers | SUBMITTED | [PR #16015](https://github.com/punkpeye/awesome-mcp-servers/pull/16015); maintainer acceptance pending |
 | Official MCP Registry | PREPARED | Current PyPI description lacks its ownership marker; see registry prerequisites |
 
 [Current OpenAI MCP guidance](https://learn.chatgpt.com/docs/extend/mcp?surface=cli) documents local client configuration. [Plugin packaging](https://developers.openai.com/plugins/build/plugins) distinguishes repository marketplaces from workspace and universal directory publication.
