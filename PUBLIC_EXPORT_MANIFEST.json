@@ -795,6 +795,36 @@
       "path": "TROUBLESHOOTING.md",
       "sha256": "efd8588ee051f3b5eea4a0218647d2e38433133674ac34d2b6644ca0aa976aed",
       "bytes": 1230
+    },
+    {
+      "path": ".github/workflows/mcp-distribution.yml",
+      "sha256": "af048ab0665d8fc232356f000da862d9e95f1f3fcc58ff33afc79eab5d699468",
+      "bytes": 1556
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "51c418b800e0f0378b4a5126afa961f23d9594870d7858bbc6acd7f50a51ddd7",
+      "bytes": 390
+    },
+    {
+      "path": "glama.json",
+      "sha256": "23e93484bf7ee32fde0aedb6dee9bab9c3615a6f9649b628f7850546cb8ddb2e",
+      "bytes": 98
+    },
+    {
+      "path": "mcp/DISTRIBUTION.md",
+      "sha256": "753f6f38f069b2e1489a5f4d292cfc096fc123cafe01d46b247f5b8b52b91433",
+      "bytes": 1292
+    },
+    {
+      "path": "mcp/server.json",
+      "sha256": "1c422c15ea845242bad96a26d3d9a7dbfc8adad2c1229e0212d20152a37ab1e9",
+      "bytes": 801
+    },
+    {
+      "path": "site/664fb701bb03dd9913d73b3012be3c41.txt",
+      "sha256": "19ecd09d87c59007e9615e445d927d05ba69b009b2eda13a3d70952563dec4c0",
+      "bytes": 32
     }
   ],
   "distribution_documentation_baseline": "cac3e72e1f4958d1873d3a6d28d320131169324f"

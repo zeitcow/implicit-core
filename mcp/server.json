@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.zeitcow/implicit-core",
+  "title": "Implicit Core",
+  "description": "Bounded local synthetic experience addressing, selective materialization and provenance rehearsal.",
+  "repository": {
+    "url": "https://github.com/zeitcow/implicit-core",
+    "source": "github"
+  },
+  "websiteUrl": "https://zeitcow.github.io/implicit-core/mcp.html",
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "mcpb",
+      "identifier": "https://github.com/zeitcow/implicit-core/releases/download/v1.0.0/implicit-core-mcp-1.0.0.mcpb",
+      "fileSha256": "e1cfd860c247ebfb1553c37bebcaa5cbe56892eeb8329a289dd250363423e3f7",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+name: MCP distribution validation
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build stable PyPI MCP image
+        run: docker build -t implicit-mcp-distribution .
+      - name: Initialize and introspect without networking
+        shell: python
+        run: |
+          import json, subprocess
+          messages = [
+              {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2025-11-25", "capabilities": {}, "clientInfo": {"name": "distribution-check", "version": "1"}}},
+              {"jsonrpc": "2.0", "method": "notifications/initialized", "params": {}},
+              {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}}
+          ]
+          r = subprocess.run(["docker", "run", "--rm", "-i", "--network", "none", "implicit-mcp-distribution"], input="".join(json.dumps(m)+"\n" for m in messages), capture_output=True, text=True, timeout=60)
+          assert r.returncode == 0 and not r.stderr, r.stderr
+          replies = {x["id"]: x for x in map(json.loads, r.stdout.splitlines())}
+          assert set(replies) == {1, 2} and all("error" not in x for x in replies.values()), replies
+          assert replies[1]["result"]["serverInfo"]["version"] == "1.0.0"
+          tools = replies[2]["result"]["tools"]
+          assert len(tools) == 8
+          print(json.dumps({"status": "PASS", "version": "1.0.0", "tools": [x["name"] for x in tools], "network": "none"}))
