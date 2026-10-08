@@ -139,7 +139,7 @@ class SQLiteEventStore:
                 if os.name == "nt":
                     import msvcrt
 
-                    msvcrt.locking(lock.fileno(), msvcrt.LK_NBLCK, 1)
+                    msvcrt.locking(lock.fileno(), msvcrt.LK_NBLCK, 1)  # type: ignore[attr-defined]  # Windows-only API
                 else:
                     import fcntl
 
@@ -151,7 +151,7 @@ class SQLiteEventStore:
             finally:
                 lock.seek(0)
                 if os.name == "nt":
-                    msvcrt.locking(lock.fileno(), msvcrt.LK_UNLCK, 1)
+                    msvcrt.locking(lock.fileno(), msvcrt.LK_UNLCK, 1)  # type: ignore[attr-defined]  # Windows-only API
                 else:
                     fcntl.flock(lock.fileno(), fcntl.LOCK_UN)  # type: ignore[attr-defined]  # Unix-only API
 
