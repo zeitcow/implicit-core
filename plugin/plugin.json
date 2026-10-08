@@ -1,0 +1,18 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "implicit-core",
+  "version": "1.0.0-rc.2",
+  "description": "Experience virtualization, adapter guidance and bounded local MCP",
+  "keywords": [
+    "agents",
+    "experience-virtualization",
+    "lazy-materialization"
+  ],
+  "license": "Apache-2.0",
+  "repository": "https://github.com/zeitcow/implicit-core",
+  "homepage": "https://zeitcow.github.io/implicit-core/",
+  "author": {
+    "name": "Jean C. Martinez",
+    "url": "https://github.com/zeitcow"
+  }
+}

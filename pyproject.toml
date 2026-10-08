@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "implicit-ai"
+version = "1.0.0rc2"
+description = "The experience layer for AI agents: versioned environments and selective state materialization"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+keywords = ["ai-agents", "experience-virtualization", "environment", "lazy-materialization", "provenance", "mcp"]
+classifiers = ["Development Status :: 4 - Beta", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12", "Programming Language :: Python :: 3.13", "Programming Language :: Python :: 3.14", "Operating System :: OS Independent", "Topic :: Software Development :: Libraries :: Python Modules"]
+
+[project.urls]
+"Repository" = "https://github.com/zeitcow/implicit-core"
+"Documentation" = "https://zeitcow.github.io/implicit-core/"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.4,<10", "ruff>=0.12,<1", "mypy>=1.16,<3", "build>=1.2,<2", "twine>=6,<8", "pip-audit>=2.9,<3", "jsonschema>=4.23,<5", "PyYAML>=6,<7", "markdown-it-py>=3,<5"]
+
+[project.scripts]
+implicit = "implicit.cli:main"
+implicit-mcp = "implicit.mcp:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/implicit"]
+
+[tool.hatch.build.targets.sdist]
+only-include = ["src", "tests", "examples", "benchmarks", "docs", "tools", "plugin", "mcp", "site", ".github", ".agents", ".gitignore", ".gitattributes", "pyproject.toml", "README.md", "QUICKSTART.md", "INSTALL.md", "ARCHITECTURE.md", "ADAPTERS.md", "CONFIGURATION.md", "TROUBLESHOOTING.md", "BENCHMARKS.md", "SECURITY.md", "CONTRIBUTING.md", "CHANGELOG.md", "AGENTS.md", "MCP.md", "PLUGIN_READINESS.md", "LICENSING_REVIEW.md", "AI_DISCOVERABILITY.md", "AGENT_INTEGRATION_BENCHMARK.md", "CITATION.cff", "LICENSE", "NOTICE", "PUBLIC_EXPORT_MANIFEST.json", "llms.txt", "llms-full.txt", "robots.txt", "sitemap.xml"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-p no:cacheprovider"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.mypy]
+python_version = "3.11"
+files = ["src/implicit"]
+check_untyped_defs = true
+disallow_untyped_defs = true

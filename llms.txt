@@ -1,0 +1,25 @@
+# Implicit
+
+> The experience layer for AI agents. Initial public release candidate.
+
+- [README](https://zeitcow.github.io/implicit-core/markdown/README.md)
+- [QUICKSTART](https://zeitcow.github.io/implicit-core/markdown/QUICKSTART.md)
+- [INSTALL](https://zeitcow.github.io/implicit-core/markdown/INSTALL.md)
+- [ARCHITECTURE](https://zeitcow.github.io/implicit-core/markdown/ARCHITECTURE.md)
+- [ADAPTERS](https://zeitcow.github.io/implicit-core/markdown/ADAPTERS.md)
+- [CONFIGURATION](https://zeitcow.github.io/implicit-core/markdown/CONFIGURATION.md)
+- [TROUBLESHOOTING](https://zeitcow.github.io/implicit-core/markdown/TROUBLESHOOTING.md)
+- [BENCHMARKS](https://zeitcow.github.io/implicit-core/markdown/BENCHMARKS.md)
+- [SECURITY](https://zeitcow.github.io/implicit-core/markdown/SECURITY.md)
+- [CONTRIBUTING](https://zeitcow.github.io/implicit-core/markdown/CONTRIBUTING.md)
+- [CHANGELOG](https://zeitcow.github.io/implicit-core/markdown/CHANGELOG.md)
+- [AGENTS](https://zeitcow.github.io/implicit-core/markdown/AGENTS.md)
+- [MCP](https://zeitcow.github.io/implicit-core/markdown/MCP.md)
+- [PLUGIN_READINESS](https://zeitcow.github.io/implicit-core/markdown/PLUGIN_READINESS.md)
+- [LICENSING_REVIEW](https://zeitcow.github.io/implicit-core/markdown/LICENSING_REVIEW.md)
+- [AI_DISCOVERABILITY](https://zeitcow.github.io/implicit-core/markdown/AI_DISCOVERABILITY.md)
+- [AGENT_INTEGRATION_BENCHMARK](https://zeitcow.github.io/implicit-core/markdown/AGENT_INTEGRATION_BENCHMARK.md)
+- [FAQ](https://zeitcow.github.io/implicit-core/markdown/docs/FAQ.md)
+- [AGENT_INTEGRATION](https://zeitcow.github.io/implicit-core/markdown/docs/AGENT_INTEGRATION.md)
+- [RELEASE_PLAN](https://zeitcow.github.io/implicit-core/markdown/docs/RELEASE_PLAN.md)
+- [LAUNCH_ASSETS](https://zeitcow.github.io/implicit-core/markdown/docs/LAUNCH_ASSETS.md)

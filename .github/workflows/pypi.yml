@@ -1,0 +1,38 @@
+name: Publish verified RC2 to PyPI
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download canonical release artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir dist
+          gh release download v1.0.0rc2 --repo zeitcow/implicit-core --pattern 'implicit_ai-1.0.0rc2*' --dir dist
+          gh release download v1.0.0rc2 --repo zeitcow/implicit-core --pattern checksums.txt
+      - name: Verify release checksums
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          expected = dict(line.split()[::-1] for line in Path('checksums.txt').read_text().splitlines())
+          artifacts = sorted(Path('dist').iterdir())
+          assert {p.name for p in artifacts} == {'implicit_ai-1.0.0rc2-py3-none-any.whl', 'implicit_ai-1.0.0rc2.tar.gz'}
+          for p in artifacts:
+              assert hashlib.sha256(p.read_bytes()).hexdigest() == expected[p.name], p.name
+          PY
+      - name: Publish through owner-configured trusted publisher
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          attestations: false

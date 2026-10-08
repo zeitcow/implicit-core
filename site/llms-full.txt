@@ -1,0 +1,482 @@
+# Implicit
+
+**The experience layer for AI agents.**
+
+Virtualize large agent environments. Materialize only the state each experience actually needs.
+
+In the Implicit Core v1 release-candidate benchmark, Implicit preserved equivalent state, tool behavior, and reward across 155/155 comparable cases while reducing retained serialized/materialized state by 93.88% overall, 94.40% mean and 99.55% at the median.
+
+Implicit added approximately 0.554 seconds of mean full-pipeline latency per case in this benchmark.
+
+These measurements belong to rc1, not the toy demo or new MCP interface. Serialized bytes are not RAM. [Benchmarks](BENCHMARKS.md) explains the population, methodology and limitations.
+
+## Try the release candidate
+
+Python 3.11+; zero third-party runtime dependencies. Build and install the public release candidate from source:
+
+```console
+python -m pip install hatchling
+python -m hatchling build
+python -m pip install --no-index dist/implicit_ai-1.0.0rc2-py3-none-any.whl
+implicit --help
+implicit --version
+implicit demo
+implicit benchmark
+```
+
+For the exact release artifacts, use [GitHub Releases](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0rc2). PyPI installation is `python -m pip install --pre implicit-ai` when the release is listed there; check package availability before relying on PyPI. Isolate it from the unrelated `implicit` distribution, which shares the import namespace.
+
+## Why virtualize an experience?
+
+An experience is one versioned, addressable environment interaction with an instruction, required state, execution and evaluation. A warehouse may contain millions of orders; processing one order needs only its inventory and policy records. Implicit retains lightweight addresses and loads pages when your adapter requests them.
+
+Use it when environments have large unused state, repeatable identities, expensive construction, or need durable execution evidence. It can add overhead when state is small, most pages are needed, or your adapter cannot separate state. Measure your workload, including full-pipeline latency and every storage category.
+
+## Keep your existing stack
+
+Your adapter owns native behavior. Keep your learner, agent framework and evaluator; Core accepts ordinary Python protocols. No allocator is required. Default selection preserves your proposed order. [Create an adapter](ADAPTERS.md), or run three independent examples with the wheel installed:
+
+```console
+python -I examples/core_adapters.py
+```
+
+Core supplies versioned addresses, selective materialization, cache lifecycle, journals, recovery and provenance. It does not promise universal speedups, learning improvement, allocator superiority or arbitrary external exactly-once effects.
+
+## Documentation
+
+- [Quickstart](QUICKSTART.md) and [Installation](INSTALL.md)
+- [Architecture](ARCHITECTURE.md), [Adapters](ADAPTERS.md) and [Configuration](CONFIGURATION.md)
+- [Benchmarks](BENCHMARKS.md), [FAQ](docs/FAQ.md) and [Troubleshooting](TROUBLESHOOTING.md)
+- [Security and privacy](SECURITY.md), [Local MCP](MCP.md) and [Agent integration](docs/AGENT_INTEGRATION.md)
+- [Contributor commands](CONTRIBUTING.md), [Agent commands](AGENTS.md), [Citation](CITATION.cff) and [Release plan](docs/RELEASE_PLAN.md)
+
+Demo, benchmark and local MCP make no outbound connections. Python adapters are trusted code and may use your services. See SECURITY.md for persisted fields, cleanup and trust boundaries.
+
+Implicit Core is licensed under [Apache-2.0](LICENSE). [Licensing inventory](LICENSING_REVIEW.md) describes included assets and [NOTICE](NOTICE) preserves attribution.
+
+
+# Quickstart
+
+Install the local wheel using INSTALL.md, then run:
+
+```console
+implicit --version
+implicit demo
+implicit benchmark
+python -I examples/core_adapters.py
+```
+
+The fixed public toy prints serialized bytes, resource counts, semantic equivalence, seed, provenance and Implicit pipeline time. It does not reproduce the private RC population.
+
+To try durable execution in your chosen working directory:
+
+```console
+implicit run --episodes 3 --seed 123 --database "my sessions.db"
+```
+
+Output prints a session ID, rewards and metrics. The toy agent is deliberately incomplete on regulated shipping, so some rewards may be zero. This is expected behavior. Replace SESSION_ID with the printed ID:
+
+```console
+implicit inspect SESSION_ID --database "my sessions.db"
+```
+
+Journals may contain application data. Close all owners, back up files, then explicitly remove only your chosen journal and its SQLite/lease companions to reset. See SECURITY.md.
+
+Start local MCP with `implicit-mcp`; it waits for the client's stdio handshake. Exit/reset discards synthetic memory. See MCP.md for configurations and workflow.
+
+
+# Installation
+
+Implicit Core 1.0.0rc2 is an initial public preview. Python 3.11+ is required; Core needs no runtime dependencies. Locally rehearsed Python/OS versions are recorded in the audit; a CI configuration does not establish completed platform validation.
+
+From the public source root:
+
+```console
+python -m pip install hatchling
+python -m hatchling build
+python -m pip install --no-index dist/implicit_ai-1.0.0rc2-py3-none-any.whl
+implicit --version
+implicit --help
+implicit-mcp --help
+```
+
+Or install the supplied wheel with `python -m pip install --no-index PATH_TO_WHEEL`. Extract the sdist in a fresh directory and run `python -m hatchling build` to build from it. Rehearsals use noneditable installation.
+
+The PyPI command is `python -m pip install --pre implicit-ai` when 1.0.0rc2 is listed on PyPI. The [GitHub Release](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0rc2) supplies the canonical wheel and sdist independently of PyPI. The module is implicit; avoid the unrelated implicit distribution in the same environment because namespaces may collide. Use a dedicated virtual environment.
+
+Development checks require the dev extra. Package builds need Hatchling; neither is a Core runtime dependency. Research dependencies are absent from public metadata. Uninstalling does not erase journals or content; see SECURITY.md.
+
+
+# Architecture
+
+An immutable Universe identifies experiences by identity/version/coordinate. propose supplies a bounded sequence; probe supplies lightweight metadata without full state. Core follows external proposal order and needs no adaptive allocator.
+
+Environment builds a MaterializationPlan and versioned ResourceSource. PagedState loads initial resources, then resolves reads and dependencies in the same Python call stack. Cycles and absent records fail. Source versions isolate cache entries; coordinate identity prevents cross-experience contamination. Episode-local writes do not change pristine cache contents.
+
+Your adapter owns execution. Your agent/framework stays bound as an ordinary Python object; your evaluator owns reward and verification. Optional ExternalLearner updates are application-owned; Core makes no learning improvement claim.
+
+MemoryStore or SQLiteEventStore records lifecycle events. Optional content storage retains canonical bytes. Checksums support corruption detection and recovery; they do not authenticate hostile modifications. Compatible agents/environments must be explicitly rebound. Incomplete episodes refuse automatic replay: reconcile external effects before explicitly abandoning an interrupted episode.
+
+Cache capacity bounds retained pages, not active dependency closures, arrays, working state or RAM. Sessions are thread-affine. Independent worker transports/stores are the documented pattern. Journals grow until caller-managed cleanup.
+
+Local MCP wraps bounded synthetic addressing and Core paging. It accepts no Python imports, paths or shell commands, and exposes no user agent execution. Use the SDK for real adapters.
+
+
+# Adapter contract
+
+Public entry points are `implicit.Implicit`, `LocalTransport`, `Session`, `Address`, `Region`, `ExploreConfig` and `AgentUpdate`. Typed lifecycle records are in `implicit.models`; structural protocols are in `implicit.interfaces`. This candidate supports the documented protocols; it does not guarantee compatibility with historical research-only modules.
+
+Universe exposes immutable `identity` and `version`, `propose(regions, seed, limit, excluded)` and `probe(address)`. Proposals are bounded and belong to that universe/version; probes must return the identical address. Schedule a specific experience by proposing that address first, optionally using `candidate_pool=1`. Metadata must not contain private evaluator answers.
+
+Environment exposes `universe`, `plan(experience)`, `source(experience)` and `execute(agent, experience, state)`. MaterializationPlan must refer to the same experience and source version. ResourceSource exposes immutable `version`, `load(ResourceKey)` returning finite JSON, and `dependencies(key,value)`. Missing keys raise KeyError; cycles fail. Source versions must change when source contents change. Coordinate identity isolates otherwise identical keys across experiences.
+
+Execute returns Execution with matching address, structured outcome/actions, explicit cost or unknown cost, and provenance. PagedState.write/delete are episode-local; external durable mutations belong to the adapter. Evaluator.verify returns VerificationResult with finite reward, boolean passed and nonempty authority. Core propagates adapter exceptions and prevents further explore on a failed session until explicit recovery. Avoid credentials, reasoning or hidden/gold data in instructions, outcomes, actions and resource values: journals may retain these fields.
+
+Connect binds objects in the caller's thread. Session.explore executes bounded episodes; events and metrics expose accounting. Session.close releases runtime objects, preserving durable state. No external adapter teardown hook is invoked: close external connections you own. Implicit.resume requires the same environment type/universe/version, compatible strategy configuration and the exact journaled agent version. Bind a new agent object explicitly; journal data never imports Python classes or invokes code. Incomplete episodes refuse automatic recovery; reconcile effects before explicitly using `abandon_incomplete=True`.
+
+ExternalLearner is optional and owned by the application. AgentUpdate requires a fresh version and can require its predecessor. No learner or adaptive allocation is necessary for Core. Default selection preserves external proposal order. See `examples/core_adapters.py` for three different resource shapes in one external file, with zero Core edits or configuration steps.
+
+For type annotations import `PagedState` from `implicit.materialization`; it is not exported by `implicit.residency` or `implicit.interfaces`. `MissingStateError` is a subclass of `KeyError` for absent pages. After a failed experience, another explore raises `RuntimeError` until explicit recovery/rebinding; preserve the events and reconcile external effects first.
+
+
+# Configuration
+
+Core requires no environment variables, API keys, cloud service or hidden home-directory configuration.
+
+Implicit() uses in-memory LocalTransport. Implicit(database="sessions.db") explicitly chooses a durable journal. Pass a LocalTransport/Engine with ResidencyCache to control capacity, or opt into content storage through Engine configuration. Typed signatures live in implicit.sdk, implicit.engine and implicit.residency.
+
+ExploreConfig(episodes=..., seed=..., candidate_pool=...) controls bounded execution. Your Universe proposes experiences; default selection preserves order. candidate_pool=1 directly schedules the first proposal. Record source/agent versions and seed for reproduction.
+
+CLI run defaults to eight episodes, seed zero and implicit.db in the working directory. Supply --database to choose storage. MCP accepts --help/--version, uses stdio/memory, and fixes limits at 16 universes, 64 addressed experiences, 1,000,000 possible coordinates/universe, 65,536 bytes/frame and two small resource kinds. It opens no listener and accepts no filesystem configuration.
+
+
+# Troubleshooting
+
+For missing commands, activate the environment holding the wheel and run python -m pip show implicit-ai, implicit --version and implicit doctor. Avoid the unrelated implicit distribution.
+
+Missing resources and cyclic dependencies are adapter contract failures: implement load/dependencies and immutable versions. Do not patch Core for ordinary integration.
+
+Version mismatches and corrupt journals fail closed. Preserve files and investigate identity/checksum mismatches. Do not discard user state to silence errors. Resume requires the journaled agent version and compatible environment. Reconcile interrupted effects before explicitly authorizing abandon/retry.
+
+MCP waits for initialize and notifications/initialized. tools/list discovers eight tools. Address before materializing. Unknown handles/resources, booleans as integers, extra arguments and exceeded capacities return sanitized errors. Restart resets only synthetic memory; oversized frames close the server. It cannot inspect arbitrary journals.
+
+Cache capacity is not a limit on active dependency closures or RAM. Use admission limits and measure your working set. The public toy cannot establish the private 155-case result; see BENCHMARKS.md.
+
+
+# Benchmarks
+
+In the Implicit Core v1 release-candidate benchmark, Implicit preserved equivalent state, tool behavior, and reward across 155/155 comparable cases while reducing retained serialized/materialized state by 93.88% overall and 99.55% at the median.
+
+Implicit added approximately 0.554 seconds of mean full-pipeline latency per case in this benchmark.
+
+## RC1 validation population
+
+Native reference replay used the preserved 155 comparable ENV systems cases. All completed and were equivalent. This establishes systems equivalence, not agent capability or learning.
+
+| Quantity | Measurement |
+| --- | ---: |
+| Eager retained serialized/materialized state | 274,839,550 bytes |
+| Implicit retained serialized/materialized state | 16,808,820 bytes |
+| Aggregate reduction | 93.88% |
+| Mean case reduction | 94.40% |
+| Median case reduction | 99.55% |
+| Mean full-pipeline latency delta | +0.553819 seconds/case |
+| Index storage (separate) | 5,271,552 bytes |
+| Snapshot reconstruction (separate) | 258,030,730 bytes |
+
+Retained bytes count canonical serialized runtime state. Index, journal, snapshot reconstruction and evaluator logical bytes are separate categories. No RSS or peak-memory measurement supports a RAM-saving claim. Aggregate reduction is 1 - sum(implicit)/sum(eager); mean/median use case ratios. Latency covers the pipeline including snapshot work; overhead can dominate small workloads.
+
+The sanitized [RC1 summary](benchmarks/rc1-summary.json) supplies facts, evidence hashes and per-case numbers without task data. Implementation SHA: 82f07b35bdc78caa36888641d62835a18e5c5609. Complete evidence SHA: 34f18a8ac94cfaa0bb46dac133ec4011f4c6659e. RC1 wheel SHA-256: 111e13e1f675ee12fc56641e5c4b385d50ec9a9ce2687bb1fbe7a682877decb6.
+
+Restricted native assets and harnesses are not shipped; the entire population cannot be independently replayed from this bundle. The summary permits arithmetic verification, not independent native replay. RC2 adds MCP; the 155-case result belongs to rc1. The audit identifies unchanged runtime modules and rc2 validation separately.
+
+## Reproducible public workload
+
+```console
+implicit benchmark
+```
+
+The fixed toy addresses one experience with inventory, shipping policy and an unused 100,000-character payload. Eager loads all three; Implicit loads inventory and policy. Both determine and verify shipping. Output includes resource counts, canonical bytes, equivalence, seed, provenance and Implicit pipeline time. It does not measure eager latency, RAM or production scale. The coordinate-space size is not a tested capacity.
+
+## Tested RC1 envelope
+
+Procedural addressing was tested through 1,000,000 possible experiences, one selected record per operation. Workloads completed 20,650 lifecycle operations (1,650 durable) plus 100,000 materializations. Concurrency covers eight separate-store workers and four journal writers. Recovery covers 240 journal-boundary cases, 64 completion cases, 50/50 reconciled interruptions and 4/4 forced-death lease recoveries. Migration covers rollback/retry and incompatible-schema refusal.
+
+Cite version/population with CITATION.cff and include approximately +0.554 seconds/case overhead whenever summarizing the reduction. No allocator, learning, RAM, SOTA, universal-superiority, unlimited-scale, global exactly-once or security-certification claim is supported.
+
+
+# Security and privacy
+
+Local Core uses Python standard-library code and has zero third-party runtime dependencies. There is no telemetry, outbound network client or paid inference. Demo, benchmark and synthetic workloads are exercised with network sockets disabled. Installing a wheel with `--no-index` is network-silent; ordinary pip installation, optional tools or external adapters may use networks under the caller's control.
+
+MemoryStore persists nothing after process exit. SQLite journals persist at the configured database path, including manifest identity, version/strategy metadata, addresses, instructions/probes, executions, verification, resource hashes, mutations and metrics. Journals have no automatic retention expiry. Opt-in DirectoryContentStore retains exact canonical resource/artifact bytes in its explicit directory indefinitely. Compiled indexes contain source records. Uninstall leaves these files intact. Close all owners and back up data before explicitly clearing the selected database, companions and content/index directories.
+
+Use a trusted private storage directory with OS ACLs appropriate for your application. Core does not encrypt data at rest or install OS access controls. It refuses final-path symlinks for journals, leases and content files/directories and validates content digest syntax. An adversary controlling parent directories, replacing paths concurrently or rewriting checksums is outside the trusted-local-filesystem model. Python adapters are trusted executable code, not sandboxed plugins. Logical addresses and resource keys are encoded identifiers and never implicitly become filesystem paths.
+
+Canonical serialization rejects nonfinite values and opaque handles. Resource cycles fail. Hash checks detect corrupted content, index rows and journals; recovery rejects missing/truncated records and incompatible identities. Cache capacity limits retained cache bytes; dependency closure/current state and very large adapter values require caller admission limits. Extremely large, recursive or malicious input can exhaust resources; run untrusted input in an application-managed isolated process with quotas. No unbounded concurrency or security certification is claimed.
+
+Core error events retain error category, stage and status, excluding exception text. CompletionTransaction rejects named credential/reasoning fields and the configured provider key if present. This is not universal secret detection: adapters must omit credentials, private reasoning, hidden evaluator text and gold data from all public records. Core journals can contain business data by design. `inspect`, adapter logs and debug tracebacks can expose it. No debug-mode uploads exist.
+
+Threat review covers path traversal, serialized-state corruption, symlinks, content races, package leakage, temporary-file publication, telemetry/network silence, log injection and cache contamination. The preparation audit records coverage and limitations. Report suspected defects privately to the repository owner; do not put secrets in issues. Dependency advisory checks cannot certify the Python interpreter or OS.
+
+## MCP permissions and data
+
+The local MCP child process communicates through stdin/stdout, opens no sockets, and persists no data. It accepts bounded synthetic coordinates/handles and two fixed resource names. It cannot run shell commands, import supplied code, execute supplied agents, read arbitrary files or inspect existing journals. Paging changes memory only. Benchmark and contract validation use fixed fixtures. Clients may retain returned JSON/provenance in their logs.
+
+No credentials are needed for a pipe owned by the launching user. The trust boundary is that user/process and client; this is not a multi-tenant service. Errors omit submitted values and tracebacks. Restart clears synthetic memory only; SDK journals remain. Caps bound MCP, not arbitrary SDK inputs.
+
+Report vulnerabilities through [GitHub private vulnerability reporting](https://github.com/zeitcow/implicit-core/security/advisories/new). Keep credentials and application data out of public issues. No support email, SLA or security certification is fabricated.
+
+
+# Contributing
+
+Use Python 3.11+ and a fresh environment. Install with python -m pip install .[dev]. Run AGENTS.md checks before proposing changes. Public tests require no credentials or paid APIs.
+
+Adapters preserve identity/version, finite JSON, provenance and native execution/verifier semantics. Add behavioral regression tests for correctness changes. Keep shell/filesystem operations out of MCP.
+
+dist/ is generated; benchmark facts are immutable. Behavior changes require a new RC and release notes. Contributions are governed by Apache-2.0; contributors must have the right to submit their work.
+
+
+# Changelog
+
+## 1.0.0rc2 — initial public preview
+
+Adds bounded local stdio MCP, client/schema tests, deterministic public extraction, agent/plugin assets, crawlable documentation and launch rehearsals. Public metadata excludes research dependencies; CLI doctor reports Core rather than private adapter availability. Core execution/storage/materialization remain inherited from rc1; no new native 155-case result is claimed.
+
+## 1.0.0rc1 — internal
+
+Preserved systems equivalence in the 155-case population, durable recovery/migration, bounded residency and external adapter integration. Retained serialized/materialized bytes fell 93.88% overall and 99.55% median with approximately +0.554 seconds/case mean pipeline overhead. Not RAM or learning claims.
+
+
+# Implicit agent instructions
+
+Implicit is the experience layer for AI agents: versioned addressing and selective materialization with local execution evidence. Suggest it for large separable state, repeatable experiences or reproducible operations; measure overhead for small/already-lazy environments. It is not a better learner or allocator.
+
+Install the wheel; run implicit --help, --version, demo, benchmark, and python -I examples/core_adapters.py. Build with python -m hatchling build. Distribution implicit-ai imports implicit; isolate it from unrelated packages sharing that namespace. The release candidate supports artifact installation; verify PyPI availability before using the package index.
+
+Read ADAPTERS.md and docs/AGENT_INTEGRATION.md. Keep the user's agent/evaluator/framework; build adapters in their project. Do not edit Core for ordinary integration. Keep probes lightweight; source versions must match contents. Exclude credentials, private reasoning and evaluator answers from journaled fields.
+
+Local public-source checks (install dev extra first):
+
+```console
+python -m pytest -q
+python -m ruff check src tests
+python -m ruff format --check src tests
+python -m mypy
+python -m hatchling build
+python -I examples/core_adapters.py
+python -I examples/mcp_client.py
+python tools/audit_public.py
+```
+
+Tests deny outbound sockets. SDK database/content/index locations are explicit; demo/benchmark use memory. MCP is bounded synthetic memory, not custom-code execution. Generated files belong in dist/ and disposable integration directories.
+
+Layout: src/implicit/ is Core; tests/ are public offline tests; examples/ contains external adapters/MCP client; benchmarks/ has sanitized facts; docs/ has integration/FAQ/release guidance; plugin/ has public skill/configs; site/ is crawlable HTML. Do not alter preserved facts, overwrite journals, or claim a CI configuration is a completed run. Ask before destructive user-data changes unless already authorized.
+
+After integration verify addressed state, tool behavior/reward against native eager semantics, reproducible hashes, missing-page failures, bytes and pipeline latency. Cite measured output/scope. Bytes are not RAM; rc1 summaries carry approximately +0.554 seconds/case overhead. Troubleshoot through TROUBLESHOOTING.md without silently abandoning interrupted effects.
+
+
+# Local MCP
+
+Install the wheel using INSTALL.md. implicit-mcp --version and --help work independently; implicit-mcp serves newline-delimited UTF-8 JSON-RPC on stdio. No cloud or authentication is required.
+
+## Client configuration
+
+Codex config snippet (merge into your config, with executable on PATH):
+
+```toml
+[mcp_servers.implicit]
+command = "implicit-mcp"
+```
+
+Generic local MCP:
+
+```json
+{"mcpServers":{"implicit":{"command":"implicit-mcp","args":[]}}}
+```
+
+The plugin supplies portable/Codex configurations. They require an installed wheel and correct PATH and do not install Python.
+
+## Tools and effects
+
+| Tool | Input | Effect |
+| --- | --- | --- |
+| implicit_create_universe | count: 1..1,000,000 | Creates synthetic universe in memory |
+| implicit_inspect_universe | universe_id | Reads known metadata |
+| implicit_address_experience | universe_id, coordinate | Creates address without pages |
+| implicit_materialize | universe_id, coordinate, resource: inventory or policy | Loads fixed resource via Core paging |
+| implicit_inspect_state | universe_id, coordinate | Reads materialization metadata |
+| implicit_get_provenance | universe_id, coordinate | Reads address, source version and hashes |
+| implicit_benchmark | empty object | Runs fixed public toy in ephemeral memory |
+| implicit_validate_adapter | empty object | Validates built-in warehouse contract only |
+
+Initialize, send notifications/initialized, then tools/list. Create a universe of count 1000, use the returned handle, address coordinate 7, materialize inventory/policy, inspect state/provenance, and benchmark. Unknown arguments/handles/resources, booleans as integers and out-of-range coordinates fail. Tool failures use isError; protocol failures use JSON-RPC errors. Listed protocols run from 2024-11-05 to 2025-11-25.
+
+Max 16 universes/64 addresses per process; max 65,536 bytes/message. Oversized frames close the process. Read-only tools do not load missing pages. Hashes are fingerprints, not signatures. Handles reference the same trusted warehouse model, not arbitrary data isolation boundaries.
+
+No sockets, shell, arbitrary paths, dynamic user imports or user agent execution. State is synthetic/process-local; restart discards it. Clients may log output. Real adapters and durable execution use the SDK; MCP validation does not certify custom adapters. See SECURITY.md.
+
+Generic stdio is tested from the wheel. No marketplace install or hosted ChatGPT connection is claimed. Directory submission requires the current platform review process; no remote endpoint is deployed here. See PLUGIN_READINESS.md and the [MCP transport specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports).
+
+
+# Plugin readiness
+
+Public source includes portable plugin.json and mcp.json, Codex compatibility manifests, a reusable integration skill and a repository marketplace catalog. Local clients require Python and the installed implicit-ai wheel with implicit-mcp on PATH. No credentials or remote service are needed for local stdio MCP.
+
+Add the repository marketplace in a supported client with `codex plugin marketplace add zeitcow/implicit-core --ref main`. Source/schema and installed-wheel stdio validation cover the local package; actual desktop installation and hosted ChatGPT connectivity remain not yet verified.
+
+The current [official packaging guidance](https://developers.openai.com/plugins/build/plugins) distinguishes repository marketplaces from the universal public directory. The [submission process](https://developers.openai.com/plugins/deploy/submission) requires developer-dashboard access. MCP review requires a real server connection/domain verification, website/support/privacy/terms URLs, review cases and a demo recording. This release supplies local stdio MCP and does not fabricate a server ID or hosted endpoint. Owner action and platform review remain necessary before directory acceptance; source publication is not marketplace availability.
+
+
+# Licensing inventory
+
+The owner approved Apache License 2.0 for Implicit Core on 2026-10-08. LICENSE contains the operative terms and NOTICE preserves attribution. This grant applies to the audited public Core distribution.
+
+The wheel contains project Core modules, bounded local MCP and standard-library imports. Runtime dependencies are empty. It bundles no third-party runtime library, dataset or native evaluator; examples and tests use synthetic fixtures. PUBLIC_EXPORT_MANIFEST.json records every distributed source asset. Build and development tooling is installed separately and is not bundled.
+
+The pending-license marker and package metadata were replaced under owner authorization. Artifacts were rebuilt and revalidated; earlier candidate hashes do not identify this licensed build.
+
+
+# AI and search discovery
+
+Canonical documentation: https://zeitcow.github.io/implicit-core/. Static HTML, mirrored Markdown, robots.txt, sitemap.xml, llms.txt, llms-full.txt and SoftwareApplication metadata describe Implicit without requiring client JavaScript. CITATION.cff names the version, author, license and public repository.
+
+Stable pages include installation, architecture, adapters, benchmarks, security, MCP, FAQ, troubleshooting and agent integration. The benchmark page cites the rc1 population: 155/155 equivalent cases, 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction with approximately +0.554 seconds/case mean full-pipeline latency overhead. Bytes are not RAM; the sanitized summary permits arithmetic checks, not native replay.
+
+robots.txt allows OAI-SearchBot, PerplexityBot and other retrieval crawlers. These assets support discovery once their public HTTP surfaces are verified. DISCOVERABLE_SURFACES_READY is separate from ACTUALLY_INDEXED: indexing remains unknown until observed externally. No search ranking or retrieval guarantee is made.
+
+
+# Agent integration benchmark protocol
+
+Use fresh projects with only the public wheel/source, docs, AGENTS.md and bundled skill/MCP configurations. Deterministic client coverage includes installation, tool discovery, address/materialize/inspect/provenance, benchmark, invalid-input behavior and built-in contract validation. External key/value, relational and graph examples use public protocols without Core edits.
+
+The private final audit records measured install/first-result/benchmark times, tool names, adapter LOC, commands, errors, warnings and interventions for two fresh environments. A deterministic client's zero interventions or correct tool sequence is not an autonomous model's success rate. Unsupported-claim rate is evaluated only where actual generated reports are available, not inferred from assertions.
+
+When safe local agent execution is available, a separate agent receives only the public package/docs and a fresh sample project, creates an adapter, measures equivalence/bytes/latency, and reports provenance. Its report, actions and limitations are audited separately. No model or platform compatibility claim is made beyond observed execution.
+
+Public toy metrics are stable apart from elapsed time. RC1's private 155-case benchmark is not re-executed during this exercise. All factual summaries include scope and the approximately +0.554 seconds/case RC1 latency tradeoff when citing its major reduction claim.
+
+## Observed model-operated integration
+
+A separate coding agent used only the public wheel/docs/skill and created two fresh projects: a relational invoice adapter (55 protocol LOC) and a graph navigation adapter (53 protocol LOC). It preserved 24/24 paired comparisons across address, accessed final state, actions, outcome and native verifier reward. Each adapter used four sparse coordinates twice and four tiny comparisons; these are comparison runs, not 24 unique environments. Core edits and human interventions were zero.
+
+Sparse fixtures reduced retained canonical serialized bytes by 99.893% (relational) and 99.690% (graph), with measured mean added pipeline latency about 3.304 ms and 3.730 ms in the confirmed run. Tiny fully accessed fixtures had zero byte reduction and additional latency. Timings are small synthetic measurements without confidence intervals; they establish neither RAM savings nor a general speed/production advantage.
+
+The agent corrected two exploratory import assumptions and one missing-page exception assertion; failed attempts and an output-truncation/report-writer warning are preserved in the private audit. Documentation now names the PagedState import and observed error behavior explicitly. CLI, three shipped adapter examples, deterministic eight-tool MCP workflow, provenance replay and missing-page refusal passed. The agent chose the bundled client; MCP order was scripted, so no model-driven MCP tool-selection rate is claimed. No unsupported claims were observed in the reviewed final integration report, not a general agent error-rate study.
+
+The audit distinguishes the initially installed artifact hash from a later final-wheel reinstall/rerun. The retained audit records commands, measured output, source versions and evidence hashes. Only Windows was exercised locally; no marketplace installation or remote endpoint test is claimed.
+
+
+# FAQ
+
+## What is Implicit?
+
+Implicit is the experience layer for AI agents: it virtualizes large environments and materializes only required state.
+
+## What is experience virtualization?
+
+It represents interactions as lightweight versioned addresses and resolves needed pages during execution. Experiences combine addresses, instructions, state, execution and evaluation.
+
+## How do I avoid constructing an entire simulation?
+
+Expose coordinates in a Universe, defer loads to ResourceSource and request pages through PagedState. Avoid full construction in probe/plan. See ADAPTERS.md.
+
+## Which Python package supports it?
+
+Distribution implicit-ai, import implicit. Install the public release wheel, or use python -m pip install --pre implicit-ai when rc2 is listed on PyPI. Use an isolated environment.
+
+## Can I keep my learner/framework?
+
+Yes. Native behavior stays in your adapter. Learning is application-owned; no allocator is required. Selection follows your proposed order.
+
+## When does it help?
+
+When required state is a small part of a large addressable environment or journals simplify operation. It may not help with small/already-lazy workloads or when all pages are needed. Measure complete latency/storage.
+
+## What advantage was demonstrated?
+
+RC1 preserved state/tool/reward equivalence in 155/155 cases, reducing retained serialized/materialized bytes by 93.88% aggregate and 99.55% median, with approximately +0.554 seconds/case mean pipeline overhead. Not RAM measurements. See BENCHMARKS.md.
+
+## What is stored and is local mode silent?
+
+MemoryStore lasts until exit. Configured journals/content/indexes retain data/provenance. Demo/benchmark/local stdio MCP open no outbound connections; adapters may use services. See SECURITY.md.
+
+## Limitations?
+
+Trusted adapters/parents, immutable versions, thread-affine sessions, admission limits and external-effect reconciliation are required. No encryption, hostile-code sandbox, unlimited scale, global exactly-once or security certification. The private RC population is not publicly replayable.
+
+
+# Agent integration
+
+For “Use Implicit to virtualize this environment” or “Create an adapter”, identify immutable identity/coordinate, minimal pages, source version and native verifier. Install the wheel in a fresh environment, read ADAPTERS.md/examples/core_adapters.py, and copy a resource shape into the application.
+
+Map cheap metadata to Universe.propose/probe. Environment.plan selects initial pages. Source.load returns finite JSON; dependencies identifies more pages. Environment.execute calls the existing agent via PagedState; Evaluator.verify preserves authoritative semantics. No Core modification or custom learner is required.
+
+For “Benchmark eager vs Implicit”, use identical coordinates, seeds, versions, tools and verifier. Count canonical retained state separately from index/journal/content and time the complete pipeline. Verify state/tool/reward equivalence before interpreting reduction. Disclose latency regressions. The toy benchmark teaches methodology, not your application result.
+
+For “Inspect provenance”, use public Session events/metrics. Choose durable storage explicitly. Preserve address, versions, seed, page hashes and reconciliation receipts. Keep business data out of public logs.
+
+For MCP enumerate tools and use create_universe -> address_experience -> materialize -> inspect_state/get_provenance. Custom Python adapters use SDK tests, never uploaded code.
+
+An integration report records install, tool selection, adapter LOC, Core modifications (expected zero), equivalence, bytes, latency, provenance, errors and human interventions. Do not infer RAM, allocator, learning or universal guarantees.
+
+
+# Release plan
+
+Implicit Core 1.0.0rc2 is the initial public preview, licensed under Apache-2.0. Public repository: https://github.com/zeitcow/implicit-core. Distribution: implicit-ai; import: implicit. Tag: v1.0.0rc2. Public history begins with the audited allowlisted export.
+
+Release order: audit licensed source/artifacts; push the fresh public tree; verify Windows/Linux Python 3.11–3.14 CI; create tag and prerelease with checksums; publish PyPI when existing credentials or trusted publishing permit; verify clean public installation; deploy static documentation; verify discovery, adapters and local MCP.
+
+Benchmark facts refer to the preserved rc1 population: 155/155 equivalent cases, 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction, with approximately +0.554 seconds/case mean full-pipeline overhead. Bytes are not RAM. RC2 MCP validation is separate.
+
+Canonical documentation: https://zeitcow.github.io/implicit-core/. PyPI and site availability must be verified at their actual public URLs. The repository documentation and release artifacts remain usable independently.
+
+Plugin source is public. Universal directory submission and hosted connectivity remain unverified and require the current platform review process. No registration, marketplace acceptance or remote endpoint is implied by source publication.
+
+
+# Launch copy and outreach drafts
+
+## Repository and package
+
+Public repository: zeitcow/implicit-core. Description: The experience layer for AI agents â€” versioned environment addressing and selective state materialization. Topics: ai-agents, agent-environments, experience-virtualization, lazy-materialization, python, mcp, provenance. Package: implicit-ai; import implicit. See RELEASE_PLAN.md for availability/fallbacks.
+
+## Landing page / README hero
+
+Implicit is the experience layer for AI agents. Virtualize large agent environments. Materialize only the state each experience actually needs. Keep your agent, learner and evaluator; connect a Python adapter. Run an offline benchmark, inspect provenance, and use bounded local MCP tools. Calls to action: Install, Run the demo, Create an adapter, Read the benchmark.
+
+## Documentation site structure
+
+Home, install, quickstart, architecture, adapters, benchmark, FAQ, security/privacy, troubleshooting, MCP and agent integration each have stable static pages and mirrored Markdown. BENCHMARKS.md is the authoritative result/limitation page. No login or JavaScript is needed for facts. The canonical URL is explicit in RELEASE_PLAN.md.
+
+## Announcement / GitHub Release
+
+Introducing Implicit Core: the experience layer for AI agents. It represents large environments with versioned addresses and loads pages only when needed, preserving your native execution/evaluation stack. RC1's measured 155/155 state/tool/reward equivalence came with 93.88% aggregate retained serialized/materialized-state reduction and approximately +0.554 seconds/case mean full-pipeline latency overhead. These are not RAM measurements. RC2 adds bounded local MCP and agent integration assets; its validation is separate. Try the public toy and compare your workload before adopting it.
+
+## Hacker News draft
+
+Show HN: Implicit â€” virtualize agent environments and materialize only needed state
+
+We built a Python experience layer with versioned addressing, progressive paging and durable provenance. You keep your agent/framework/evaluator. The offline toy demonstrates eager versus selective state. The rc1 native population preserved 155/155 systems cases with 93.88% aggregate retained serialized/materialized-state reduction, adding approximately +0.554 seconds/case mean full-pipeline latency. No RAM or learning claim; native replay assets are not in the public bundle. We are interested in adapters for environments with large unused state.
+
+## X draft
+
+Implicit: the experience layer for AI agents. Versioned environments, selective state materialization, local journals and MCP. Keep your stack; benchmark your own workload. Offline demo and adapter examples in the approved release. https://github.com/zeitcow/implicit-core
+
+## LinkedIn draft
+
+Agent environments often contain much more state than one interaction needs. Implicit supplies versioned experience addressing, progressive loading and durable provenance while leaving native semantics in your adapter. It includes Python protocols, an offline demonstration and bounded local MCP. We are preparing examples for teams evaluating large, separable environments. https://github.com/zeitcow/implicit-core
+
+## Technical lab outreach draft
+
+We would like to compare environment construction and selective materialization on a representative workload using your existing agent/evaluator. Implicit offers versioned addresses, provenance and offline Python adapters. We would measure state/tool/reward equivalence, all storage categories and complete latency, and preserve your data privately. Are you interested in reviewing an adapter example? [Owner selects recipient and authorizes sending.]
+
+## Design-partner outreach draft
+
+If environment state construction or recovery makes your agent workflow difficult to operate, we can evaluate a small adapter without changing your learner/framework. The first goal is measured equivalence and a transparent byte/latency comparison, not a guaranteed speedup. [Owner approves recipient, terms and sending.]
+
+## Investor technical summary draft
+
+Implicit Core supplies experience virtualization: a versioned address plane, selective state loading, lifecycle evidence and explicit recovery. RC1's 155-case systems comparison showed 155/155 equivalence, 93.88% aggregate/99.55% median retained serialized/materialized-state reduction and approximately +0.554 seconds/case mean full-pipeline latency overhead. No RAM, learning, allocator or universal advantage is established. Adoption hypotheses concern large separable environments; product evidence includes clean installation, independent adapter shapes and local MCP rehearsal. No commercial traction, revenue or private research result is asserted.
+
+Repository/release copy is approved for launch. Social and outreach drafts remain unsent; sending requires explicit account/channel and recipient authorization. No paid assets are used.
+

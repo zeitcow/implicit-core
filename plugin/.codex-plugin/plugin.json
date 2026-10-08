@@ -1,0 +1,14 @@
+{
+  "name": "implicit-core",
+  "version": "1.0.0-rc.2",
+  "description": "Experience virtualization and local MCP",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/zeitcow/implicit-core",
+  "homepage": "https://zeitcow.github.io/implicit-core/",
+  "author": {
+    "name": "Jean C. Martinez",
+    "url": "https://github.com/zeitcow"
+  }
+}

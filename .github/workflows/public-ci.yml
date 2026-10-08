@@ -1,0 +1,63 @@
+name: Public Core validation
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  core:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.12', '3.13', '3.14']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install .[dev]
+      - run: python -m pytest -q
+      - run: python -m ruff check src tests
+      - run: python -m ruff format --check src tests
+      - run: python -m mypy
+      - name: MCP input schemas
+        run: python -c "import jsonschema; from implicit.mcp import TOOLS; [jsonschema.Draft202012Validator.check_schema(t['inputSchema']) for t in TOOLS]; assert len(TOOLS) == 8"
+      - name: Rebuild public documentation
+        run: python tools/build_site.py --canonical https://zeitcow.github.io/implicit-core/
+      - run: python tools/audit_public.py
+      - run: python -m build
+      - run: python -m twine check dist/*
+      - name: Clean wheel smoke (no source imports)
+        shell: bash
+        run: |
+          python -m venv /tmp/implicit-clean
+          /tmp/implicit-clean/bin/python -m pip install --no-index dist/*.whl
+          /tmp/implicit-clean/bin/python -I examples/core_adapters.py
+          /tmp/implicit-clean/bin/python -I examples/mcp_client.py
+          /tmp/implicit-clean/bin/implicit --help
+          /tmp/implicit-clean/bin/implicit --version
+          /tmp/implicit-clean/bin/implicit demo
+          /tmp/implicit-clean/bin/implicit benchmark
+        if: runner.os == 'Linux'
+      - name: Windows wheel smoke
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          python -m venv "$env:RUNNER_TEMP/implicit-clean"
+          & "$env:RUNNER_TEMP/implicit-clean/Scripts/python.exe" -m pip install --no-index (Get-ChildItem dist/*.whl).FullName
+          if ($LASTEXITCODE -ne 0) { throw "Wheel smoke failed" }
+          & "$env:RUNNER_TEMP/implicit-clean/Scripts/python.exe" -I examples/core_adapters.py
+          if ($LASTEXITCODE -ne 0) { throw "Wheel smoke failed" }
+          & "$env:RUNNER_TEMP/implicit-clean/Scripts/python.exe" -I examples/mcp_client.py
+          if ($LASTEXITCODE -ne 0) { throw "Wheel smoke failed" }
+          & "$env:RUNNER_TEMP/implicit-clean/Scripts/implicit.exe" --help
+          if ($LASTEXITCODE -ne 0) { throw "Wheel smoke failed" }
+          & "$env:RUNNER_TEMP/implicit-clean/Scripts/implicit.exe" --version
+          if ($LASTEXITCODE -ne 0) { throw "Wheel smoke failed" }
+          & "$env:RUNNER_TEMP/implicit-clean/Scripts/implicit.exe" demo
+          if ($LASTEXITCODE -ne 0) { throw "Wheel smoke failed" }
+          & "$env:RUNNER_TEMP/implicit-clean/Scripts/implicit.exe" benchmark
+          if ($LASTEXITCODE -ne 0) { throw "Wheel smoke failed" }
+      - name: Runtime dependency advisory audit
+        run: python -m pip_audit --disable-pip --no-deps -r tools/runtime-requirements.txt
+        # Empty requirements: Core has zero third-party runtime packages. Interpreter/OS excluded.

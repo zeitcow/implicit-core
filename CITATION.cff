@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "Cite the version and benchmark population, and disclose latency."
+title: "Implicit: the experience layer for AI agents"
+type: software
+version: 1.0.0rc2
+date-released: 2026-10-08
+url: "https://github.com/zeitcow/implicit-core"
+repository-code: "https://github.com/zeitcow/implicit-core"
+license: Apache-2.0
+abstract: "Experience virtualization and selective materialization. Benchmark facts are scoped to rc1."
+authors:
+  - family-names: Martinez
+    given-names: Jean C.

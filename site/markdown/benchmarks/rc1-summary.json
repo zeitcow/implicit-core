@@ -1,0 +1,1105 @@
+{
+  "version": "1.0.0rc1",
+  "population": "155 comparable native ENV systems cases; private assets required for native replay",
+  "headline": {
+    "equivalent_cases": 155,
+    "completed_cases": 155,
+    "eager_retained_bytes": 274839550,
+    "implicit_retained_bytes": 16808820,
+    "aggregate_reduction": 0.9388413348806603,
+    "mean_reduction": 0.944006638046435,
+    "median_reduction": 0.9954809686809106,
+    "mean_latency_delta_seconds": 0.5538194612941645
+  },
+  "evidence_sha256": "bc4547301901c030b58e0978563325c6b752fe8d3a2f5cde24dcfeeb796b8477",
+  "rc1_sha": "34f18a8ac94cfaa0bb46dac133ec4011f4c6659e",
+  "cases": [
+    {
+      "case": 1,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 2759,
+      "latency_delta_seconds": 0.5506777000555303,
+      "equivalent": true
+    },
+    {
+      "case": 2,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 580,
+      "latency_delta_seconds": 0.3503733999968972,
+      "equivalent": true
+    },
+    {
+      "case": 3,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1320556,
+      "latency_delta_seconds": 1.3077283000166062,
+      "equivalent": true
+    },
+    {
+      "case": 4,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 0,
+      "latency_delta_seconds": 0.7566748000099324,
+      "equivalent": true
+    },
+    {
+      "case": 5,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 10196,
+      "latency_delta_seconds": 0.6743429000198375,
+      "equivalent": true
+    },
+    {
+      "case": 6,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 57098,
+      "latency_delta_seconds": 0.4405916999967303,
+      "equivalent": true
+    },
+    {
+      "case": 7,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 586,
+      "latency_delta_seconds": 0.4874085999908857,
+      "equivalent": true
+    },
+    {
+      "case": 8,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 10310,
+      "latency_delta_seconds": 0.6204429999925196,
+      "equivalent": true
+    },
+    {
+      "case": 9,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 9431,
+      "latency_delta_seconds": 0.1195424000325147,
+      "equivalent": true
+    },
+    {
+      "case": 10,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 9591,
+      "latency_delta_seconds": 0.3422714000043925,
+      "equivalent": true
+    },
+    {
+      "case": 11,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 0,
+      "latency_delta_seconds": 0.47899159995722584,
+      "equivalent": true
+    },
+    {
+      "case": 12,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 10551,
+      "latency_delta_seconds": 0.927745099994354,
+      "equivalent": true
+    },
+    {
+      "case": 13,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1320435,
+      "latency_delta_seconds": 0.6003040999930818,
+      "equivalent": true
+    },
+    {
+      "case": 14,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 0,
+      "latency_delta_seconds": 0.5152359999483451,
+      "equivalent": true
+    },
+    {
+      "case": 15,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1320568,
+      "latency_delta_seconds": 1.1269183999975212,
+      "equivalent": true
+    },
+    {
+      "case": 16,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 9695,
+      "latency_delta_seconds": 0.8511078000301495,
+      "equivalent": true
+    },
+    {
+      "case": 17,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1320486,
+      "latency_delta_seconds": 1.4301957999705337,
+      "equivalent": true
+    },
+    {
+      "case": 18,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1322969,
+      "latency_delta_seconds": 1.4506296000035945,
+      "equivalent": true
+    },
+    {
+      "case": 19,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 580,
+      "latency_delta_seconds": 0.8362893000303302,
+      "equivalent": true
+    },
+    {
+      "case": 20,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 632,
+      "latency_delta_seconds": 0.572843500005547,
+      "equivalent": true
+    },
+    {
+      "case": 21,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 0,
+      "latency_delta_seconds": 0.3920564000145532,
+      "equivalent": true
+    },
+    {
+      "case": 22,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1564,
+      "latency_delta_seconds": 0.3297786000184715,
+      "equivalent": true
+    },
+    {
+      "case": 23,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1198,
+      "latency_delta_seconds": 0.6791858999640681,
+      "equivalent": true
+    },
+    {
+      "case": 24,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 3875,
+      "latency_delta_seconds": 0.7686914000078104,
+      "equivalent": true
+    },
+    {
+      "case": 25,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1032,
+      "latency_delta_seconds": 0.6910254000104032,
+      "equivalent": true
+    },
+    {
+      "case": 26,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 10703,
+      "latency_delta_seconds": 0.8659578999795485,
+      "equivalent": true
+    },
+    {
+      "case": 27,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1319094,
+      "latency_delta_seconds": 1.3560010999790393,
+      "equivalent": true
+    },
+    {
+      "case": 28,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 0,
+      "latency_delta_seconds": 0.7146080000093207,
+      "equivalent": true
+    },
+    {
+      "case": 29,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 10213,
+      "latency_delta_seconds": 0.8394289999559987,
+      "equivalent": true
+    },
+    {
+      "case": 30,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1320479,
+      "latency_delta_seconds": 1.6312603999685962,
+      "equivalent": true
+    },
+    {
+      "case": 31,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 14912,
+      "latency_delta_seconds": 0.6457763999933377,
+      "equivalent": true
+    },
+    {
+      "case": 32,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 10196,
+      "latency_delta_seconds": 0.4829716999665834,
+      "equivalent": true
+    },
+    {
+      "case": 33,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 10310,
+      "latency_delta_seconds": 0.4660287000006065,
+      "equivalent": true
+    },
+    {
+      "case": 34,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 9665,
+      "latency_delta_seconds": 0.4271724999707658,
+      "equivalent": true
+    },
+    {
+      "case": 35,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 10692,
+      "latency_delta_seconds": 0.395395900006406,
+      "equivalent": true
+    },
+    {
+      "case": 36,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 14912,
+      "latency_delta_seconds": 0.839431100001093,
+      "equivalent": true
+    },
+    {
+      "case": 37,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 950,
+      "latency_delta_seconds": 0.6035215999872889,
+      "equivalent": true
+    },
+    {
+      "case": 38,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 0,
+      "latency_delta_seconds": 0.5186776000482496,
+      "equivalent": true
+    },
+    {
+      "case": 39,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1320450,
+      "latency_delta_seconds": 1.1324647000001278,
+      "equivalent": true
+    },
+    {
+      "case": 40,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 0,
+      "latency_delta_seconds": 0.544817099958891,
+      "equivalent": true
+    },
+    {
+      "case": 41,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 890,
+      "latency_delta_seconds": 0.9192552000458818,
+      "equivalent": true
+    },
+    {
+      "case": 42,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 1929,
+      "latency_delta_seconds": 0.5971563000057358,
+      "equivalent": true
+    },
+    {
+      "case": 43,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 5856,
+      "latency_delta_seconds": 0.550989599985769,
+      "equivalent": true
+    },
+    {
+      "case": 44,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 632,
+      "latency_delta_seconds": 0.9760330000135582,
+      "equivalent": true
+    },
+    {
+      "case": 45,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 5856,
+      "latency_delta_seconds": 0.7439326999883633,
+      "equivalent": true
+    },
+    {
+      "case": 46,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 5389,
+      "latency_delta_seconds": 1.3851383000146598,
+      "equivalent": true
+    },
+    {
+      "case": 47,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 3987,
+      "latency_delta_seconds": 0.7574468999810051,
+      "equivalent": true
+    },
+    {
+      "case": 48,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 0,
+      "latency_delta_seconds": 0.6724082000728231,
+      "equivalent": true
+    },
+    {
+      "case": 49,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 487,
+      "latency_delta_seconds": 0.4081398000125773,
+      "equivalent": true
+    },
+    {
+      "case": 50,
+      "eager_retained_bytes": 3036662,
+      "implicit_retained_bytes": 632,
+      "latency_delta_seconds": 0.8271089999761898,
+      "equivalent": true
+    },
+    {
+      "case": 51,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 124597,
+      "latency_delta_seconds": 0.7157111000269651,
+      "equivalent": true
+    },
+    {
+      "case": 52,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 127184,
+      "latency_delta_seconds": 0.90542799999821,
+      "equivalent": true
+    },
+    {
+      "case": 53,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 78490,
+      "latency_delta_seconds": 0.49577840001438744,
+      "equivalent": true
+    },
+    {
+      "case": 54,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 6884,
+      "latency_delta_seconds": 0.5015020999708213,
+      "equivalent": true
+    },
+    {
+      "case": 55,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 210535,
+      "latency_delta_seconds": 1.065654399979394,
+      "equivalent": true
+    },
+    {
+      "case": 56,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 210287,
+      "latency_delta_seconds": 0.7837005000037607,
+      "equivalent": true
+    },
+    {
+      "case": 57,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 16543,
+      "latency_delta_seconds": 0.36784439999610186,
+      "equivalent": true
+    },
+    {
+      "case": 58,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 17771,
+      "latency_delta_seconds": 0.6373373000242282,
+      "equivalent": true
+    },
+    {
+      "case": 59,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 9235,
+      "latency_delta_seconds": 0.3237828999699559,
+      "equivalent": true
+    },
+    {
+      "case": 60,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 7988,
+      "latency_delta_seconds": 0.14001030000508763,
+      "equivalent": true
+    },
+    {
+      "case": 61,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 214690,
+      "latency_delta_seconds": 0.7158768000081182,
+      "equivalent": true
+    },
+    {
+      "case": 62,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 178116,
+      "latency_delta_seconds": 0.7870971999655012,
+      "equivalent": true
+    },
+    {
+      "case": 63,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 78830,
+      "latency_delta_seconds": 0.7548881999391597,
+      "equivalent": true
+    },
+    {
+      "case": 64,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 78830,
+      "latency_delta_seconds": 0.12254389998270199,
+      "equivalent": true
+    },
+    {
+      "case": 65,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 79931,
+      "latency_delta_seconds": 0.5112360999628436,
+      "equivalent": true
+    },
+    {
+      "case": 66,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 39432,
+      "latency_delta_seconds": 0.7010192000307143,
+      "equivalent": true
+    },
+    {
+      "case": 67,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 73979,
+      "latency_delta_seconds": 0.3840755000419449,
+      "equivalent": true
+    },
+    {
+      "case": 68,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 210040,
+      "latency_delta_seconds": 0.9717039999668486,
+      "equivalent": true
+    },
+    {
+      "case": 69,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3645,
+      "latency_delta_seconds": 0.5249610000173561,
+      "equivalent": true
+    },
+    {
+      "case": 70,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3565,
+      "latency_delta_seconds": 0.32666590000735596,
+      "equivalent": true
+    },
+    {
+      "case": 71,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 5294,
+      "latency_delta_seconds": 0.3016355000436306,
+      "equivalent": true
+    },
+    {
+      "case": 72,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 2314,
+      "latency_delta_seconds": 0.36058629999752156,
+      "equivalent": true
+    },
+    {
+      "case": 73,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3838,
+      "latency_delta_seconds": 0.17865620003431104,
+      "equivalent": true
+    },
+    {
+      "case": 74,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 2112,
+      "latency_delta_seconds": 0.6430219000030775,
+      "equivalent": true
+    },
+    {
+      "case": 75,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 1536,
+      "latency_delta_seconds": 0.37272220000158995,
+      "equivalent": true
+    },
+    {
+      "case": 76,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 4782,
+      "latency_delta_seconds": 0.6385187999985646,
+      "equivalent": true
+    },
+    {
+      "case": 77,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3462,
+      "latency_delta_seconds": 0.49099300004309043,
+      "equivalent": true
+    },
+    {
+      "case": 78,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 6004,
+      "latency_delta_seconds": 0.06986590000451542,
+      "equivalent": true
+    },
+    {
+      "case": 79,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 4685,
+      "latency_delta_seconds": 0.3156287000165321,
+      "equivalent": true
+    },
+    {
+      "case": 80,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 4898,
+      "latency_delta_seconds": 0.3694704999506939,
+      "equivalent": true
+    },
+    {
+      "case": 81,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 1569,
+      "latency_delta_seconds": 0.705332100042142,
+      "equivalent": true
+    },
+    {
+      "case": 82,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 6023,
+      "latency_delta_seconds": 0.4385465999657754,
+      "equivalent": true
+    },
+    {
+      "case": 83,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 31040,
+      "latency_delta_seconds": 0.6188436000084039,
+      "equivalent": true
+    },
+    {
+      "case": 84,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 31040,
+      "latency_delta_seconds": 0.4247749999631196,
+      "equivalent": true
+    },
+    {
+      "case": 85,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 31110,
+      "latency_delta_seconds": 0.3429871000116691,
+      "equivalent": true
+    },
+    {
+      "case": 86,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 31110,
+      "latency_delta_seconds": 0.45142709999345243,
+      "equivalent": true
+    },
+    {
+      "case": 87,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 31110,
+      "latency_delta_seconds": 0.6181978000386152,
+      "equivalent": true
+    },
+    {
+      "case": 88,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 127184,
+      "latency_delta_seconds": 0.153959900024347,
+      "equivalent": true
+    },
+    {
+      "case": 89,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 127184,
+      "latency_delta_seconds": 0.48255410001729615,
+      "equivalent": true
+    },
+    {
+      "case": 90,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 127184,
+      "latency_delta_seconds": 0.8476525000587571,
+      "equivalent": true
+    },
+    {
+      "case": 91,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 78490,
+      "latency_delta_seconds": 0.7820745000208262,
+      "equivalent": true
+    },
+    {
+      "case": 92,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 78490,
+      "latency_delta_seconds": 0.3574693000118714,
+      "equivalent": true
+    },
+    {
+      "case": 93,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 78490,
+      "latency_delta_seconds": 0.7982443000073545,
+      "equivalent": true
+    },
+    {
+      "case": 94,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 78490,
+      "latency_delta_seconds": 0.5941645000129938,
+      "equivalent": true
+    },
+    {
+      "case": 95,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 95819,
+      "latency_delta_seconds": 0.5098399999842513,
+      "equivalent": true
+    },
+    {
+      "case": 96,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 93198,
+      "latency_delta_seconds": 0.6442103999725077,
+      "equivalent": true
+    },
+    {
+      "case": 97,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 141731,
+      "latency_delta_seconds": 0.3634693000058178,
+      "equivalent": true
+    },
+    {
+      "case": 98,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 103616,
+      "latency_delta_seconds": 0.4201593000034336,
+      "equivalent": true
+    },
+    {
+      "case": 99,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 136122,
+      "latency_delta_seconds": 0.6523311999917496,
+      "equivalent": true
+    },
+    {
+      "case": 100,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 95455,
+      "latency_delta_seconds": 0.7120851000072435,
+      "equivalent": true
+    },
+    {
+      "case": 101,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 67734,
+      "latency_delta_seconds": 0.47044109998387285,
+      "equivalent": true
+    },
+    {
+      "case": 102,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 0,
+      "latency_delta_seconds": 0.5646645000379067,
+      "equivalent": true
+    },
+    {
+      "case": 103,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 181635,
+      "latency_delta_seconds": 0.7518104999908246,
+      "equivalent": true
+    },
+    {
+      "case": 104,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 181635,
+      "latency_delta_seconds": 0.3448239000281319,
+      "equivalent": true
+    },
+    {
+      "case": 105,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 183751,
+      "latency_delta_seconds": 0.767373100068653,
+      "equivalent": true
+    },
+    {
+      "case": 106,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 87663,
+      "latency_delta_seconds": 0.397046500002034,
+      "equivalent": true
+    },
+    {
+      "case": 107,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 85650,
+      "latency_delta_seconds": 0.3038834999897517,
+      "equivalent": true
+    },
+    {
+      "case": 108,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 73496,
+      "latency_delta_seconds": 0.12491899999440648,
+      "equivalent": true
+    },
+    {
+      "case": 109,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 214724,
+      "latency_delta_seconds": 1.038413500005845,
+      "equivalent": true
+    },
+    {
+      "case": 110,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 215851,
+      "latency_delta_seconds": 0.6638636999705341,
+      "equivalent": true
+    },
+    {
+      "case": 111,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 89544,
+      "latency_delta_seconds": 0.22610620001796633,
+      "equivalent": true
+    },
+    {
+      "case": 112,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 84302,
+      "latency_delta_seconds": 0.323800200043479,
+      "equivalent": true
+    },
+    {
+      "case": 113,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 4795,
+      "latency_delta_seconds": 0.6560134000319522,
+      "equivalent": true
+    },
+    {
+      "case": 114,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 15732,
+      "latency_delta_seconds": 0.39169489999767393,
+      "equivalent": true
+    },
+    {
+      "case": 115,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 15732,
+      "latency_delta_seconds": 0.0014205999905243516,
+      "equivalent": true
+    },
+    {
+      "case": 116,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 16865,
+      "latency_delta_seconds": 0.2742799999250565,
+      "equivalent": true
+    },
+    {
+      "case": 117,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 0,
+      "latency_delta_seconds": 0.3108047000132501,
+      "equivalent": true
+    },
+    {
+      "case": 118,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 8264,
+      "latency_delta_seconds": 0.1700700999936089,
+      "equivalent": true
+    },
+    {
+      "case": 119,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 214690,
+      "latency_delta_seconds": 0.41624229997978546,
+      "equivalent": true
+    },
+    {
+      "case": 120,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 0,
+      "latency_delta_seconds": 0.2237930000119377,
+      "equivalent": true
+    },
+    {
+      "case": 121,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 180033,
+      "latency_delta_seconds": 0.8579812000098173,
+      "equivalent": true
+    },
+    {
+      "case": 122,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 209242,
+      "latency_delta_seconds": 0.9887178000062704,
+      "equivalent": true
+    },
+    {
+      "case": 123,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 79931,
+      "latency_delta_seconds": 0.685774700017646,
+      "equivalent": true
+    },
+    {
+      "case": 124,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 128601,
+      "latency_delta_seconds": 0.45192029999452643,
+      "equivalent": true
+    },
+    {
+      "case": 125,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 210040,
+      "latency_delta_seconds": 0.8677231000328902,
+      "equivalent": true
+    },
+    {
+      "case": 126,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 10500,
+      "latency_delta_seconds": 0.3278573000570759,
+      "equivalent": true
+    },
+    {
+      "case": 127,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3565,
+      "latency_delta_seconds": 0.35008420000667684,
+      "equivalent": true
+    },
+    {
+      "case": 128,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 1674,
+      "latency_delta_seconds": 0.6680723000026774,
+      "equivalent": true
+    },
+    {
+      "case": 129,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3323,
+      "latency_delta_seconds": 0.35567010001977906,
+      "equivalent": true
+    },
+    {
+      "case": 130,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 1848,
+      "latency_delta_seconds": 0.01890700004878454,
+      "equivalent": true
+    },
+    {
+      "case": 131,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3504,
+      "latency_delta_seconds": 0.2652830999577418,
+      "equivalent": true
+    },
+    {
+      "case": 132,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 2966,
+      "latency_delta_seconds": 0.4512139000289608,
+      "equivalent": true
+    },
+    {
+      "case": 133,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 2139,
+      "latency_delta_seconds": 0.5880920000199694,
+      "equivalent": true
+    },
+    {
+      "case": 134,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 1581,
+      "latency_delta_seconds": 0.31643600002280436,
+      "equivalent": true
+    },
+    {
+      "case": 135,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 1581,
+      "latency_delta_seconds": 0.47529660002328455,
+      "equivalent": true
+    },
+    {
+      "case": 136,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 1581,
+      "latency_delta_seconds": 0.32650689998990856,
+      "equivalent": true
+    },
+    {
+      "case": 137,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 2112,
+      "latency_delta_seconds": 0.0030448999896179885,
+      "equivalent": true
+    },
+    {
+      "case": 138,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 2467,
+      "latency_delta_seconds": 0.4377787000266835,
+      "equivalent": true
+    },
+    {
+      "case": 139,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 1196,
+      "latency_delta_seconds": 0.37280850001843646,
+      "equivalent": true
+    },
+    {
+      "case": 140,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 1230,
+      "latency_delta_seconds": 0.5534955000330228,
+      "equivalent": true
+    },
+    {
+      "case": 141,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3503,
+      "latency_delta_seconds": 0.26435130002209917,
+      "equivalent": true
+    },
+    {
+      "case": 142,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 2557,
+      "latency_delta_seconds": 0.5487201999931131,
+      "equivalent": true
+    },
+    {
+      "case": 143,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 4625,
+      "latency_delta_seconds": 0.4233982000441756,
+      "equivalent": true
+    },
+    {
+      "case": 144,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 5923,
+      "latency_delta_seconds": 0.5206979000358842,
+      "equivalent": true
+    },
+    {
+      "case": 145,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3462,
+      "latency_delta_seconds": 0.20748180002556182,
+      "equivalent": true
+    },
+    {
+      "case": 146,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 8204,
+      "latency_delta_seconds": 0.3915681000216864,
+      "equivalent": true
+    },
+    {
+      "case": 147,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 7233,
+      "latency_delta_seconds": 0.12800689999130554,
+      "equivalent": true
+    },
+    {
+      "case": 148,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 5383,
+      "latency_delta_seconds": 0.25920389997190796,
+      "equivalent": true
+    },
+    {
+      "case": 149,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3839,
+      "latency_delta_seconds": 0.43426670000189915,
+      "equivalent": true
+    },
+    {
+      "case": 150,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3481,
+      "latency_delta_seconds": 0.2845777000184171,
+      "equivalent": true
+    },
+    {
+      "case": 151,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 7430,
+      "latency_delta_seconds": 0.5191854999575298,
+      "equivalent": true
+    },
+    {
+      "case": 152,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 3510,
+      "latency_delta_seconds": 0.3509052000299562,
+      "equivalent": true
+    },
+    {
+      "case": 153,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 4007,
+      "latency_delta_seconds": 0.02035149998846464,
+      "equivalent": true
+    },
+    {
+      "case": 154,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 6023,
+      "latency_delta_seconds": 0.4496855999750551,
+      "equivalent": true
+    },
+    {
+      "case": 155,
+      "eager_retained_bytes": 1171490,
+      "implicit_retained_bytes": 1585,
+      "latency_delta_seconds": 0.2570715000038035,
+      "equivalent": true
+    }
+  ],
+  "no_ram_measurement": true,
+  "public_replay": "toy only; numeric summary supports arithmetic checking, not native replay"
+}

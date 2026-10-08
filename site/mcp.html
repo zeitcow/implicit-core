@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local MCP | Implicit</title><meta name="description" content="Implicit experience virtualization: Local MCP"><link rel="canonical" href="https://zeitcow.github.io/implicit-core/mcp.html"><style>body{max-width:980px;margin:3rem auto;padding:0 1.5rem;font:18px/1.6 system-ui;color:#19282c;background:#f8fbfa}nav{display:flex;gap:1rem;flex-wrap:wrap}a{color:#00675d}pre{overflow:auto;background:#e9efed;padding:1rem;border-radius:8px}h1{font-size:2.8rem;line-height:1.2}h2{margin-top:2rem}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:.5rem;border-bottom:1px solid #b7cbc5}footer{margin-top:3rem;border-top:1px solid #b7cbc5}</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Implicit", "description": "The experience layer for AI agents: selective environment state materialization", "softwareVersion": "1.0.0rc2", "applicationCategory": "DeveloperApplication", "operatingSystem": "Python 3.11+", "url": "https://zeitcow.github.io/implicit-core/mcp.html"}</script></head><body><nav aria-label="Documentation"><a href="index.html">Readme</a> <a href="install.html">Install</a> <a href="benchmarks.html">Benchmarks</a> <a href="architecture.html">Architecture</a> <a href="mcp.html">Mcp</a> <a href="faq.html">Faq</a></nav><main><h1>Local MCP</h1>
+<p>Install the wheel using INSTALL.md. implicit-mcp --version and --help work independently; implicit-mcp serves newline-delimited UTF-8 JSON-RPC on stdio. No cloud or authentication is required.</p>
+<h2>Client configuration</h2>
+<p>Codex config snippet (merge into your config, with executable on PATH):</p>
+<pre><code class="language-toml">[mcp_servers.implicit]
+command = &quot;implicit-mcp&quot;
+</code></pre>
+<p>Generic local MCP:</p>
+<pre><code class="language-json">{&quot;mcpServers&quot;:{&quot;implicit&quot;:{&quot;command&quot;:&quot;implicit-mcp&quot;,&quot;args&quot;:[]}}}
+</code></pre>
+<p>The plugin supplies portable/Codex configurations. They require an installed wheel and correct PATH and do not install Python.</p>
+<h2>Tools and effects</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Input</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>implicit_create_universe</td>
+<td>count: 1..1,000,000</td>
+<td>Creates synthetic universe in memory</td>
+</tr>
+<tr>
+<td>implicit_inspect_universe</td>
+<td>universe_id</td>
+<td>Reads known metadata</td>
+</tr>
+<tr>
+<td>implicit_address_experience</td>
+<td>universe_id, coordinate</td>
+<td>Creates address without pages</td>
+</tr>
+<tr>
+<td>implicit_materialize</td>
+<td>universe_id, coordinate, resource: inventory or policy</td>
+<td>Loads fixed resource via Core paging</td>
+</tr>
+<tr>
+<td>implicit_inspect_state</td>
+<td>universe_id, coordinate</td>
+<td>Reads materialization metadata</td>
+</tr>
+<tr>
+<td>implicit_get_provenance</td>
+<td>universe_id, coordinate</td>
+<td>Reads address, source version and hashes</td>
+</tr>
+<tr>
+<td>implicit_benchmark</td>
+<td>empty object</td>
+<td>Runs fixed public toy in ephemeral memory</td>
+</tr>
+<tr>
+<td>implicit_validate_adapter</td>
+<td>empty object</td>
+<td>Validates built-in warehouse contract only</td>
+</tr>
+</tbody>
+</table>
+<p>Initialize, send notifications/initialized, then tools/list. Create a universe of count 1000, use the returned handle, address coordinate 7, materialize inventory/policy, inspect state/provenance, and benchmark. Unknown arguments/handles/resources, booleans as integers and out-of-range coordinates fail. Tool failures use isError; protocol failures use JSON-RPC errors. Listed protocols run from 2024-11-05 to 2025-11-25.</p>
+<p>Max 16 universes/64 addresses per process; max 65,536 bytes/message. Oversized frames close the process. Read-only tools do not load missing pages. Hashes are fingerprints, not signatures. Handles reference the same trusted warehouse model, not arbitrary data isolation boundaries.</p>
+<p>No sockets, shell, arbitrary paths, dynamic user imports or user agent execution. State is synthetic/process-local; restart discards it. Clients may log output. Real adapters and durable execution use the SDK; MCP validation does not certify custom adapters. See SECURITY.md.</p>
+<p>Generic stdio is tested from the wheel. No marketplace install or hosted ChatGPT connection is claimed. Directory submission requires the current platform review process; no remote endpoint is deployed here. See PLUGIN_READINESS.md and the <a href="https://modelcontextprotocol.io/specification/2025-11-25/basic/transports">MCP transport specification</a>.</p>
+</main><footer>Implicit Core 1.0.0rc2 — initial public preview. <a href="markdown/MCP.md">Source Markdown</a>. Apache-2.0.</footer></body></html>
