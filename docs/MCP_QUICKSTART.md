@@ -59,10 +59,10 @@ Use MCP: List Servers to start it and inspect tools. See [official configuration
 Merge into the client's MCP configuration; Cursor uses `.cursor/mcp.json`:
 
 ```json
-{"mcpServers":{"implicit":{"command":"/absolute/path/to/implicit-mcp","args":[]}}}
+{"mcpServers":{"implicit":{"type":"stdio","command":"/absolute/path/to/implicit-mcp","args":[]}}}
 ```
 
-See [official Cursor MCP documentation](https://docs.cursor.com/context/model-context-protocol). This is documented configuration, not an asserted end-to-end UI test of every client.
+See [official Cursor MCP documentation](https://cursor.com/docs/mcp). This is documented configuration, not an asserted end-to-end UI test of every client.
 
 ## First tool workflow
 

@@ -128,8 +128,8 @@
     },
     {
       "path": "docs/ECOSYSTEMS.md",
-      "sha256": "666e1aaf91c88ce02de6f1878c53eedf0e605401af855d00011d4f7f1e98e1e1",
-      "bytes": 3250
+      "sha256": "6ab53e22533228dc24b2f34ae2de7919191a1ce0ff95d57013cb9af0e10f0cde",
+      "bytes": 3223
     },
     {
       "path": "docs/FAQ.md",
@@ -143,8 +143,8 @@
     },
     {
       "path": "docs/MCP_QUICKSTART.md",
-      "sha256": "814330e23b0678ee4f71c33eb596a2355608fc269a73863ed296a32b4ab95808",
-      "bytes": 3808
+      "sha256": "ab5bed144e9adaa7b233565f93222d986c5bbd6181313fb186ef7304d729d974",
+      "bytes": 3796
     },
     {
       "path": "docs/REGISTRY_SUBMISSIONS.md",
@@ -183,8 +183,8 @@
     },
     {
       "path": "llms-full.txt",
-      "sha256": "17398080ffdc87dc7eb91963f108e86d5023be34f9b03eca29b21f0e05877ab6",
-      "bytes": 68084
+      "sha256": "3cc79f048b6cb11933be26dbd4f3e79e792d18a67b0804335efc706d3fad74b3",
+      "bytes": 68045
     },
     {
       "path": "llms.txt",
@@ -348,8 +348,8 @@
     },
     {
       "path": "site/ecosystems.html",
-      "sha256": "d70efa9dbf41d8e534aa033b5f673ef2ca116c3dc385cf2ac844e7d1c85afaab",
-      "bytes": 6213
+      "sha256": "4f229b42087f9d7d258287327cd10f3358c0bfe10fc459b619c321455350b0c0",
+      "bytes": 6186
     },
     {
       "path": "site/faq.html",
@@ -378,8 +378,8 @@
     },
     {
       "path": "site/llms-full.txt",
-      "sha256": "17398080ffdc87dc7eb91963f108e86d5023be34f9b03eca29b21f0e05877ab6",
-      "bytes": 68084
+      "sha256": "3cc79f048b6cb11933be26dbd4f3e79e792d18a67b0804335efc706d3fad74b3",
+      "bytes": 68045
     },
     {
       "path": "site/llms.txt",
@@ -468,8 +468,8 @@
     },
     {
       "path": "site/markdown/docs/ECOSYSTEMS.md",
-      "sha256": "666e1aaf91c88ce02de6f1878c53eedf0e605401af855d00011d4f7f1e98e1e1",
-      "bytes": 3250
+      "sha256": "6ab53e22533228dc24b2f34ae2de7919191a1ce0ff95d57013cb9af0e10f0cde",
+      "bytes": 3223
     },
     {
       "path": "site/markdown/docs/FAQ.md",
@@ -483,8 +483,8 @@
     },
     {
       "path": "site/markdown/docs/MCP_QUICKSTART.md",
-      "sha256": "814330e23b0678ee4f71c33eb596a2355608fc269a73863ed296a32b4ab95808",
-      "bytes": 3808
+      "sha256": "ab5bed144e9adaa7b233565f93222d986c5bbd6181313fb186ef7304d729d974",
+      "bytes": 3796
     },
     {
       "path": "site/markdown/docs/REGISTRY_SUBMISSIONS.md",
@@ -573,8 +573,8 @@
     },
     {
       "path": "site/mcp_quickstart.html",
-      "sha256": "169443d2850a40d4e2bedbab96394aba9d939454a1e92220e76950856d37c1de",
-      "bytes": 7321
+      "sha256": "f761dd2d080a75985424766e250da321ecc530cb2f497982f57ee600ee62545e",
+      "bytes": 7329
     },
     {
       "path": "site/plugin_readiness.html",

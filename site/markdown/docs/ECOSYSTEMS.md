@@ -23,4 +23,4 @@ Reviewed 2026-10-08. Install Core with `pip install implicit-ai`. “LIVE” ref
 
 [ChatGPT custom MCP guidance](https://developers.openai.com/api/docs/guides/custom-mcp-server) describes remote/tunnel connection; a local stdio executable alone is insufficient. A hosted service would require a separate scope, hosting/security design and owner decisions. Do not expose it merely to market this release.
 
-[Claude Code](https://code.claude.com/docs/en/mcp), [VS Code](https://code.visualstudio.com/docs/agents/reference/mcp-configuration) and [Cursor](https://docs.cursor.com/context/model-context-protocol) are the configuration references. [MCP quickstart](MCP_QUICKSTART.md) contains exact snippets. Client approval and configuration remain local to the developer.
+[Claude Code](https://code.claude.com/docs/en/mcp), [VS Code](https://code.visualstudio.com/docs/agents/reference/mcp-configuration) and [Cursor](https://cursor.com/docs/mcp) are the configuration references. [MCP quickstart](MCP_QUICKSTART.md) contains exact snippets. Client approval and configuration remain local to the developer.

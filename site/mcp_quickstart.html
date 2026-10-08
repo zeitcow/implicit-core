@@ -32,9 +32,9 @@ claude mcp list
 <p>Use MCP: List Servers to start it and inspect tools. See <a href="https://code.visualstudio.com/docs/agents/reference/mcp-configuration">official configuration reference</a>. Client trust/approval remains the developer's choice.</p>
 <h2 id="cursor-or-compatible-local-clients">Cursor or compatible local clients</h2>
 <p>Merge into the client's MCP configuration; Cursor uses <code>.cursor/mcp.json</code>:</p>
-<pre><code class="language-json">{&quot;mcpServers&quot;:{&quot;implicit&quot;:{&quot;command&quot;:&quot;/absolute/path/to/implicit-mcp&quot;,&quot;args&quot;:[]}}}
+<pre><code class="language-json">{&quot;mcpServers&quot;:{&quot;implicit&quot;:{&quot;type&quot;:&quot;stdio&quot;,&quot;command&quot;:&quot;/absolute/path/to/implicit-mcp&quot;,&quot;args&quot;:[]}}}
 </code></pre>
-<p>See <a href="https://docs.cursor.com/context/model-context-protocol">official Cursor MCP documentation</a>. This is documented configuration, not an asserted end-to-end UI test of every client.</p>
+<p>See <a href="https://cursor.com/docs/mcp">official Cursor MCP documentation</a>. This is documented configuration, not an asserted end-to-end UI test of every client.</p>
 <h2 id="first-tool-workflow">First tool workflow</h2>
 <p>Ask the agent: “List Implicit's tools. Create a synthetic universe with count 1000. Address coordinate 7 without loading pages. Materialize inventory and policy, inspect the state, and retrieve provenance. Report resource counts and hashes. Run the fixed benchmark and built-in adapter validation; identify their scope.”</p>
 <p>Expected tools:</p>
