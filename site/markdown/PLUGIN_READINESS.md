@@ -1,6 +1,6 @@
 # Plugin readiness
 
-Public source includes portable plugin.json and mcp.json, Codex compatibility manifests, a reusable integration skill and a repository marketplace catalog. Local clients require Python and the installed implicit-ai wheel with implicit-mcp on PATH. No credentials or remote service are needed for local stdio MCP.
+Public source includes portable plugin.json and mcp.json, Codex compatibility manifests, a reusable integration skill and a repository marketplace catalog. Install with `pip install implicit-ai`. Local clients require Python and the installed implicit-ai package with implicit-mcp on PATH. No credentials or remote service are needed for local stdio MCP.
 
 Add the repository marketplace in a supported client with `codex plugin marketplace add zeitcow/implicit-core --ref main`. Source/schema and installed-wheel stdio validation cover the local package; actual desktop installation and hosted ChatGPT connectivity remain not yet verified.
 

@@ -1,6 +1,6 @@
 # Quickstart
 
-Install the local wheel using INSTALL.md, then run:
+Install with `pip install implicit-ai` in a fresh environment (see INSTALL.md), then run:
 
 ```console
 implicit --version

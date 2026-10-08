@@ -14,7 +14,7 @@ Expose coordinates in a Universe, defer loads to ResourceSource and request page
 
 ## Which Python package supports it?
 
-Distribution implicit-ai, import implicit. Install the public release wheel, or use python -m pip install --pre implicit-ai when rc2 is listed on PyPI. Use an isolated environment.
+Distribution implicit-ai, import implicit. Install with `pip install implicit-ai`. Use an isolated environment.
 
 ## Can I keep my learner/framework?
 

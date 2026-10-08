@@ -1,6 +1,6 @@
 # Implicit
 
-> The experience layer for AI agents. Initial public release candidate.
+> The experience layer for AI agents. Stable 1.0.0 release. Install with pip install implicit-ai.
 
 - [README](https://zeitcow.github.io/implicit-core/markdown/README.md)
 - [QUICKSTART](https://zeitcow.github.io/implicit-core/markdown/QUICKSTART.md)

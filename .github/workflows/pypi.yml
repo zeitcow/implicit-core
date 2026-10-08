@@ -1,4 +1,4 @@
-name: Publish verified RC2 to PyPI
+name: Publish verified 1.0.0 to PyPI
 on:
   workflow_dispatch:
 permissions:
@@ -19,8 +19,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir dist
-          gh release download v1.0.0rc2 --repo zeitcow/implicit-core --pattern 'implicit_ai-1.0.0rc2*' --dir dist
-          gh release download v1.0.0rc2 --repo zeitcow/implicit-core --pattern checksums.txt
+          gh release download v1.0.0 --repo zeitcow/implicit-core --pattern 'implicit_ai-1.0.0*' --dir dist
+          gh release download v1.0.0 --repo zeitcow/implicit-core --pattern checksums.txt
       - name: Verify release checksums
         run: |
           python - <<'PY'
@@ -28,7 +28,7 @@ jobs:
           import hashlib
           expected = dict(line.split()[::-1] for line in Path('checksums.txt').read_text().splitlines())
           artifacts = sorted(Path('dist').iterdir())
-          assert {p.name for p in artifacts} == {'implicit_ai-1.0.0rc2-py3-none-any.whl', 'implicit_ai-1.0.0rc2.tar.gz'}
+          assert {p.name for p in artifacts} == {'implicit_ai-1.0.0-py3-none-any.whl', 'implicit_ai-1.0.0.tar.gz'}
           for p in artifacts:
               assert hashlib.sha256(p.read_bytes()).hexdigest() == expected[p.name], p.name
           PY

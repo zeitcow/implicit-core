@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "implicit-ai"
-version = "1.0.0rc2"
+version = "1.0.0"
 description = "The experience layer for AI agents: versioned environments and selective state materialization"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -12,7 +12,7 @@ dependencies = []
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 keywords = ["ai-agents", "experience-virtualization", "environment", "lazy-materialization", "provenance", "mcp"]
-classifiers = ["Development Status :: 4 - Beta", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12", "Programming Language :: Python :: 3.13", "Programming Language :: Python :: 3.14", "Operating System :: OS Independent", "Topic :: Software Development :: Libraries :: Python Modules"]
+classifiers = ["Development Status :: 5 - Production/Stable", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12", "Programming Language :: Python :: 3.13", "Programming Language :: Python :: 3.14", "Operating System :: OS Independent", "Topic :: Software Development :: Libraries :: Python Modules"]
 
 [project.urls]
 "Repository" = "https://github.com/zeitcow/implicit-core"

@@ -1,6 +1,6 @@
 # Adapter contract
 
-Public entry points are `implicit.Implicit`, `LocalTransport`, `Session`, `Address`, `Region`, `ExploreConfig` and `AgentUpdate`. Typed lifecycle records are in `implicit.models`; structural protocols are in `implicit.interfaces`. This candidate supports the documented protocols; it does not guarantee compatibility with historical research-only modules.
+Public entry points are `implicit.Implicit`, `LocalTransport`, `Session`, `Address`, `Region`, `ExploreConfig` and `AgentUpdate`. Typed lifecycle records are in `implicit.models`; structural protocols are in `implicit.interfaces`. This release supports the documented protocols; it does not guarantee compatibility with historical research-only modules.
 
 Universe exposes immutable `identity` and `version`, `propose(regions, seed, limit, excluded)` and `probe(address)`. Proposals are bounded and belong to that universe/version; probes must return the identical address. Schedule a specific experience by proposing that address first, optionally using `candidate_pool=1`. Metadata must not contain private evaluator answers.
 

@@ -1,4 +1,4 @@
-"""Offline stdio client rehearsal; run with an installed wheel, not PYTHONPATH."""
+"""Offline stdio client rehearsal; install with pip install implicit-ai; run without PYTHONPATH."""
 import json
 import subprocess
 import sys

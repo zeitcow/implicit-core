@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "implicit-core",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0",
   "description": "Experience virtualization, adapter guidance and bounded local MCP",
   "keywords": [
     "agents",

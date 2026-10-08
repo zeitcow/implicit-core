@@ -10,21 +10,21 @@ Implicit added approximately 0.554 seconds of mean full-pipeline latency per cas
 
 These measurements belong to rc1, not the toy demo or new MCP interface. Serialized bytes are not RAM. [Benchmarks](BENCHMARKS.md) explains the population, methodology and limitations.
 
-## Try the release candidate
+## Install Implicit Core 1.0.0
 
-Python 3.11+; zero third-party runtime dependencies. Build and install the public release candidate from source:
+Python 3.11+; zero third-party runtime dependencies. Use a fresh virtual environment:
 
 ```console
-python -m pip install hatchling
-python -m hatchling build
-python -m pip install --no-index dist/implicit_ai-1.0.0rc2-py3-none-any.whl
+pip install implicit-ai
 implicit --help
 implicit --version
 implicit demo
 implicit benchmark
 ```
 
-For the exact release artifacts, use [GitHub Releases](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0rc2). PyPI installation is `python -m pip install --pre implicit-ai` when the release is listed there; check package availability before relying on PyPI. Isolate it from the unrelated `implicit` distribution, which shares the import namespace.
+The distribution is `implicit-ai`; the import is `implicit`. Isolate it from the unrelated `implicit` distribution, which shares the import namespace. [GitHub Releases](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0) provides verified wheel and sdist assets for manual installation. [Installation](INSTALL.md) includes source-build instructions.
+
+Stable 1.0.0 promotes the validated RC2 runtime lineage. Historical [RC2](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0rc2) evidence remains unchanged.
 
 ## Why virtualize an experience?
 
@@ -57,7 +57,7 @@ Implicit Core is licensed under [Apache-2.0](LICENSE). [Licensing inventory](LIC
 
 # Quickstart
 
-Install the local wheel using INSTALL.md, then run:
+Install with `pip install implicit-ai` in a fresh environment (see INSTALL.md), then run:
 
 ```console
 implicit --version
@@ -87,24 +87,28 @@ Start local MCP with `implicit-mcp`; it waits for the client's stdio handshake. 
 
 # Installation
 
-Implicit Core 1.0.0rc2 is an initial public preview. Python 3.11+ is required; Core needs no runtime dependencies. Locally rehearsed Python/OS versions are recorded in the audit; a CI configuration does not establish completed platform validation.
-
-From the public source root:
+Implicit Core 1.0.0 is the stable initial release, licensed under Apache-2.0. Python 3.11+ is required; Core needs no runtime dependencies. Use a dedicated virtual environment:
 
 ```console
-python -m pip install hatchling
-python -m hatchling build
-python -m pip install --no-index dist/implicit_ai-1.0.0rc2-py3-none-any.whl
+pip install implicit-ai
 implicit --version
 implicit --help
 implicit-mcp --help
 ```
 
-Or install the supplied wheel with `python -m pip install --no-index PATH_TO_WHEEL`. Extract the sdist in a fresh directory and run `python -m hatchling build` to build from it. Rehearsals use noneditable installation.
+The distribution is `implicit-ai`; the import is `implicit`. Avoid the unrelated `implicit` distribution in the same environment because namespaces may collide.
 
-The PyPI command is `python -m pip install --pre implicit-ai` when 1.0.0rc2 is listed on PyPI. The [GitHub Release](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0rc2) supplies the canonical wheel and sdist independently of PyPI. The module is implicit; avoid the unrelated implicit distribution in the same environment because namespaces may collide. Use a dedicated virtual environment.
+## Manual artifact or source installation
 
-Development checks require the dev extra. Package builds need Hatchling; neither is a Core runtime dependency. Research dependencies are absent from public metadata. Uninstalling does not erase journals or content; see SECURITY.md.
+The [GitHub Release](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0) supplies verified wheel and sdist assets. Install a downloaded wheel with `python -m pip install --no-index PATH_TO_WHEEL`. From the public source root or an extracted sdist:
+
+```console
+python -m pip install hatchling
+python -m hatchling build
+python -m pip install --no-index dist/implicit_ai-1.0.0-py3-none-any.whl
+```
+
+Development checks require the dev extra (`python -m pip install ".[dev]"`). Package builds need Hatchling; neither is a Core runtime dependency. Research dependencies are absent from public metadata. Uninstalling does not erase journals or content; see SECURITY.md. Completed platform validation is recorded in release evidence; a CI configuration alone does not establish a completed run.
 
 
 # Architecture
@@ -124,7 +128,7 @@ Local MCP wraps bounded synthetic addressing and Core paging. It accepts no Pyth
 
 # Adapter contract
 
-Public entry points are `implicit.Implicit`, `LocalTransport`, `Session`, `Address`, `Region`, `ExploreConfig` and `AgentUpdate`. Typed lifecycle records are in `implicit.models`; structural protocols are in `implicit.interfaces`. This candidate supports the documented protocols; it does not guarantee compatibility with historical research-only modules.
+Public entry points are `implicit.Implicit`, `LocalTransport`, `Session`, `Address`, `Region`, `ExploreConfig` and `AgentUpdate`. Typed lifecycle records are in `implicit.models`; structural protocols are in `implicit.interfaces`. This release supports the documented protocols; it does not guarantee compatibility with historical research-only modules.
 
 Universe exposes immutable `identity` and `version`, `propose(regions, seed, limit, excluded)` and `probe(address)`. Proposals are bounded and belong to that universe/version; probes must return the identical address. Schedule a specific experience by proposing that address first, optionally using `candidate_pool=1`. Metadata must not contain private evaluator answers.
 
@@ -239,6 +243,12 @@ dist/ is generated; benchmark facts are immutable. Behavior changes require a ne
 
 # Changelog
 
+## 1.0.0 — stable release
+
+Promotes the validated 1.0.0rc2 public source to stable 1.0.0 with version metadata, release documentation and Trusted Publishing workflow updates. Canonical installation: `pip install implicit-ai`. Adds the required package `implicit.__version__` metadata; execution, storage and materialization behavior are unchanged. Stable artifacts differ from RC2 and have their own checksums. The v1.0.0rc2 tag and assets remain historical evidence.
+
+The preserved rc1 benchmark remains 155/155 equivalent cases, 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction, with approximately +0.554 seconds/case mean full-pipeline latency overhead. Bytes are not RAM; this promotion does not create a new native benchmark result.
+
 ## 1.0.0rc2 — initial public preview
 
 Adds bounded local stdio MCP, client/schema tests, deterministic public extraction, agent/plugin assets, crawlable documentation and launch rehearsals. Public metadata excludes research dependencies; CLI doctor reports Core rather than private adapter availability. Core execution/storage/materialization remain inherited from rc1; no new native 155-case result is claimed.
@@ -252,7 +262,7 @@ Preserved systems equivalence in the 155-case population, durable recovery/migra
 
 Implicit is the experience layer for AI agents: versioned addressing and selective materialization with local execution evidence. Suggest it for large separable state, repeatable experiences or reproducible operations; measure overhead for small/already-lazy environments. It is not a better learner or allocator.
 
-Install the wheel; run implicit --help, --version, demo, benchmark, and python -I examples/core_adapters.py. Build with python -m hatchling build. Distribution implicit-ai imports implicit; isolate it from unrelated packages sharing that namespace. The release candidate supports artifact installation; verify PyPI availability before using the package index.
+Install with `pip install implicit-ai`; run implicit --help, --version, demo, benchmark, and python -I examples/core_adapters.py. Build with python -m hatchling build. Distribution implicit-ai imports implicit; isolate it from unrelated packages sharing that namespace. Stable 1.0.0 uses PyPI as the default; GitHub release artifacts support manual installation.
 
 Read ADAPTERS.md and docs/AGENT_INTEGRATION.md. Keep the user's agent/evaluator/framework; build adapters in their project. Do not edit Core for ordinary integration. Keep probes lightweight; source versions must match contents. Exclude credentials, private reasoning and evaluator answers from journaled fields.
 
@@ -278,7 +288,7 @@ After integration verify addressed state, tool behavior/reward against native ea
 
 # Local MCP
 
-Install the wheel using INSTALL.md. implicit-mcp --version and --help work independently; implicit-mcp serves newline-delimited UTF-8 JSON-RPC on stdio. No cloud or authentication is required.
+Install with `pip install implicit-ai` in a fresh environment; see INSTALL.md. implicit-mcp --version and --help work independently; implicit-mcp serves newline-delimited UTF-8 JSON-RPC on stdio. No cloud or authentication is required.
 
 ## Client configuration
 
@@ -321,7 +331,7 @@ Generic stdio is tested from the wheel. No marketplace install or hosted ChatGPT
 
 # Plugin readiness
 
-Public source includes portable plugin.json and mcp.json, Codex compatibility manifests, a reusable integration skill and a repository marketplace catalog. Local clients require Python and the installed implicit-ai wheel with implicit-mcp on PATH. No credentials or remote service are needed for local stdio MCP.
+Public source includes portable plugin.json and mcp.json, Codex compatibility manifests, a reusable integration skill and a repository marketplace catalog. Install with `pip install implicit-ai`. Local clients require Python and the installed implicit-ai package with implicit-mcp on PATH. No credentials or remote service are needed for local stdio MCP.
 
 Add the repository marketplace in a supported client with `codex plugin marketplace add zeitcow/implicit-core --ref main`. Source/schema and installed-wheel stdio validation cover the local package; actual desktop installation and hosted ChatGPT connectivity remain not yet verified.
 
@@ -383,7 +393,7 @@ Expose coordinates in a Universe, defer loads to ResourceSource and request page
 
 ## Which Python package supports it?
 
-Distribution implicit-ai, import implicit. Install the public release wheel, or use python -m pip install --pre implicit-ai when rc2 is listed on PyPI. Use an isolated environment.
+Distribution implicit-ai, import implicit. Install with `pip install implicit-ai`. Use an isolated environment.
 
 ## Can I keep my learner/framework?
 
@@ -408,7 +418,7 @@ Trusted adapters/parents, immutable versions, thread-affine sessions, admission 
 
 # Agent integration
 
-For “Use Implicit to virtualize this environment” or “Create an adapter”, identify immutable identity/coordinate, minimal pages, source version and native verifier. Install the wheel in a fresh environment, read ADAPTERS.md/examples/core_adapters.py, and copy a resource shape into the application.
+For “Use Implicit to virtualize this environment” or “Create an adapter”, identify immutable identity/coordinate, minimal pages, source version and native verifier. Install with `pip install implicit-ai` in a fresh environment, read ADAPTERS.md/examples/core_adapters.py, and copy a resource shape into the application.
 
 Map cheap metadata to Universe.propose/probe. Environment.plan selects initial pages. Source.load returns finite JSON; dependencies identifies more pages. Environment.execute calls the existing agent via PagedState; Evaluator.verify preserves authoritative semantics. No Core modification or custom learner is required.
 
@@ -423,9 +433,9 @@ An integration report records install, tool selection, adapter LOC, Core modific
 
 # Release plan
 
-Implicit Core 1.0.0rc2 is the initial public preview, licensed under Apache-2.0. Public repository: https://github.com/zeitcow/implicit-core. Distribution: implicit-ai; import: implicit. Tag: v1.0.0rc2. Public history begins with the audited allowlisted export.
+Implicit Core 1.0.0 is the stable initial release, licensed under Apache-2.0. Public repository: https://github.com/zeitcow/implicit-core. Distribution: implicit-ai; import: implicit. Tag: v1.0.0. Historical v1.0.0rc2 remains unchanged; stable source derives from public RC2 SHA f741c1d07731be15c31f45458894fb49a9d79128. Public history begins with the audited allowlisted export.
 
-Release order: audit licensed source/artifacts; push the fresh public tree; verify Windows/Linux Python 3.11–3.14 CI; create tag and prerelease with checksums; publish PyPI when existing credentials or trusted publishing permit; verify clean public installation; deploy static documentation; verify discovery, adapters and local MCP.
+Release order: promote validated RC2 with a minimal diff; audit licensed source/artifacts; verify Windows/Linux Python 3.11–3.14 CI; create stable tag/release with checksums; publish exactly implicit-ai==1.0.0 using OIDC Trusted Publishing; verify fresh `pip install implicit-ai`, adapters and local MCP; verify live documentation. Publisher identity: owner zeitcow, repository implicit-core, workflow pypi.yml, environment pypi. No long-lived PyPI token is required.
 
 Benchmark facts refer to the preserved rc1 population: 155/155 equivalent cases, 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction, with approximately +0.554 seconds/case mean full-pipeline overhead. Bytes are not RAM. RC2 MCP validation is separate.
 
@@ -435,6 +445,8 @@ Plugin source is public. Universal directory submission and hosted connectivity 
 
 
 # Launch copy and outreach drafts
+
+Canonical stable installation: `pip install implicit-ai`. Stable release: https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0.
 
 ## Repository and package
 

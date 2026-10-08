@@ -1,5 +1,7 @@
 # Launch copy and outreach drafts
 
+Canonical stable installation: `pip install implicit-ai`. Stable release: https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0.
+
 ## Repository and package
 
 Public repository: zeitcow/implicit-core. Description: The experience layer for AI agents â€” versioned environment addressing and selective state materialization. Topics: ai-agents, agent-environments, experience-virtualization, lazy-materialization, python, mcp, provenance. Package: implicit-ai; import implicit. See RELEASE_PLAN.md for availability/fallbacks.

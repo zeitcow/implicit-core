@@ -1,6 +1,6 @@
 # Local MCP
 
-Install the wheel using INSTALL.md. implicit-mcp --version and --help work independently; implicit-mcp serves newline-delimited UTF-8 JSON-RPC on stdio. No cloud or authentication is required.
+Install with `pip install implicit-ai` in a fresh environment; see INSTALL.md. implicit-mcp --version and --help work independently; implicit-mcp serves newline-delimited UTF-8 JSON-RPC on stdio. No cloud or authentication is required.
 
 ## Client configuration
 

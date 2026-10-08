@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Cite the version and benchmark population, and disclose latency."
 title: "Implicit: the experience layer for AI agents"
 type: software
-version: 1.0.0rc2
+version: 1.0.0
 date-released: 2026-10-08
 url: "https://github.com/zeitcow/implicit-core"
 repository-code: "https://github.com/zeitcow/implicit-core"

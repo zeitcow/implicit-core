@@ -10,21 +10,21 @@ Implicit added approximately 0.554 seconds of mean full-pipeline latency per cas
 
 These measurements belong to rc1, not the toy demo or new MCP interface. Serialized bytes are not RAM. [Benchmarks](BENCHMARKS.md) explains the population, methodology and limitations.
 
-## Try the release candidate
+## Install Implicit Core 1.0.0
 
-Python 3.11+; zero third-party runtime dependencies. Build and install the public release candidate from source:
+Python 3.11+; zero third-party runtime dependencies. Use a fresh virtual environment:
 
 ```console
-python -m pip install hatchling
-python -m hatchling build
-python -m pip install --no-index dist/implicit_ai-1.0.0rc2-py3-none-any.whl
+pip install implicit-ai
 implicit --help
 implicit --version
 implicit demo
 implicit benchmark
 ```
 
-For the exact release artifacts, use [GitHub Releases](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0rc2). PyPI installation is `python -m pip install --pre implicit-ai` when the release is listed there; check package availability before relying on PyPI. Isolate it from the unrelated `implicit` distribution, which shares the import namespace.
+The distribution is `implicit-ai`; the import is `implicit`. Isolate it from the unrelated `implicit` distribution, which shares the import namespace. [GitHub Releases](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0) provides verified wheel and sdist assets for manual installation. [Installation](INSTALL.md) includes source-build instructions.
+
+Stable 1.0.0 promotes the validated RC2 runtime lineage. Historical [RC2](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0rc2) evidence remains unchanged.
 
 ## Why virtualize an experience?
 

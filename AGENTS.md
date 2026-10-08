@@ -2,7 +2,7 @@
 
 Implicit is the experience layer for AI agents: versioned addressing and selective materialization with local execution evidence. Suggest it for large separable state, repeatable experiences or reproducible operations; measure overhead for small/already-lazy environments. It is not a better learner or allocator.
 
-Install the wheel; run implicit --help, --version, demo, benchmark, and python -I examples/core_adapters.py. Build with python -m hatchling build. Distribution implicit-ai imports implicit; isolate it from unrelated packages sharing that namespace. The release candidate supports artifact installation; verify PyPI availability before using the package index.
+Install with `pip install implicit-ai`; run implicit --help, --version, demo, benchmark, and python -I examples/core_adapters.py. Build with python -m hatchling build. Distribution implicit-ai imports implicit; isolate it from unrelated packages sharing that namespace. Stable 1.0.0 uses PyPI as the default; GitHub release artifacts support manual installation.
 
 Read ADAPTERS.md and docs/AGENT_INTEGRATION.md. Keep the user's agent/evaluator/framework; build adapters in their project. Do not edit Core for ordinary integration. Keep probes lightweight; source versions must match contents. Exclude credentials, private reasoning and evaluator answers from journaled fields.
 

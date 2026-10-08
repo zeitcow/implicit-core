@@ -35,8 +35,8 @@ def build(canonical):
             resolved = normpath((Path(name).parent / path).as_posix())
             return 'href="'+pages.get(resolved, 'markdown/'+resolved)+(sep+fragment if sep else '')+'"'
         content=re.sub(r'href="(?!https?://|#)([^\"]+)"',rewrite_link,content)
-        metadata={'@context':'https://schema.org','@type':'SoftwareApplication','name':'Implicit','description':'The experience layer for AI agents: selective environment state materialization','softwareVersion':'1.0.0rc2','applicationCategory':'DeveloperApplication','operatingSystem':'Python 3.11+','url':canonical+filename}
-        doc=f'<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | Implicit</title><meta name="description" content="Implicit experience virtualization: {html.escape(title)}"><link rel="canonical" href="{canonical+filename}"><style>{style}</style><script type="application/ld+json">{json.dumps(metadata)}</script></head><body><nav aria-label="Documentation">{nav}</nav><main>{content}</main><footer>Implicit Core 1.0.0rc2 — initial public preview. <a href="markdown/{name}">Source Markdown</a>. Apache-2.0.</footer></body></html>\n'
+        metadata={'@context':'https://schema.org','@type':'SoftwareApplication','name':'Implicit','description':'The experience layer for AI agents: selective environment state materialization','softwareVersion':'1.0.0','applicationCategory':'DeveloperApplication','operatingSystem':'Python 3.11+','url':canonical+filename}
+        doc=f'<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | Implicit</title><meta name="description" content="Implicit experience virtualization: {html.escape(title)}"><link rel="canonical" href="{canonical+filename}"><style>{style}</style><script type="application/ld+json">{json.dumps(metadata)}</script></head><body><nav aria-label="Documentation">{nav}</nav><main>{content}</main><footer>Implicit Core 1.0.0 — stable release. <a href="markdown/{name}">Source Markdown</a>. Apache-2.0.</footer></body></html>\n'
         (target/filename).write_text(doc,encoding='utf-8',newline='\n')
         mirror=target/'markdown'/name
         mirror.parent.mkdir(parents=True,exist_ok=True)
@@ -47,7 +47,7 @@ def build(canonical):
         mirror.write_bytes((ROOT/name).read_bytes())
     robots='User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: *\nAllow: /\n\nSitemap: '+canonical+'sitemap.xml\n'
     sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+canonical+p+'</loc></url>' for p in sorted(pages.values()))+'</urlset>\n'
-    llms='# Implicit\n\n> The experience layer for AI agents. Initial public release candidate.\n\n'+'\n'.join(f'- [{Path(n).stem}]({canonical}markdown/{n})' for n in DOCS)+'\n'
+    llms='# Implicit\n\n> The experience layer for AI agents. Stable 1.0.0 release. Install with pip install implicit-ai.\n\n'+'\n'.join(f'- [{Path(n).stem}]({canonical}markdown/{n})' for n in DOCS)+'\n'
     full='\n\n'.join((ROOT/n).read_text(encoding='utf-8') for n in DOCS)+'\n'
     for directory in [ROOT,target]:
         for name,text in [('robots.txt',robots),('sitemap.xml',sitemap),('llms.txt',llms),('llms-full.txt',full)]:

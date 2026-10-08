@@ -1,6 +1,6 @@
 # Agent integration
 
-For “Use Implicit to virtualize this environment” or “Create an adapter”, identify immutable identity/coordinate, minimal pages, source version and native verifier. Install the wheel in a fresh environment, read ADAPTERS.md/examples/core_adapters.py, and copy a resource shape into the application.
+For “Use Implicit to virtualize this environment” or “Create an adapter”, identify immutable identity/coordinate, minimal pages, source version and native verifier. Install with `pip install implicit-ai` in a fresh environment, read ADAPTERS.md/examples/core_adapters.py, and copy a resource shape into the application.
 
 Map cheap metadata to Universe.propose/probe. Environment.plan selects initial pages. Source.load returns finite JSON; dependencies identifies more pages. Environment.execute calls the existing agent via PagedState; Evaluator.verify preserves authoritative semantics. No Core modification or custom learner is required.
 
