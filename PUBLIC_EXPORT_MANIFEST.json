@@ -8,8 +8,8 @@
   "files": [
     {
       "path": ".agents/plugins/marketplace.json",
-      "sha256": "00e4976619ea8b7b955e4f0e199a47af70680b71b6571c2fa01877e9dee97b99",
-      "bytes": 367
+      "sha256": "518a14239c5890c6ba3d1910955df1d25df414db14970e0fcd961d1f7c776e04",
+      "bytes": 656
     },
     {
       "path": ".gitattributes",
@@ -268,8 +268,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "635965875952fe415f2b2d8896c9436efa1e734ea7d3f408fecb0e15c14c0f0a",
-      "bytes": 5147
+      "sha256": "e374dfd770139b59be23266c6206880688abba83ca344418970b25933620f32f",
+      "bytes": 5228
     },
     {
       "path": "robots.txt",
@@ -825,6 +825,41 @@
       "path": "site/664fb701bb03dd9913d73b3012be3c41.txt",
       "sha256": "19ecd09d87c59007e9615e445d927d05ba69b009b2eda13a3d70952563dec4c0",
       "bytes": 32
+    },
+    {
+      "path": "plugins/implicit-integration/assets/implicit-icon.svg",
+      "sha256": "7bd4fcc2677da3083a564bc61f4cb24eb901f45f306bbcaef918fcb3ac788199",
+      "bytes": 453
+    },
+    {
+      "path": "plugins/implicit-integration/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "path": "plugins/implicit-integration/plugin.json",
+      "sha256": "017f661ab562d4c5cf1d51d626c097b98e985572d3d2ad31f817c0d4906b8441",
+      "bytes": 1621
+    },
+    {
+      "path": "plugins/implicit-integration/README.md",
+      "sha256": "3f3ebe11f7ceaff955040af9064288a4aca40b3b36820b9b2c2995b4f9fc4d44",
+      "bytes": 1785
+    },
+    {
+      "path": "plugins/implicit-integration/skills/implicit-integration/references/ADAPTERS.md",
+      "sha256": "6941770ef9db0cfb8f063fd7a2b74dc52d7d8bb72a4127fd869f74739fb93385",
+      "bytes": 3167
+    },
+    {
+      "path": "plugins/implicit-integration/skills/implicit-integration/references/AGENT_INTEGRATION.md",
+      "sha256": "9403f72b58eae7218ea427752178ce807a2a4954e48541a1ad32255dbd937492",
+      "bytes": 3894
+    },
+    {
+      "path": "plugins/implicit-integration/skills/implicit-integration/SKILL.md",
+      "sha256": "8e91f85cfe8256355e31894c307f72e18daa24994e7d4c7f8d4b303ee9aeb82d",
+      "bytes": 2200
     }
   ],
   "distribution_documentation_baseline": "cac3e72e1f4958d1873d3a6d28d320131169324f"

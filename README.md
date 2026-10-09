@@ -8,7 +8,7 @@ Virtualize large agent environments. Materialize only the state each experience 
 pip install implicit-ai
 ```
 
-[Website and docs](https://zeitcow.github.io/implicit-core/) · [PyPI](https://pypi.org/project/implicit-ai/) · [60-second quickstart](QUICKSTART.md) · [Measured evidence](BENCHMARKS.md) · [Connect a coding agent](docs/MCP_QUICKSTART.md)
+[Website and docs](https://zeitcow.github.io/implicit-core/) · [PyPI](https://pypi.org/project/implicit-ai/) · [60-second quickstart](QUICKSTART.md) · [Measured evidence](BENCHMARKS.md) · [Connect a coding agent](docs/MCP_QUICKSTART.md) · [Install the Codex integration skill](plugins/implicit-integration/README.md)
 
 ## Why virtualize an experience?
 

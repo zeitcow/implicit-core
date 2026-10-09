@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "implicit-integration",
+  "version": "1.0.0",
+  "description": "Guide Implicit adapter integration and measured eager versus selective state comparisons.",
+  "author": {
+    "name": "Jean C. Martinez",
+    "url": "https://github.com/zeitcow"
+  },
+  "homepage": "https://zeitcow.github.io/implicit-core/",
+  "repository": "https://github.com/zeitcow/implicit-core",
+  "license": "Apache-2.0",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Implicit Integration",
+        "shortDescription": "Agent environment integration",
+        "longDescription": "Guide developers through connecting their existing agent and environment to Implicit Core. Identify immutable experience addresses, page boundaries, source versions and native verification; build adapters in the caller project; compare eager and selective state semantics, retained serialized bytes and full pipeline latency. Requires a local coding environment for SDK execution. No hosted MCP, arbitrary uploaded-code execution, learning improvements or general speedups are promised.",
+        "developerName": "Jean C. Martinez",
+        "category": "Developer Tools",
+        "capabilities": [],
+        "websiteURL": "https://zeitcow.github.io/implicit-core/",
+        "supportURL": "https://github.com/zeitcow/implicit-core/issues",
+        "defaultPrompt": "Plan an Implicit adapter for my existing agent environment.",
+        "logo": "./assets/implicit-icon.svg",
+        "composerIcon": "./assets/implicit-icon.svg"
+      }
+    }
+  }
+}

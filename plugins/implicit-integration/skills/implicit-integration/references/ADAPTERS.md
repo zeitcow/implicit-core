@@ -1,0 +1,15 @@
+# Adapter contract
+
+Public entry points are `implicit.Implicit`, `LocalTransport`, `Session`, `Address`, `Region`, `ExploreConfig` and `AgentUpdate`. Typed lifecycle records are in `implicit.models`; structural protocols are in `implicit.interfaces`. This release supports the documented protocols; it does not guarantee compatibility with historical research-only modules.
+
+Universe exposes immutable `identity` and `version`, `propose(regions, seed, limit, excluded)` and `probe(address)`. Proposals are bounded and belong to that universe/version; probes must return the identical address. Schedule a specific experience by proposing that address first, optionally using `candidate_pool=1`. Metadata must not contain private evaluator answers.
+
+Environment exposes `universe`, `plan(experience)`, `source(experience)` and `execute(agent, experience, state)`. MaterializationPlan must refer to the same experience and source version. ResourceSource exposes immutable `version`, `load(ResourceKey)` returning finite JSON, and `dependencies(key,value)`. Missing keys raise KeyError; cycles fail. Source versions must change when source contents change. Coordinate identity isolates otherwise identical keys across experiences.
+
+Execute returns Execution with matching address, structured outcome/actions, explicit cost or unknown cost, and provenance. PagedState.write/delete are episode-local; external durable mutations belong to the adapter. Evaluator.verify returns VerificationResult with finite reward, boolean passed and nonempty authority. Core propagates adapter exceptions and prevents further explore on a failed session until explicit recovery. Avoid credentials, reasoning or hidden/gold data in instructions, outcomes, actions and resource values: journals may retain these fields.
+
+Connect binds objects in the caller's thread. Session.explore executes bounded episodes; events and metrics expose accounting. Session.close releases runtime objects, preserving durable state. No external adapter teardown hook is invoked: close external connections you own. Implicit.resume requires the same environment type/universe/version, compatible strategy configuration and the exact journaled agent version. Bind a new agent object explicitly; journal data never imports Python classes or invokes code. Incomplete episodes refuse automatic recovery; reconcile effects before explicitly using `abandon_incomplete=True`.
+
+ExternalLearner is optional and owned by the application. AgentUpdate requires a fresh version and can require its predecessor. No learner or adaptive allocation is necessary for Core. Default selection preserves external proposal order. See `examples/core_adapters.py` for three different resource shapes in one external file, with zero Core edits or configuration steps.
+
+For type annotations import `PagedState` from `implicit.materialization`; it is not exported by `implicit.residency` or `implicit.interfaces`. `MissingStateError` is a subclass of `KeyError` for absent pages. After a failed experience, another explore raises `RuntimeError` until explicit recovery/rebinding; preserve the events and reconcile external effects first.
