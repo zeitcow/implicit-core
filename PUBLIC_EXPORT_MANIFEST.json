@@ -183,8 +183,8 @@
     },
     {
       "path": "llms-full.txt",
-      "sha256": "3cc79f048b6cb11933be26dbd4f3e79e792d18a67b0804335efc706d3fad74b3",
-      "bytes": 68045
+      "sha256": "d03b8c2db222b6997d2fd26bb60659eddb2b858a5243ecd8cb816d0ebd87313c",
+      "bytes": 68167
     },
     {
       "path": "llms.txt",
@@ -268,8 +268,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "e374dfd770139b59be23266c6206880688abba83ca344418970b25933620f32f",
-      "bytes": 5228
+      "sha256": "71e603223feab60a6fbdefefd58fc372d9dd5389e0e4cf7dee9c3bbf439f3422",
+      "bytes": 5269
     },
     {
       "path": "robots.txt",
@@ -358,8 +358,8 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "d358c3fb28678be6d20e842bb097f63469875bb439107ce2d949d377f89bc4e1",
-      "bytes": 8889
+      "sha256": "008bd8aefe99470f574145fa9ca403f2b718293698718794663f9c99d1dcb44c",
+      "bytes": 9022
     },
     {
       "path": "site/install.html",
@@ -378,8 +378,8 @@
     },
     {
       "path": "site/llms-full.txt",
-      "sha256": "3cc79f048b6cb11933be26dbd4f3e79e792d18a67b0804335efc706d3fad74b3",
-      "bytes": 68045
+      "sha256": "d03b8c2db222b6997d2fd26bb60659eddb2b858a5243ecd8cb816d0ebd87313c",
+      "bytes": 68167
     },
     {
       "path": "site/llms.txt",
@@ -548,8 +548,8 @@
     },
     {
       "path": "site/markdown/README.md",
-      "sha256": "635965875952fe415f2b2d8896c9436efa1e734ea7d3f408fecb0e15c14c0f0a",
-      "bytes": 5147
+      "sha256": "71e603223feab60a6fbdefefd58fc372d9dd5389e0e4cf7dee9c3bbf439f3422",
+      "bytes": 5269
     },
     {
       "path": "site/markdown/SECURITY.md",
