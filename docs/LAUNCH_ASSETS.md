@@ -16,13 +16,13 @@ Home, install, quickstart, architecture, adapters, benchmark, FAQ, security/priv
 
 ## Announcement / GitHub Release
 
-Introducing Implicit Core: the experience layer for AI agents. It represents large environments with versioned addresses and loads pages only when needed, preserving your native execution/evaluation stack. RC1's measured 155/155 state/tool/reward equivalence came with 93.88% aggregate retained serialized/materialized-state reduction and approximately +0.554 seconds/case mean full-pipeline latency overhead. These are not RAM measurements. RC2 adds bounded local MCP and agent integration assets; its validation is separate. Try the public toy and compare your workload before adopting it.
+Introducing Implicit Core: the experience layer for AI agents. It represents large environments with versioned addresses and loads pages only when needed, preserving your native execution/evaluation stack. RC1's measured 155/155 state/tool/reward equivalence came with 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction. See [methodology and measured latency tradeoffs](../BENCHMARKS.md). These are not RAM measurements. RC2 adds bounded local MCP and agent integration assets; its validation is separate. Try the public toy and compare your workload before adopting it.
 
 ## Hacker News draft
 
 Show HN: Implicit - virtualize agent environments and materialize only needed state
 
-We built a Python experience layer with versioned addressing, progressive paging and durable provenance. You keep your agent/framework/evaluator. The offline toy demonstrates eager versus selective state. The rc1 native population preserved 155/155 systems cases with 93.88% aggregate retained serialized/materialized-state reduction, adding approximately +0.554 seconds/case mean full-pipeline latency. No RAM or learning claim; native replay assets are not in the public bundle. We are interested in adapters for environments with large unused state.
+We built a Python experience layer with versioned addressing, progressive paging and durable provenance. You keep your agent/framework/evaluator. The offline toy demonstrates eager versus selective state. The rc1 native population preserved 155/155 systems cases with 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction. See [methodology and measured latency tradeoffs](../BENCHMARKS.md). No RAM or learning claim; native replay assets are not in the public bundle. We are interested in adapters for environments with large unused state.
 
 ## X draft
 
@@ -42,6 +42,6 @@ If environment state construction or recovery makes your agent workflow difficul
 
 ## Investor technical summary draft
 
-Implicit Core supplies experience virtualization: a versioned address plane, selective state loading, lifecycle evidence and explicit recovery. RC1's 155-case systems comparison showed 155/155 equivalence, 93.88% aggregate/99.55% median retained serialized/materialized-state reduction and approximately +0.554 seconds/case mean full-pipeline latency overhead. No RAM, learning, allocator or universal advantage is established. Adoption hypotheses concern large separable environments; product evidence includes clean installation, independent adapter shapes and local MCP rehearsal. No commercial traction, revenue or private research result is asserted.
+Implicit Core supplies experience virtualization: a versioned address plane, selective state loading, lifecycle evidence and explicit recovery. RC1's 155-case systems comparison showed 155/155 equivalence, 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction. See [methodology and measured latency tradeoffs](../BENCHMARKS.md). No RAM, learning, allocator or universal advantage is established. Adoption hypotheses concern large separable environments; product evidence includes clean installation, independent adapter shapes and local MCP rehearsal. No commercial traction, revenue or private research result is asserted.
 
 Repository/release copy is approved for launch. Social and outreach drafts remain unsent; sending requires explicit account/channel and recipient authorization. No paid assets are used.

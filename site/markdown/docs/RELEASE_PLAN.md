@@ -4,7 +4,7 @@ Implicit Core 1.0.0 is the stable initial release, licensed under Apache-2.0. Pu
 
 Release order: promote validated RC2 with a minimal diff; audit licensed source/artifacts; verify Windows/Linux Python 3.11–3.14 CI; create stable tag/release with checksums; publish exactly implicit-ai==1.0.0 using OIDC Trusted Publishing; verify fresh `pip install implicit-ai`, adapters and local MCP; verify live documentation. Publisher identity: owner zeitcow, repository implicit-core, workflow pypi.yml, environment pypi. No long-lived PyPI token is required.
 
-Benchmark facts refer to the preserved rc1 population: 155/155 equivalent cases, 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction, with approximately +0.554 seconds/case mean full-pipeline overhead. Bytes are not RAM. RC2 MCP validation is separate.
+Benchmark facts refer to the preserved rc1 population: 155/155 equivalent cases, 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction. See BENCHMARKS.md for methodology and measured latency tradeoffs. Bytes are not RAM. RC2 MCP validation is separate.
 
 Canonical documentation: https://zeitcow.github.io/implicit-core/. PyPI and site availability must be verified at their actual public URLs. The repository documentation and release artifacts remain usable independently.
 

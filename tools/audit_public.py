@@ -31,9 +31,26 @@ def audit():
                     assert not (node.module or '').startswith(('implicit.allocation', 'implicit.search', 'implicit.backends', 'implicit.validation')), rel
                 if isinstance(node, ast.Import):
                     assert not any(n.name.split('.')[0] in {'requests', 'httpx', 'socket', 'urllib', 'subprocess'} for n in node.names), rel
-    for name in ['README.md', 'BENCHMARKS.md', 'docs/FAQ.md', 'CHANGELOG.md']:
+    # Complete technical and historical disclosures must remain intact.
+    for name in ['BENCHMARKS.md', 'docs/CITING.md', 'CHANGELOG.md']:
         text = (ROOT/name).read_text(encoding='utf-8')
         assert '0.554' in text and ('RAM' in text or 'memory' in text), name
+    # Discovery summaries link to evidence without promoting its timing figure.
+    evidence = {
+        'BENCHMARKS.md', 'CHANGELOG.md', 'AGENT_INTEGRATION_BENCHMARK.md', 'docs/CITING.md',
+        'site/benchmarks.html', 'site/changelog.html', 'site/agent_integration_benchmark.html',
+        'site/citing.html', 'llms-full.txt', 'site/llms-full.txt',
+    }
+    timing = re.compile(r'0[.]554|latency\s+overhead|full-pipeline\s+latency', re.I)
+    for name in expected:
+        context = name.removeprefix('site/markdown/')
+        if context in evidence or name.startswith(('benchmarks/', 'site/markdown/benchmarks/', 'tools/')):
+            continue
+        assert not timing.search((ROOT/name).read_text(encoding='utf-8')), name
+    for name in ['README.md', 'llms.txt', 'docs/FAQ.md']:
+        text = (ROOT/name).read_text(encoding='utf-8')
+        assert all(value in text for value in ['155/155', '93.88%', '94.40%', '99.55%']), name
+        assert 'serialized/materialized' in text, name
     for p in [ROOT/'README.md', *ROOT.glob('*.md'), *ROOT.glob('docs/*.md')]:
         for target in re.findall(r'\]\(([^)#]+)(?:#[^)]*)?\)', p.read_text(encoding='utf-8')):
             if not target.startswith(('https:', 'http:')):

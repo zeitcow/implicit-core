@@ -26,7 +26,7 @@ When required state is a small part of a large addressable environment or journa
 
 ## What advantage was demonstrated?
 
-RC1 preserved state/tool/reward equivalence in 155/155 cases, reducing retained serialized/materialized bytes by 93.88% aggregate and 99.55% median, with approximately +0.554 seconds/case mean pipeline overhead. Not RAM measurements. See BENCHMARKS.md.
+RC1 preserved state/tool/reward equivalence in 155/155 cases, reducing retained serialized/materialized state by 93.88% aggregate, 94.40% mean and 99.55% median. These are not RAM measurements. See [benchmark methodology, results and measured latency tradeoffs](../BENCHMARKS.md).
 
 ## What is stored and is local mode silent?
 

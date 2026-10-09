@@ -40,13 +40,9 @@ implicit benchmark
 <td>Median case reduction</td>
 <td style="text-align:right">99.55%</td>
 </tr>
-<tr>
-<td>Mean full-pipeline latency overhead</td>
-<td style="text-align:right">approximately +0.554 seconds/case</td>
-</tr>
 </tbody>
 </table>
-<p>Serialized/materialized bytes are <strong>not RAM</strong>. The measurements belong to rc1, not a new 1.0.0 native replay or the toy/MCP demo. The public numeric summary supports arithmetic verification; restricted native replay assets are not shipped. <a href="benchmarks.html">Methodology, hashes and limitations</a>.</p>
+<p>Serialized/materialized bytes are <strong>not RAM</strong>. The measurements belong to rc1, not a new 1.0.0 native replay or the toy/MCP demo. The public numeric summary supports arithmetic verification; restricted native replay assets are not shipped. <a href="benchmarks.html">Methodology, measured latency tradeoffs, hashes and limitations</a>.</p>
 <h2 id="keep-your-existing-stack">Keep your existing stack</h2>
 <p>Keep your agent, learner, framework and evaluator. Build an adapter in your project using ordinary Python protocols:</p>
 <pre><code class="language-text">Universe proposes versioned addresses

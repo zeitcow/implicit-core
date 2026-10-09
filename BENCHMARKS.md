@@ -41,4 +41,4 @@ The fixed toy addresses one experience with inventory, shipping policy and an un
 
 Procedural addressing was tested through 1,000,000 possible experiences, one selected record per operation. Workloads completed 20,650 lifecycle operations (1,650 durable) plus 100,000 materializations. Concurrency covers eight separate-store workers and four journal writers. Recovery covers 240 journal-boundary cases, 64 completion cases, 50/50 reconciled interruptions and 4/4 forced-death lease recoveries. Migration covers rollback/retry and incompatible-schema refusal.
 
-Cite version/population with CITATION.cff and include approximately +0.554 seconds/case overhead whenever summarizing the reduction. No allocator, learning, RAM, SOTA, universal-superiority, unlimited-scale, global exactly-once or security-certification claim is supported.
+For detailed benchmark reports, cite version/population with CITATION.cff and include approximately +0.554 seconds/case overhead alongside the reduction. No allocator, learning, RAM, SOTA, universal-superiority, unlimited-scale, global exactly-once or security-certification claim is supported.

@@ -42,9 +42,8 @@ In the preserved **rc1** native systems population, 155/155 comparable cases pre
 | Aggregate retained serialized/materialized-state reduction | 93.88% |
 | Mean case reduction | 94.40% |
 | Median case reduction | 99.55% |
-| Mean full-pipeline latency overhead | approximately +0.554 seconds/case |
 
-Serialized/materialized bytes are **not RAM**. The measurements belong to rc1, not a new 1.0.0 native replay or the toy/MCP demo. The public numeric summary supports arithmetic verification; restricted native replay assets are not shipped. [Methodology, hashes and limitations](BENCHMARKS.md).
+Serialized/materialized bytes are **not RAM**. The measurements belong to rc1, not a new 1.0.0 native replay or the toy/MCP demo. The public numeric summary supports arithmetic verification; restricted native replay assets are not shipped. [Methodology, measured latency tradeoffs, hashes and limitations](BENCHMARKS.md).
 
 ## Keep your existing stack
 

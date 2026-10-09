@@ -22,7 +22,7 @@ No crawler-specific product claims, authentication walls or JavaScript requireme
 
 Facts: stable distribution `implicit-ai==1.0.0`, import `implicit`, canonical install `pip install implicit-ai`; eight local synthetic MCP tools. The unrelated `implicit` recommendation package shares the import namespace; use a fresh environment.
 
-The preserved rc1 result is 155/155 equivalent cases, 93.88% aggregate/94.40% mean/99.55% median retained serialized/materialized-state reduction and approximately +0.554 seconds/case mean full-pipeline overhead. Bytes are not RAM. The numeric summary permits arithmetic checking, not independent native replay.
+The preserved rc1 result is 155/155 equivalent cases, 93.88% aggregate/94.40% mean/99.55% median retained serialized/materialized-state reduction. See BENCHMARKS.md for methodology and measured latency tradeoffs. Bytes are not RAM. The numeric summary permits arithmetic checking, not independent native replay.
 
 ## Discovery status
 

@@ -42,7 +42,7 @@ DOCS = [
 ]
 DESCRIPTIONS = {
     "README.md": "Implicit is the experience layer for AI agents. Virtualize large environments and materialize only required state. Install implicit-ai.",
-    "BENCHMARKS.md": "Implicit rc1: 155/155 equivalent cases, 93.88% retained serialized-state reduction, approximately +0.554 seconds/case pipeline overhead. Bytes are not RAM.",
+    "BENCHMARKS.md": "Implicit rc1 methodology and results: 155/155 equivalent cases; 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction.",
     "INSTALL.md": "Install Implicit Core 1.0.0 from PyPI with pip install implicit-ai. Python 3.11+, isolated environment, zero runtime dependencies.",
     "docs/MCP_QUICKSTART.md": "Connect a coding agent to Implicit's eight bounded local MCP tools. PyPI installation and current Codex, Claude Code, VS Code and Cursor configuration.",
     "docs/AGENT_INTEGRATION.md": "Keep your agent and native evaluator. Build an Implicit adapter and compare eager versus selective state with equivalence, bytes and complete latency.",
@@ -178,7 +178,7 @@ def build(canonical):
         "# Implicit\n\n> The experience layer for AI agents. Virtualize large environments; materialize required state.\n\n"
         "Stable 1.0.0. Python 3.11+. Install: pip install implicit-ai. Import: implicit. Use isolation to avoid the unrelated implicit distribution.\n\n"
         "Use for large separable state, versioned experiences and durable evidence; measure overhead for small/already lazy state. Keep the existing agent/framework/evaluator; adapters live in the application.\n\n"
-        "Historical rc1: 155/155 equivalent cases, 93.88% aggregate/94.40% mean/99.55% median retained serialized-state reduction; approximately +0.554 seconds/case mean pipeline overhead. Bytes are not RAM. Restricted native replay assets are not shipped.\n\n"
+        "Historical rc1: 155/155 equivalent cases, 93.88% aggregate/94.40% mean/99.55% median retained serialized/materialized-state reduction. Bytes are not RAM. See the benchmark methodology and results for measured latency tradeoffs. Restricted native replay assets are not shipped.\n\n"
         "MCP is local stdio with eight bounded synthetic tools. Custom adapters use SDK tests. Repository plugin source is separate from public directory acceptance. No hosted endpoint is claimed.\n\n## Start here\n\n"
     )
     primary = [

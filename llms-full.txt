@@ -42,9 +42,8 @@ In the preserved **rc1** native systems population, 155/155 comparable cases pre
 | Aggregate retained serialized/materialized-state reduction | 93.88% |
 | Mean case reduction | 94.40% |
 | Median case reduction | 99.55% |
-| Mean full-pipeline latency overhead | approximately +0.554 seconds/case |
 
-Serialized/materialized bytes are **not RAM**. The measurements belong to rc1, not a new 1.0.0 native replay or the toy/MCP demo. The public numeric summary supports arithmetic verification; restricted native replay assets are not shipped. [Methodology, hashes and limitations](BENCHMARKS.md).
+Serialized/materialized bytes are **not RAM**. The measurements belong to rc1, not a new 1.0.0 native replay or the toy/MCP demo. The public numeric summary supports arithmetic verification; restricted native replay assets are not shipped. [Methodology, measured latency tradeoffs, hashes and limitations](BENCHMARKS.md).
 
 ## Keep your existing stack
 
@@ -242,7 +241,7 @@ The fixed toy addresses one experience with inventory, shipping policy and an un
 
 Procedural addressing was tested through 1,000,000 possible experiences, one selected record per operation. Workloads completed 20,650 lifecycle operations (1,650 durable) plus 100,000 materializations. Concurrency covers eight separate-store workers and four journal writers. Recovery covers 240 journal-boundary cases, 64 completion cases, 50/50 reconciled interruptions and 4/4 forced-death lease recoveries. Migration covers rollback/retry and incompatible-schema refusal.
 
-Cite version/population with CITATION.cff and include approximately +0.554 seconds/case overhead whenever summarizing the reduction. No allocator, learning, RAM, SOTA, universal-superiority, unlimited-scale, global exactly-once or security-certification claim is supported.
+For detailed benchmark reports, cite version/population with CITATION.cff and include approximately +0.554 seconds/case overhead alongside the reduction. No allocator, learning, RAM, SOTA, universal-superiority, unlimited-scale, global exactly-once or security-certification claim is supported.
 
 
 # Security and privacy
@@ -319,7 +318,7 @@ Tests deny outbound sockets. SDK database/content/index locations are explicit; 
 
 Layout: src/implicit/ is Core; tests/ are public offline tests; examples/ contains external adapters/MCP client; benchmarks/ has sanitized facts; docs/ has integration/FAQ/release guidance; plugin/ has public skill/configs; site/ is crawlable HTML. Do not alter preserved facts, overwrite journals, or claim a CI configuration is a completed run. Ask before destructive user-data changes unless already authorized.
 
-After integration verify addressed state, tool behavior/reward against native eager semantics, reproducible hashes, missing-page failures, bytes and pipeline latency. Cite measured output/scope. Bytes are not RAM; rc1 summaries carry approximately +0.554 seconds/case overhead. Troubleshoot through TROUBLESHOOTING.md without silently abandoning interrupted effects.
+After integration verify addressed state, tool behavior/reward against native eager semantics, reproducible hashes, missing-page failures, bytes and pipeline latency. Cite measured output/scope. Bytes are not RAM. See BENCHMARKS.md for rc1 methodology, results and measured latency tradeoffs. Troubleshoot through TROUBLESHOOTING.md without silently abandoning interrupted effects.
 
 
 # Local MCP
@@ -420,7 +419,7 @@ No crawler-specific product claims, authentication walls or JavaScript requireme
 
 Facts: stable distribution `implicit-ai==1.0.0`, import `implicit`, canonical install `pip install implicit-ai`; eight local synthetic MCP tools. The unrelated `implicit` recommendation package shares the import namespace; use a fresh environment.
 
-The preserved rc1 result is 155/155 equivalent cases, 93.88% aggregate/94.40% mean/99.55% median retained serialized/materialized-state reduction and approximately +0.554 seconds/case mean full-pipeline overhead. Bytes are not RAM. The numeric summary permits arithmetic checking, not independent native replay.
+The preserved rc1 result is 155/155 equivalent cases, 93.88% aggregate/94.40% mean/99.55% median retained serialized/materialized-state reduction. See BENCHMARKS.md for methodology and measured latency tradeoffs. Bytes are not RAM. The numeric summary permits arithmetic checking, not independent native replay.
 
 ## Discovery status
 
@@ -476,7 +475,7 @@ When required state is a small part of a large addressable environment or journa
 
 ## What advantage was demonstrated?
 
-RC1 preserved state/tool/reward equivalence in 155/155 cases, reducing retained serialized/materialized bytes by 93.88% aggregate and 99.55% median, with approximately +0.554 seconds/case mean pipeline overhead. Not RAM measurements. See BENCHMARKS.md.
+RC1 preserved state/tool/reward equivalence in 155/155 cases, reducing retained serialized/materialized state by 93.88% aggregate, 94.40% mean and 99.55% median. These are not RAM measurements. See [benchmark methodology, results and measured latency tradeoffs](../BENCHMARKS.md).
 
 ## What is stored and is local mode silent?
 
@@ -511,7 +510,7 @@ Reuse a shape from `examples/core_adapters.py`. Import PagedState from `implicit
 
 Prompt: “Compare native eager and Implicit execution using identical coordinates, seeds, tools, data versions and verifier. Confirm equivalence first. Record retained canonical serialized/materialized bytes separately from index, journal, content and reconstruction storage. Time the complete pipeline on both paths. Report sample count, per-case/aggregate bytes, pipeline latency delta, reproducible hashes, missing-page failures and all limitations.”
 
-Report full-pipeline overhead, including regressions. Bytes are not RAM. The public toy teaches methodology and does not reproduce the restricted rc1 population. Historical rc1 summaries carry approximately +0.554 seconds/case mean pipeline overhead.
+Report full-pipeline overhead, including regressions. Bytes are not RAM. The public toy teaches methodology and does not reproduce the restricted rc1 population. See https://zeitcow.github.io/implicit-core/benchmarks.html for rc1 methodology, results and measured latency tradeoffs.
 
 ## Use the local Implicit MCP
 
@@ -532,7 +531,7 @@ Implicit Core 1.0.0 is the stable initial release, licensed under Apache-2.0. Pu
 
 Release order: promote validated RC2 with a minimal diff; audit licensed source/artifacts; verify Windows/Linux Python 3.11–3.14 CI; create stable tag/release with checksums; publish exactly implicit-ai==1.0.0 using OIDC Trusted Publishing; verify fresh `pip install implicit-ai`, adapters and local MCP; verify live documentation. Publisher identity: owner zeitcow, repository implicit-core, workflow pypi.yml, environment pypi. No long-lived PyPI token is required.
 
-Benchmark facts refer to the preserved rc1 population: 155/155 equivalent cases, 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction, with approximately +0.554 seconds/case mean full-pipeline overhead. Bytes are not RAM. RC2 MCP validation is separate.
+Benchmark facts refer to the preserved rc1 population: 155/155 equivalent cases, 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction. See BENCHMARKS.md for methodology and measured latency tradeoffs. Bytes are not RAM. RC2 MCP validation is separate.
 
 Canonical documentation: https://zeitcow.github.io/implicit-core/. PyPI and site availability must be verified at their actual public URLs. The repository documentation and release artifacts remain usable independently.
 
@@ -557,13 +556,13 @@ Home, install, quickstart, architecture, adapters, benchmark, FAQ, security/priv
 
 ## Announcement / GitHub Release
 
-Introducing Implicit Core: the experience layer for AI agents. It represents large environments with versioned addresses and loads pages only when needed, preserving your native execution/evaluation stack. RC1's measured 155/155 state/tool/reward equivalence came with 93.88% aggregate retained serialized/materialized-state reduction and approximately +0.554 seconds/case mean full-pipeline latency overhead. These are not RAM measurements. RC2 adds bounded local MCP and agent integration assets; its validation is separate. Try the public toy and compare your workload before adopting it.
+Introducing Implicit Core: the experience layer for AI agents. It represents large environments with versioned addresses and loads pages only when needed, preserving your native execution/evaluation stack. RC1's measured 155/155 state/tool/reward equivalence came with 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction. See [methodology and measured latency tradeoffs](../BENCHMARKS.md). These are not RAM measurements. RC2 adds bounded local MCP and agent integration assets; its validation is separate. Try the public toy and compare your workload before adopting it.
 
 ## Hacker News draft
 
 Show HN: Implicit - virtualize agent environments and materialize only needed state
 
-We built a Python experience layer with versioned addressing, progressive paging and durable provenance. You keep your agent/framework/evaluator. The offline toy demonstrates eager versus selective state. The rc1 native population preserved 155/155 systems cases with 93.88% aggregate retained serialized/materialized-state reduction, adding approximately +0.554 seconds/case mean full-pipeline latency. No RAM or learning claim; native replay assets are not in the public bundle. We are interested in adapters for environments with large unused state.
+We built a Python experience layer with versioned addressing, progressive paging and durable provenance. You keep your agent/framework/evaluator. The offline toy demonstrates eager versus selective state. The rc1 native population preserved 155/155 systems cases with 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction. See [methodology and measured latency tradeoffs](../BENCHMARKS.md). No RAM or learning claim; native replay assets are not in the public bundle. We are interested in adapters for environments with large unused state.
 
 ## X draft
 
@@ -583,7 +582,7 @@ If environment state construction or recovery makes your agent workflow difficul
 
 ## Investor technical summary draft
 
-Implicit Core supplies experience virtualization: a versioned address plane, selective state loading, lifecycle evidence and explicit recovery. RC1's 155-case systems comparison showed 155/155 equivalence, 93.88% aggregate/99.55% median retained serialized/materialized-state reduction and approximately +0.554 seconds/case mean full-pipeline latency overhead. No RAM, learning, allocator or universal advantage is established. Adoption hypotheses concern large separable environments; product evidence includes clean installation, independent adapter shapes and local MCP rehearsal. No commercial traction, revenue or private research result is asserted.
+Implicit Core supplies experience virtualization: a versioned address plane, selective state loading, lifecycle evidence and explicit recovery. RC1's 155-case systems comparison showed 155/155 equivalence, 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction. See [methodology and measured latency tradeoffs](../BENCHMARKS.md). No RAM, learning, allocator or universal advantage is established. Adoption hypotheses concern large separable environments; product evidence includes clean installation, independent adapter shapes and local MCP rehearsal. No commercial traction, revenue or private research result is asserted.
 
 Repository/release copy is approved for launch. Social and outreach drafts remain unsent; sending requires explicit account/channel and recipient authorization. No paid assets are used.
 

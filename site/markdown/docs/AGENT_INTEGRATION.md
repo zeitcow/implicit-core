@@ -22,7 +22,7 @@ Reuse a shape from `examples/core_adapters.py`. Import PagedState from `implicit
 
 Prompt: “Compare native eager and Implicit execution using identical coordinates, seeds, tools, data versions and verifier. Confirm equivalence first. Record retained canonical serialized/materialized bytes separately from index, journal, content and reconstruction storage. Time the complete pipeline on both paths. Report sample count, per-case/aggregate bytes, pipeline latency delta, reproducible hashes, missing-page failures and all limitations.”
 
-Report full-pipeline overhead, including regressions. Bytes are not RAM. The public toy teaches methodology and does not reproduce the restricted rc1 population. Historical rc1 summaries carry approximately +0.554 seconds/case mean pipeline overhead.
+Report full-pipeline overhead, including regressions. Bytes are not RAM. The public toy teaches methodology and does not reproduce the restricted rc1 population. See https://zeitcow.github.io/implicit-core/benchmarks.html for rc1 methodology, results and measured latency tradeoffs.
 
 ## Use the local Implicit MCP
 

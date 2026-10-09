@@ -64,7 +64,10 @@ def audit():
     urls = {node.text for node in sitemap.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
     assert urls == {page.canonical for page in pages.values()}
     llms = (SITE / "llms.txt").read_text(encoding="utf-8")
-    assert "pip install implicit-ai" in llms and "0.554" in llms and "not RAM" in llms
+    assert "pip install implicit-ai" in llms and "not RAM" in llms
+    assert all(value in llms for value in ["155/155", "93.88%", "94.40%", "99.55%"])
+    assert "measured latency tradeoffs" in llms
+    assert "serialized/materialized" in llms
     print(
         json.dumps(
             {
