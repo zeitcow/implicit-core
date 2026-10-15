@@ -1,26 +1,29 @@
 # Agent ecosystem status
 
-Reviewed 2026-10-08. Install Core with `pip install implicit-ai`. “LIVE” refers to an observed public artifact or endpoint; it does not imply directory approval, client UI verification or users.
+Reviewed 2026-10-15. Install Core with `pip install implicit-ai`. LIVE identifies an observed artifact or listing; it does not imply client UI verification or adoption.
 
-| Surface | Status | Available path and limits |
+| Surface | State | Available path and limits |
 | --- | --- | --- |
-| PyPI package | LIVE | Stable 1.0.0; Python SDK, CLI and eight local MCP tools |
-| Public repository plugin | LIVE source; MANUAL-CONFIGURATION-ONLY | Local skill/configuration under plugin/ and repository marketplace; Python installation remains required |
-| Codex CLI, IDE, desktop local host | MANUAL-CONFIGURATION-ONLY | Documented local stdio configuration; deterministic installed-wheel MCP validation |
-| ChatGPT desktop local plugin | MANUAL-CONFIGURATION-ONLY | Repository marketplace on a local host; actual desktop UI installation not asserted |
-| ChatGPT web custom MCP | NOT CURRENTLY SUPPORTED by this release | Web connection requires supported HTTP/SSE transport or a compatible Secure MCP Tunnel; Core ships local stdio only |
-| OpenAI public skills-only plugin | PREPARED; REQUIRES OWNER ACTION | Owner chooses verified publishing identity and submits the separate skills-only ZIP; acceptance is unverified |
-| OpenAI public MCP plugin | REQUIRES OWNER ACTION | Needs approved reachable transport, ownership, policies and review; no remote service is deployed |
-| Claude Code | MANUAL-CONFIGURATION-ONLY | Official stdio syntax; see MCP quickstart |
-| VS Code / GitHub Copilot | MANUAL-CONFIGURATION-ONLY | Official servers configuration; see MCP quickstart |
-| Cursor | MANUAL-CONFIGURATION-ONLY | Official mcpServers configuration; see MCP quickstart |
-| Awesome MCP Servers | SUBMITTED | [PR #16015](https://github.com/punkpeye/awesome-mcp-servers/pull/16015); maintainer acceptance pending |
-| Official MCP Registry | PREPARED | Current PyPI description lacks its ownership marker; see registry prerequisites |
+| PyPI | LIVE | 1.0.1 metadata/documentation update preserves 1.0.0 runtime behavior. SDK, CLI and eight local MCP tools. |
+| Codex repository marketplace | LIVE | Public Git marketplace installation and enabled integration skill verified in a fresh profile. Python installation remains separate. |
+| OpenAI desktop integration skill | OWNER ACTION REQUIRED | Separate skills-only package requires local execution. Portal authentication, verified identity and review remain necessary. |
+| OpenAI local MCP plugin | OWNER ACTION REQUIRED | [Desktop-only rules](https://developers.openai.com/plugins/deploy/desktop-only) require approved-partner organization allowlisting. |
+| ChatGPT web custom MCP | NOT APPLICABLE | This release supplies local stdio, with no public HTTP endpoint. |
+| Glama | LIVE | [Accepted local listing](https://glama.ai/mcp/servers/zeitcow/implicit-core); platform introspection not complete. |
+| Smithery | LIVE | [Local MCPB listing](https://smithery.ai/servers/zeitcow/implicit-core), version 1.0.0 and eight tools. |
+| Official MCP Registry | LIVE | `io.github.zeitcow/implicit-core`, version 1.0.0, local stdio MCPB. |
+| Awesome MCP Servers | AWAITING REVIEW | [PR #16015](https://github.com/punkpeye/awesome-mcp-servers/pull/16015). |
+| Docker MCP Registry | AWAITING REVIEW | [PR #5560](https://github.com/docker/mcp-registry/pull/5560). |
 
-[Current OpenAI MCP guidance](https://learn.chatgpt.com/docs/extend/mcp?surface=cli) documents local client configuration. [Plugin packaging](https://developers.openai.com/plugins/build/plugins) distinguishes repository marketplaces from workspace and universal directory publication.
+Install the integration skill:
 
-[Current OpenAI submission flow](https://developers.openai.com/plugins/deploy/submission) requires a verified publishing identity and portal access. Skills-only submissions do not require MCP review cases or a recording; adding MCP to an existing skills-only plugin is unsupported, so preserve separate package identities. No acceptance is implied.
+```console
+codex plugin marketplace add zeitcow/implicit-core --ref main
+codex plugin add implicit-integration@implicit-core
+```
 
-[ChatGPT custom MCP guidance](https://developers.openai.com/api/docs/guides/custom-mcp-server) describes remote/tunnel connection; a local stdio executable alone is insufficient. A hosted service would require a separate scope, hosting/security design and owner decisions. Do not expose it merely to market this release.
+This skill contains adapter guidance and references. The separate `implicit-core@implicit-core` package includes local MCP configuration. [Plugin readiness](../PLUGIN_READINESS.md) explains the scopes.
 
-[Claude Code](https://code.claude.com/docs/en/mcp), [VS Code](https://code.visualstudio.com/docs/agents/reference/mcp-configuration) and [Cursor](https://cursor.com/docs/mcp) are the configuration references. [MCP quickstart](MCP_QUICKSTART.md) contains exact snippets. Client approval and configuration remain local to the developer.
+[Claude Code](https://code.claude.com/docs/en/mcp), [VS Code / Copilot](https://code.visualstudio.com/docs/agents/reference/mcp-configuration), [Cursor](https://cursor.com/docs/mcp) and Cline support local stdio configuration. [MCP quickstart](MCP_QUICKSTART.md) provides setup and bounded tool scope. Configuration support does not establish curated marketplace acceptance.
+
+[OpenAI packaging](https://developers.openai.com/plugins/build/plugins) and [submission](https://developers.openai.com/plugins/deploy/submission) distinguish repository distribution from the reviewed directory. Desktop-only skills declare `requires_local_executor`; local MCP submissions additionally require partner allowlisting. No directory acceptance is implied.

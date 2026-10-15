@@ -1,41 +1,21 @@
-# Technical registry readiness
+# Technical registry status
 
-Reviewed 2026-10-08. Canonical install: `pip install implicit-ai`. Listings remain independent of package publication.
+Reviewed 2026-10-15. Canonical install: `pip install implicit-ai`. Package publication, directory publication and client configuration are separate outcomes.
 
-| Candidate | Audience / authority | Submission, cost and requirements | Implicit decision |
-| --- | --- | --- | --- |
-| PyPI | Python developers; official package index | Existing stable package; free index, existing project ownership | LIVE 1.0.0 |
-| GitHub repository and topics | Developers; authoritative source | Project-owned metadata/source, existing authentication | LIVE |
-| Official MCP Registry | MCP clients; protocol-maintained metadata registry | Free metadata publication; namespace authentication and package ownership verification | PREPARED; PyPI prerequisite missing |
-| OpenAI Plugins Directory | ChatGPT/Codex users; official platform | Verified owner identity, portal access and review; new terms require owner acceptance | Separate skills-only package PREPARED; no acceptance claimed |
-| Awesome MCP Servers | Developers; maintained community source list | GitHub PR; public installable server, accurate categorized entry, maintainer review | SUBMITTED [PR #16015](https://github.com/punkpeye/awesome-mcp-servers/pull/16015); acceptance pending |
-| Smithery | MCP developers; third-party directory | Current publisher/account and hosting requirements must be verified in its portal | DEFERRED; published hosted connection is not available |
-| Zenodo | Research/software citations; archival repository | Owner login, license/identity/terms review and deposition | PREPARED recommendation; no DOI created |
+| Surface | State | Verified route and limits |
+| --- | --- | --- |
+| PyPI | LIVE | 1.0.1 metadata/documentation release. Runtime differs from 1.0.0 only in its version string; fresh canonical install and public examples passed. |
+| GitHub | LIVE | Public source, release artifacts, documentation and repository plugin marketplace. |
+| Official MCP Registry | LIVE | [io.github.zeitcow/implicit-core 1.0.0](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.zeitcow%2Fimplicit-core/versions/1.0.0), local stdio MCPB. |
+| Glama | LIVE | [Accepted listing](https://glama.ai/mcp/servers/zeitcow/implicit-core). Local server; managed hosting is not required. Tool introspection has not completed. No quality or license letter grade is asserted. |
+| Smithery | LIVE | [Implicit Core](https://smithery.ai/servers/zeitcow/implicit-core), Local, 1.0.0 MCPB and eight actual tool schemas. No hosted service or credentials required. |
+| Awesome MCP Servers | AWAITING REVIEW | Existing [PR #16015](https://github.com/punkpeye/awesome-mcp-servers/pull/16015) has the accepted Glama URL and working score badge. |
+| Docker MCP Registry | AWAITING REVIEW | Existing [PR #5560](https://github.com/docker/mcp-registry/pull/5560). Current contribution guidance permits third-party submissions. |
+| OpenAI Plugins Directory | OWNER ACTION REQUIRED | Separate desktop skills-only package; portal authentication, verified publishing identity and review required. No directory acceptance claimed. |
+| Zenodo | OWNER ACTION REQUIRED | Public stable 1.0.0 source archive and accurate software metadata prepared for owner-authenticated archival. No DOI minted. |
 
-Sources: [official MCP publishing](https://modelcontextprotocol.io/registry/quickstart), [package ownership rules](https://modelcontextprotocol.io/registry/package-types), [OpenAI submission](https://developers.openai.com/plugins/deploy/submission), [community contribution rules](https://github.com/punkpeye/awesome-mcp-servers/blob/main/CONTRIBUTING.md), [citation/archive guidance](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content).
+The official registry uses the verified [MCPB release asset](https://github.com/zeitcow/implicit-core/releases/download/v1.0.0/implicit-core-mcp-1.0.0.mcpb), SHA-256 `e1cfd860c247ebfb1553c37bebcaa5cbe56892eeb8329a289dd250363423e3f7`. It does not depend on PyPI ownership-marker verification. The older prepared PyPI manifest is an example, not the live registration.
 
-## Official MCP Registry prerequisite
+Sources: [MCP publication](https://modelcontextprotocol.io/registry/quickstart), [Smithery publication](https://smithery.ai/docs/build/publish), [OpenAI submission](https://developers.openai.com/plugins/deploy/submission), [desktop-only rules](https://developers.openai.com/plugins/deploy/desktop-only), [Awesome rules](https://github.com/punkpeye/awesome-mcp-servers/blob/main/CONTRIBUTING.md), [Docker rules](https://github.com/docker/mcp-registry/blob/main/CONTRIBUTING.md).
 
-PyPI-based registration verifies the published package description contains `mcp-name: io.github.zeitcow/implicit-core`. The immutable published 1.0.0 README lacks that marker. Changing repository Markdown does not change PyPI's release description.
-
-Prepared [server manifest](../mcp/server.prepared.json) matches the current schema. Schema validation is not successful ownership verification or publication. Its package/console executable mapping must be confirmed in the publisher/client rehearsal; the supported local launch is `implicit-mcp`, while the package name is `implicit-ai`.
-
-Exact next steps for the next properly versioned package release, if the owner chooses registry publication:
-
-1. Include `<!-- mcp-name: io.github.zeitcow/implicit-core -->` in the package README.
-2. Apply ordinary release/versioning verification; update both manifest versions to that release. Do not replace 1.0.0 artifacts or publish merely to decorate metadata.
-3. Verify the marker in the live PyPI JSON description.
-4. Install the official mcp-publisher CLI, validate the manifest and authenticate the zeitcow namespace through the current supported GitHub flow.
-5. Confirm that the client launches `implicit-mcp` from `implicit-ai`, publish, and verify the returned registry record before labeling SUBMITTED/LIVE.
-
-MCPB or OCI packaging could provide another route but is not asserted to exist and is not a reason to expand frozen Core.
-
-## Community submission
-
-Submitted for maintainer review in [PR #16015](https://github.com/punkpeye/awesome-mcp-servers/pull/16015). The entry accurately scopes the server to synthetic local state. Submission is not acceptance.
-
-Concise entry:
-
-`[zeitcow/implicit-core](https://github.com/zeitcow/implicit-core) - Python stdio MCP for bounded synthetic experience addressing, selective state materialization, provenance and fixed benchmark/adapter rehearsal. Real environment adapters use the SDK.`
-
-Place it in the relevant developer-tools category in alphabetical order, preserve the repository's entry conventions, disclose the limited synthetic scope in the PR, and wait for maintainer review. No paid placement, bulk submissions or endorsements are involved.
+No paid placement, mass submission, platform endorsement or social/community promotion is implied.

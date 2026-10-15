@@ -128,8 +128,8 @@
     },
     {
       "path": "docs/ECOSYSTEMS.md",
-      "sha256": "6ab53e22533228dc24b2f34ae2de7919191a1ce0ff95d57013cb9af0e10f0cde",
-      "bytes": 3223
+      "sha256": "907becbdf9dfb71ae3e3ab710d086f728ec13445c6770fd1dbc3001b9db60feb",
+      "bytes": 2743
     },
     {
       "path": "docs/FAQ.md",
@@ -148,8 +148,8 @@
     },
     {
       "path": "docs/REGISTRY_SUBMISSIONS.md",
-      "sha256": "3391777d70be1c3dd76b1dac7a7a0f932d56a46fa3a0c96f50ac28dabb418e85",
-      "bytes": 4309
+      "sha256": "1bf1222a05fceda6634b6d808ae233f1d4c6874bb5802751485a89eb9725579b",
+      "bytes": 2788
     },
     {
       "path": "docs/RELEASE_PLAN.md",
@@ -183,8 +183,8 @@
     },
     {
       "path": "llms-full.txt",
-      "sha256": "8e4968b155f9d35c36f1472bcf7db22203c42f9803c2df6ca79b6903c14ee299",
-      "bytes": 68958
+      "sha256": "72c9c62c0ef83fc180e6d2cdd636b1d77755aad4ce555084a1bd30cea0771838",
+      "bytes": 67165
     },
     {
       "path": "llms.txt",
@@ -253,8 +253,8 @@
     },
     {
       "path": "PLUGIN_READINESS.md",
-      "sha256": "1c3010b37adbe872291ccb88e699c2f280caa8fe5d195c4ab10cf227a43793d7",
-      "bytes": 1562
+      "sha256": "2cd05a0a1e3d0befad62acdd89e942c79c81cc6e43b5f08f9221188248a1ce6c",
+      "bytes": 1770
     },
     {
       "path": "pyproject.toml",
@@ -348,8 +348,8 @@
     },
     {
       "path": "site/ecosystems.html",
-      "sha256": "26699bf701bb0038087c6e5704dd360e615b2e487a128a195d410c79fc3fe961",
-      "bytes": 6186
+      "sha256": "93087d4d188fc28daac2f7394947ea9f0c73bffec5e6c73560d5acfdc4259348",
+      "bytes": 5745
     },
     {
       "path": "site/faq.html",
@@ -378,8 +378,8 @@
     },
     {
       "path": "site/llms-full.txt",
-      "sha256": "8e4968b155f9d35c36f1472bcf7db22203c42f9803c2df6ca79b6903c14ee299",
-      "bytes": 68958
+      "sha256": "72c9c62c0ef83fc180e6d2cdd636b1d77755aad4ce555084a1bd30cea0771838",
+      "bytes": 67165
     },
     {
       "path": "site/llms.txt",
@@ -468,8 +468,8 @@
     },
     {
       "path": "site/markdown/docs/ECOSYSTEMS.md",
-      "sha256": "6ab53e22533228dc24b2f34ae2de7919191a1ce0ff95d57013cb9af0e10f0cde",
-      "bytes": 3223
+      "sha256": "907becbdf9dfb71ae3e3ab710d086f728ec13445c6770fd1dbc3001b9db60feb",
+      "bytes": 2743
     },
     {
       "path": "site/markdown/docs/FAQ.md",
@@ -488,8 +488,8 @@
     },
     {
       "path": "site/markdown/docs/REGISTRY_SUBMISSIONS.md",
-      "sha256": "3391777d70be1c3dd76b1dac7a7a0f932d56a46fa3a0c96f50ac28dabb418e85",
-      "bytes": 4309
+      "sha256": "1bf1222a05fceda6634b6d808ae233f1d4c6874bb5802751485a89eb9725579b",
+      "bytes": 2788
     },
     {
       "path": "site/markdown/docs/RELEASE_PLAN.md",
@@ -538,8 +538,8 @@
     },
     {
       "path": "site/markdown/PLUGIN_READINESS.md",
-      "sha256": "1c3010b37adbe872291ccb88e699c2f280caa8fe5d195c4ab10cf227a43793d7",
-      "bytes": 1562
+      "sha256": "2cd05a0a1e3d0befad62acdd89e942c79c81cc6e43b5f08f9221188248a1ce6c",
+      "bytes": 1770
     },
     {
       "path": "site/markdown/QUICKSTART.md",
@@ -578,8 +578,8 @@
     },
     {
       "path": "site/plugin_readiness.html",
-      "sha256": "a2d626b77622b05c51b370c95cd6730209e7b9406b08d759b98999604a8acd43",
-      "bytes": 4078
+      "sha256": "22084806c8f2a665d7b9f18ed5bf4381fac918a5f7517229a7c8c8bfa503940d",
+      "bytes": 4308
     },
     {
       "path": "site/quickstart.html",
@@ -588,8 +588,8 @@
     },
     {
       "path": "site/registry_submissions.html",
-      "sha256": "0699aafa8046c7e19702519b50947924b68829317f2dc05ed164b08a1b96f1e9",
-      "bytes": 7476
+      "sha256": "29e8763ed3fa626db7c946ea93f30defd4338c477334ce50ed3e101f2e33f5d5",
+      "bytes": 5758
     },
     {
       "path": "site/release_plan.html",
@@ -838,8 +838,8 @@
     },
     {
       "path": "plugins/implicit-integration/plugin.json",
-      "sha256": "90b6e5dd630b30d8d3b9ddc2531fe1ebd756d51b782938d58e2493190d37d232",
-      "bytes": 1621
+      "sha256": "25eaacc8e853495c4f5a61c23f2bcb3d6dc5428449cd8691fc688b7a8cf9f536",
+      "bytes": 1660
     },
     {
       "path": "plugins/implicit-integration/README.md",

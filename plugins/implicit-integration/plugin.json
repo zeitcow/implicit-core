@@ -24,7 +24,8 @@
         "defaultPrompt": "Plan an Implicit adapter for my existing agent environment.",
         "logo": "./assets/implicit-icon.svg",
         "composerIcon": "./assets/implicit-icon.svg"
-      }
+      },
+      "requires_local_executor": true
     }
   }
 }
