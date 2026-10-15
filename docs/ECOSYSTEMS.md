@@ -9,13 +9,13 @@ Reviewed 2026-10-15. Install Core with `pip install implicit-ai`. LIVE identifie
 | OpenAI desktop integration skill | OWNER ACTION REQUIRED | Separate skills-only package requires local execution. Portal authentication, verified identity and review remain necessary. |
 | OpenAI local MCP plugin | OWNER ACTION REQUIRED | [Desktop-only rules](https://developers.openai.com/plugins/deploy/desktop-only) require approved-partner organization allowlisting. |
 | ChatGPT web custom MCP | NOT APPLICABLE | This release supplies local stdio, with no public HTTP endpoint. |
-| Glama | LIVE | [Accepted local listing](https://glama.ai/mcp/servers/zeitcow/implicit-core); [all eight tool schemas](https://glama.ai/mcp/servers/zeitcow/implicit-core/schema) exposed by successful 1.0.1 build. License A, maintenance A; quality evaluation queued. |
+| Glama | LIVE | [Accepted local listing](https://glama.ai/mcp/servers/zeitcow/implicit-core); [all eight tool schemas](https://glama.ai/mcp/servers/zeitcow/implicit-core/schema) exposed by successful 1.0.1 build. License A, maintenance A and completed quality A (TDQS 3.7/5 across eight tools). |
 | Smithery | LIVE | [Local MCPB listing](https://smithery.ai/servers/zeitcow/implicit-core), version 1.0.0 and eight tools. |
 | Cline Marketplace | SUBMITTED | [Issue #3016](https://github.com/cline/mcp-marketplace/issues/3016), with actual clean Cline CLI setup and all eight tools verified. Review pending. |
 | Cursor Directory | LIVE | [Published listing](https://cursor.directory/plugins/implicit-core), local stdio with Python installation prerequisites. No verified badge claimed. |
 | Claude Desktop extension directory | SUBMITTED | Official form confirmed the response was recorded. Public MCPB attached; Python/Apache-2.0 scope disclosed. Directory review pending. |
 | Official MCP Registry | LIVE | `io.github.zeitcow/implicit-core`, version 1.0.0, local stdio MCPB. |
-| Awesome MCP Servers | AWAITING REVIEW | [PR #16015](https://github.com/punkpeye/awesome-mcp-servers/pull/16015). |
+| Awesome MCP Servers | READY FOR MAINTAINER MERGE | [PR #16015](https://github.com/punkpeye/awesome-mcp-servers/pull/16015). |
 | Docker MCP Registry | AWAITING REVIEW | [PR #5560](https://github.com/docker/mcp-registry/pull/5560). |
 
 Install the integration skill:
