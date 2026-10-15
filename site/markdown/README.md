@@ -31,7 +31,7 @@ implicit benchmark
 
 The public toy compares eager and selective serialized state, verifies the shipping result and prints a provenance hash. Its output is its own workload measurement.
 
-The distribution is `implicit-ai`; the import is `implicit`. Use an isolated environment because the unrelated `implicit` recommendation library shares that import namespace. [Installation](INSTALL.md) includes Windows setup and verified [release artifacts](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0).
+The distribution is `implicit-ai`; the import is `implicit`. Use an isolated environment because the unrelated `implicit` recommendation library shares that import namespace. [Installation](INSTALL.md) includes Windows setup and verified [release artifacts](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.1).
 
 ## Measured evidence and its limits
 
@@ -83,4 +83,4 @@ The package includes eight bounded local stdio MCP tools for synthetic addressin
 
 Demo, benchmark and local MCP make no outbound connections. Python adapters are trusted application code and may use your services. There is no product telemetry. Journals may retain application data; see [SECURITY.md](SECURITY.md).
 
-Implicit Core 1.0.0 is licensed under [Apache-2.0](LICENSE). [Licensing inventory](LICENSING_REVIEW.md) and [NOTICE](NOTICE) describe included assets.
+Implicit Core 1.0.1 is licensed under [Apache-2.0](LICENSE). [Licensing inventory](LICENSING_REVIEW.md) and [NOTICE](NOTICE) describe included assets.

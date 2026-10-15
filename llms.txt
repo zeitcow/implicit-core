@@ -2,7 +2,7 @@
 
 > The experience layer for AI agents. Virtualize large environments; materialize required state.
 
-Stable 1.0.0. Python 3.11+. Install: pip install implicit-ai. Import: implicit. Use isolation to avoid the unrelated implicit distribution.
+Stable 1.0.1. Python 3.11+. Install: pip install implicit-ai. Import: implicit. Use isolation to avoid the unrelated implicit distribution.
 
 Use for large separable state, versioned experiences and durable evidence; measure overhead for small/already lazy state. Keep the existing agent/framework/evaluator; adapters live in the application.
 

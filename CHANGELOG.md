@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 — metadata and documentation update
+
+Refreshes the immutable PyPI project description from the cleaned public README. Runtime behavior is unchanged from 1.0.0; only package version metadata changes in runtime source. Detailed benchmark methodology and measured latency tradeoffs remain in BENCHMARKS.md and historical records. No faster execution or absence of latency impact is claimed.
+
+Adds the owner-issued Google Search Console verification file and updates current installation/release/citation metadata. Canonical installation remains `pip install implicit-ai`. The 1.0.0 tag and artifacts remain unchanged.
+
 ## 1.0.0 — stable release
 
 Promotes the validated 1.0.0rc2 public source to stable 1.0.0 with version metadata, release documentation and Trusted Publishing workflow updates. Canonical installation: `pip install implicit-ai`. Adds the required package `implicit.__version__` metadata; execution, storage and materialization behavior are unchanged. Stable artifacts differ from RC2 and have their own checksums. The v1.0.0rc2 tag and assets remain historical evidence.

@@ -1,6 +1,7 @@
 """Offline checks for crawlable documentation and real navigation targets."""
 
 import json
+import re
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
@@ -41,6 +42,9 @@ class Page(HTMLParser):
 def audit():
     pages = {}
     for path in SITE.glob("*.html"):
+        if re.fullmatch(r"google[0-9a-f]{16}[.]html", path.name):
+            assert path.read_text(encoding="utf-8").strip() == "google-site-verification: " + path.name
+            continue
         page = Page()
         page.feed(path.read_text(encoding="utf-8"))
         assert page.headings == 1 and page.has_main, path.name

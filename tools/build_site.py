@@ -43,7 +43,7 @@ DOCS = [
 DESCRIPTIONS = {
     "README.md": "Implicit is the experience layer for AI agents. Virtualize large environments and materialize only required state. Install implicit-ai.",
     "BENCHMARKS.md": "Implicit rc1 methodology and results: 155/155 equivalent cases; 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction.",
-    "INSTALL.md": "Install Implicit Core 1.0.0 from PyPI with pip install implicit-ai. Python 3.11+, isolated environment, zero runtime dependencies.",
+    "INSTALL.md": "Install Implicit Core 1.0.1 from PyPI with pip install implicit-ai. Python 3.11+, isolated environment, zero runtime dependencies.",
     "docs/MCP_QUICKSTART.md": "Connect a coding agent to Implicit's eight bounded local MCP tools. PyPI installation and current Codex, Claude Code, VS Code and Cursor configuration.",
     "docs/AGENT_INTEGRATION.md": "Keep your agent and native evaluator. Build an Implicit adapter and compare eager versus selective state with equivalence, bytes and complete latency.",
 }
@@ -84,7 +84,7 @@ def build(canonical):
         "@type": "SoftwareApplication",
         "name": "Implicit",
         "description": DESCRIPTIONS["README.md"],
-        "softwareVersion": "1.0.0",
+        "softwareVersion": "1.0.1",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Python 3.11+",
         "license": "https://www.apache.org/licenses/LICENSE-2.0",
@@ -96,7 +96,7 @@ def build(canonical):
         description = DESCRIPTIONS.get(
             name,
             title
-            + " for Implicit Core 1.0.0: experience virtualization, selective state and measured integration.",
+            + " for Implicit Core 1.0.1: experience virtualization, selective state and measured integration.",
         )
         tokens = parser.parse(text)
         slugs = {}
@@ -130,7 +130,7 @@ def build(canonical):
                 "name": title,
                 "url": url,
                 "description": description,
-                "about": {"@type": "SoftwareApplication", "name": "Implicit", "softwareVersion": "1.0.0"},
+                "about": {"@type": "SoftwareApplication", "name": "Implicit", "softwareVersion": "1.0.1"},
             }
         )
         escaped_title = html.escape(title + " | Implicit")
@@ -142,7 +142,7 @@ def build(canonical):
             f'<meta property="og:type" content="website"><meta property="og:site_name" content="Implicit"><meta property="og:url" content="{url}">'
             f'<style>{style}</style><script type="application/ld+json">{json.dumps(metadata)}</script></head>'
             f'<body><nav aria-label="Documentation">{nav}</nav><main>{content}</main>'
-            f'<footer>Implicit Core 1.0.0. <a href="markdown/{name}">Source Markdown</a>. Apache-2.0.</footer></body></html>\n'
+            f'<footer>Implicit Core 1.0.1. <a href="markdown/{name}">Source Markdown</a>. Apache-2.0.</footer></body></html>\n'
         )
         (target / filename).write_text(doc, encoding="utf-8", newline="\n")
         mirror = target / "markdown" / name
@@ -176,7 +176,7 @@ def build(canonical):
     )
     llms = (
         "# Implicit\n\n> The experience layer for AI agents. Virtualize large environments; materialize required state.\n\n"
-        "Stable 1.0.0. Python 3.11+. Install: pip install implicit-ai. Import: implicit. Use isolation to avoid the unrelated implicit distribution.\n\n"
+        "Stable 1.0.1. Python 3.11+. Install: pip install implicit-ai. Import: implicit. Use isolation to avoid the unrelated implicit distribution.\n\n"
         "Use for large separable state, versioned experiences and durable evidence; measure overhead for small/already lazy state. Keep the existing agent/framework/evaluator; adapters live in the application.\n\n"
         "Historical rc1: 155/155 equivalent cases, 93.88% aggregate/94.40% mean/99.55% median retained serialized/materialized-state reduction. Bytes are not RAM. See the benchmark methodology and results for measured latency tradeoffs. Restricted native replay assets are not shipped.\n\n"
         "MCP is local stdio with eight bounded synthetic tools. Custom adapters use SDK tests. Repository plugin source is separate from public directory acceptance. No hosted endpoint is claimed.\n\n## Start here\n\n"

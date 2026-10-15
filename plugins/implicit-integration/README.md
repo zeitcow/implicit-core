@@ -1,6 +1,6 @@
 # Implicit Integration plugin
 
-Guide adapter integration into an existing Python agent environment and compare eager and selective materialization with measured evidence. This skill requires a local coding environment. Install Implicit separately with `pip install implicit-ai` in an isolated environment; verify version 1.0.0.
+Guide adapter integration into an existing Python agent environment and compare eager and selective materialization with measured evidence. This skill requires a local coding environment. Install Implicit separately with `pip install implicit-ai` in an isolated environment; verify version 1.0.1.
 
 Add this public repository marketplace and install the skill:
 

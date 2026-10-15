@@ -4,7 +4,7 @@ Implicit is the experience layer for AI agents. Use it when an environment has l
 
 ## Install Implicit
 
-Prompt: “Install Implicit in a fresh environment with `pip install implicit-ai`. Verify version 1.0.0, import `implicit`, and run `implicit --help`, `implicit demo` and `implicit benchmark`. Report the package/version and toy scope. Avoid the unrelated `implicit` distribution.”
+Prompt: “Install Implicit in a fresh environment with `pip install implicit-ai`. Verify version 1.0.1, import `implicit`, and run `implicit --help`, `implicit demo` and `implicit benchmark`. Report the package/version and toy scope. Avoid the unrelated `implicit` distribution.”
 
 ## Integrate this environment
 

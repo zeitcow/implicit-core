@@ -31,7 +31,7 @@ implicit benchmark
 
 The public toy compares eager and selective serialized state, verifies the shipping result and prints a provenance hash. Its output is its own workload measurement.
 
-The distribution is `implicit-ai`; the import is `implicit`. Use an isolated environment because the unrelated `implicit` recommendation library shares that import namespace. [Installation](INSTALL.md) includes Windows setup and verified [release artifacts](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0).
+The distribution is `implicit-ai`; the import is `implicit`. Use an isolated environment because the unrelated `implicit` recommendation library shares that import namespace. [Installation](INSTALL.md) includes Windows setup and verified [release artifacts](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.1).
 
 ## Measured evidence and its limits
 
@@ -83,7 +83,7 @@ The package includes eight bounded local stdio MCP tools for synthetic addressin
 
 Demo, benchmark and local MCP make no outbound connections. Python adapters are trusted application code and may use your services. There is no product telemetry. Journals may retain application data; see [SECURITY.md](SECURITY.md).
 
-Implicit Core 1.0.0 is licensed under [Apache-2.0](LICENSE). [Licensing inventory](LICENSING_REVIEW.md) and [NOTICE](NOTICE) describe included assets.
+Implicit Core 1.0.1 is licensed under [Apache-2.0](LICENSE). [Licensing inventory](LICENSING_REVIEW.md) and [NOTICE](NOTICE) describe included assets.
 
 
 # Quickstart
@@ -118,7 +118,7 @@ Start local MCP with `implicit-mcp`; it waits for the client's stdio handshake. 
 
 # Installation
 
-Implicit Core 1.0.0 is the stable initial release, licensed under Apache-2.0. Python 3.11+ is required; Core needs no runtime dependencies. Use a dedicated virtual environment:
+Implicit Core 1.0.1 is a metadata/documentation update to 1.0.0 with unchanged runtime behavior. It is licensed under Apache-2.0. Python 3.11+ is required; Core needs no runtime dependencies. Use a dedicated virtual environment:
 
 ```console
 pip install implicit-ai
@@ -131,12 +131,12 @@ The distribution is `implicit-ai`; the import is `implicit`. Avoid the unrelated
 
 ## Manual artifact or source installation
 
-The [GitHub Release](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.0) supplies verified wheel and sdist assets. Install a downloaded wheel with `python -m pip install --no-index PATH_TO_WHEEL`. From the public source root or an extracted sdist:
+The [GitHub Release](https://github.com/zeitcow/implicit-core/releases/tag/v1.0.1) supplies verified wheel and sdist assets. Install a downloaded wheel with `python -m pip install --no-index PATH_TO_WHEEL`. From the public source root or an extracted sdist:
 
 ```console
 python -m pip install hatchling
 python -m hatchling build
-python -m pip install --no-index dist/implicit_ai-1.0.0-py3-none-any.whl
+python -m pip install --no-index dist/implicit_ai-1.0.1-py3-none-any.whl
 ```
 
 Development checks require the dev extra (`python -m pip install ".[dev]"`). Package builds need Hatchling; neither is a Core runtime dependency. Research dependencies are absent from public metadata. Uninstalling does not erase journals or content; see SECURITY.md. Completed platform validation is recorded in release evidence; a CI configuration alone does not establish a completed run.
@@ -277,6 +277,12 @@ dist/ is generated; benchmark facts are immutable. Behavior changes require a ne
 
 
 # Changelog
+
+## 1.0.1 — metadata and documentation update
+
+Refreshes the immutable PyPI project description from the cleaned public README. Runtime behavior is unchanged from 1.0.0; only package version metadata changes in runtime source. Detailed benchmark methodology and measured latency tradeoffs remain in BENCHMARKS.md and historical records. No faster execution or absence of latency impact is claimed.
+
+Adds the owner-issued Google Search Console verification file and updates current installation/release/citation metadata. Canonical installation remains `pip install implicit-ai`. The 1.0.0 tag and artifacts remain unchanged.
 
 ## 1.0.0 — stable release
 
@@ -492,7 +498,7 @@ Implicit is the experience layer for AI agents. Use it when an environment has l
 
 ## Install Implicit
 
-Prompt: “Install Implicit in a fresh environment with `pip install implicit-ai`. Verify version 1.0.0, import `implicit`, and run `implicit --help`, `implicit demo` and `implicit benchmark`. Report the package/version and toy scope. Avoid the unrelated `implicit` distribution.”
+Prompt: “Install Implicit in a fresh environment with `pip install implicit-ai`. Verify version 1.0.1, import `implicit`, and run `implicit --help`, `implicit demo` and `implicit benchmark`. Report the package/version and toy scope. Avoid the unrelated `implicit` distribution.”
 
 ## Integrate this environment
 
