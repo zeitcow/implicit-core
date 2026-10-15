@@ -358,8 +358,8 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "732a309da0dc77cebe67b8813fceacf1f01f8ad4d83b07b0361e23fa9a010968",
-      "bytes": 8926
+      "sha256": "6c169e807374aa4e31f3e7cb5ff22785e6187ab39e316f692089080694c82166",
+      "bytes": 8996
     },
     {
       "path": "site/install.html",
@@ -783,8 +783,8 @@
     },
     {
       "path": "tools/build_site.py",
-      "sha256": "61fc45dc00dd476e42ea218e1bee8be0e653c2503aea888689dbf775118b9c21",
-      "bytes": 10508
+      "sha256": "10ec0ee2548450cc0f624318941f7269299405934ebc83b620d4d8413569018a",
+      "bytes": 10649
     },
     {
       "path": "tools/runtime-requirements.txt",

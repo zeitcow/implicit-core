@@ -135,9 +135,10 @@ def build(canonical):
         )
         escaped_title = html.escape(title + " | Implicit")
         escaped_description = html.escape(description, quote=True)
+        verification = '<meta name="msvalidate.01" content="96D7028F972DFFCAE93010960B863BE5">' if name == "README.md" else ""
         doc = (
             f'<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            f'<title>{escaped_title}</title><meta name="description" content="{escaped_description}"><link rel="canonical" href="{url}">'
+            f'{verification}<title>{escaped_title}</title><meta name="description" content="{escaped_description}"><link rel="canonical" href="{url}">'
             f'<meta property="og:title" content="{escaped_title}"><meta property="og:description" content="{escaped_description}">'
             f'<meta property="og:type" content="website"><meta property="og:site_name" content="Implicit"><meta property="og:url" content="{url}">'
             f'<style>{style}</style><script type="application/ld+json">{json.dumps(metadata)}</script></head>'
