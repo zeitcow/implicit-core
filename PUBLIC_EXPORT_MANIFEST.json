@@ -188,8 +188,8 @@
     },
     {
       "path": "docs/ECOSYSTEMS.md",
-      "sha256": "907becbdf9dfb71ae3e3ab710d086f728ec13445c6770fd1dbc3001b9db60feb",
-      "bytes": 2743
+      "sha256": "9a48ed8ed88ebd9575f2d784c6841658fea58a5c0c35ad953edeed9aedd0309e",
+      "bytes": 3428
     },
     {
       "path": "docs/FAQ.md",
@@ -208,8 +208,8 @@
     },
     {
       "path": "docs/REGISTRY_SUBMISSIONS.md",
-      "sha256": "1bf1222a05fceda6634b6d808ae233f1d4c6874bb5802751485a89eb9725579b",
-      "bytes": 2788
+      "sha256": "5932808a0a461c6a6f056f96bbbf8c00b91d6a6f6c8df47a354f189f6d4caa54",
+      "bytes": 3460
     },
     {
       "path": "docs/RELEASE_PLAN.md",
@@ -233,8 +233,8 @@
     },
     {
       "path": "llms-full.txt",
-      "sha256": "72c9c62c0ef83fc180e6d2cdd636b1d77755aad4ce555084a1bd30cea0771838",
-      "bytes": 67165
+      "sha256": "0707f8b62e5c637df9b6ca5756a5b3472f5bb6f212a02387c80a7685adffd3b0",
+      "bytes": 68522
     },
     {
       "path": "llms-install.md",
@@ -423,8 +423,8 @@
     },
     {
       "path": "site/ecosystems.html",
-      "sha256": "93087d4d188fc28daac2f7394947ea9f0c73bffec5e6c73560d5acfdc4259348",
-      "bytes": 5745
+      "sha256": "9d88bf0c14ad2bc7f27aaf6313facfd9b8bb6b3d4c7bfe4a63094f820574e6d6",
+      "bytes": 6553
     },
     {
       "path": "site/faq.html",
@@ -458,8 +458,8 @@
     },
     {
       "path": "site/llms-full.txt",
-      "sha256": "72c9c62c0ef83fc180e6d2cdd636b1d77755aad4ce555084a1bd30cea0771838",
-      "bytes": 67165
+      "sha256": "0707f8b62e5c637df9b6ca5756a5b3472f5bb6f212a02387c80a7685adffd3b0",
+      "bytes": 68522
     },
     {
       "path": "site/llms.txt",
@@ -598,8 +598,8 @@
     },
     {
       "path": "site/markdown/docs/ECOSYSTEMS.md",
-      "sha256": "907becbdf9dfb71ae3e3ab710d086f728ec13445c6770fd1dbc3001b9db60feb",
-      "bytes": 2743
+      "sha256": "9a48ed8ed88ebd9575f2d784c6841658fea58a5c0c35ad953edeed9aedd0309e",
+      "bytes": 3428
     },
     {
       "path": "site/markdown/docs/FAQ.md",
@@ -618,8 +618,8 @@
     },
     {
       "path": "site/markdown/docs/REGISTRY_SUBMISSIONS.md",
-      "sha256": "1bf1222a05fceda6634b6d808ae233f1d4c6874bb5802751485a89eb9725579b",
-      "bytes": 2788
+      "sha256": "5932808a0a461c6a6f056f96bbbf8c00b91d6a6f6c8df47a354f189f6d4caa54",
+      "bytes": 3460
     },
     {
       "path": "site/markdown/docs/RELEASE_PLAN.md",
@@ -668,8 +668,8 @@
     },
     {
       "path": "site/registry_submissions.html",
-      "sha256": "29e8763ed3fa626db7c946ea93f30defd4338c477334ce50ed3e101f2e33f5d5",
-      "bytes": 5758
+      "sha256": "c1d7468d167b8fd42f5a32648757e49600792480b762b08490bd2e2023fec23a",
+      "bytes": 6553
     },
     {
       "path": "site/release_plan.html",
