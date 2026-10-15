@@ -11,3 +11,15 @@ abstract: "Experience virtualization and selective materialization. Benchmark fa
 authors:
   - family-names: Martinez
     given-names: Jean C.
+
+# This DOI archives stable 1.0.0; it is not the DOI of the current 1.0.1 package.
+references:
+  - type: software
+    title: "Implicit Core"
+    version: "1.0.0"
+    date-released: 2026-10-08
+    doi: "10.5281/zenodo.23402313"
+    url: "https://zenodo.org/records/23402313"
+    authors:
+      - family-names: Martinez
+        given-names: Jean C.
