@@ -6,8 +6,8 @@ Reviewed 2026-10-15. Install Core with `pip install implicit-ai`. LIVE identifie
 | --- | --- | --- |
 | PyPI | LIVE | 1.0.1 metadata/documentation update preserves 1.0.0 runtime behavior. SDK, CLI and eight local MCP tools. |
 | Codex repository marketplace | LIVE | Public Git marketplace installation and enabled integration skill verified in a fresh profile. Python installation remains separate. |
-| OpenAI desktop integration skill | OWNER ACTION REQUIRED | Separate skills-only package requires local execution. Portal authentication, verified identity and review remain necessary. |
-| OpenAI local MCP plugin | OWNER ACTION REQUIRED | [Desktop-only rules](https://developers.openai.com/plugins/deploy/desktop-only) require approved-partner organization allowlisting. |
+| OpenAI desktop integration skill | NOT APPLICABLE | Verified account uploaded a 1.0.1 draft. The portal currently blocks further skills-only submissions; no review submission or directory publication is claimed. Repository marketplace remains LIVE. |
+| OpenAI local MCP plugin | NOT APPLICABLE | [Desktop-only rules](https://developers.openai.com/plugins/deploy/desktop-only) require approved-partner organization allowlisting, which is not available in this submission scope. No hosted redesign or unapproved submission. |
 | ChatGPT web custom MCP | NOT APPLICABLE | This release supplies local stdio, with no public HTTP endpoint. |
 | Glama | LIVE | [Accepted local listing](https://glama.ai/mcp/servers/zeitcow/implicit-core); [all eight tool schemas](https://glama.ai/mcp/servers/zeitcow/implicit-core/schema) exposed by successful 1.0.1 build. License A, maintenance A and completed quality A (TDQS 3.7/5 across eight tools). |
 | Smithery | LIVE | [Local MCPB listing](https://smithery.ai/servers/zeitcow/implicit-core), version 1.0.0 and eight tools. |
