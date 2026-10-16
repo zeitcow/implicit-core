@@ -1,6 +1,6 @@
 # MCP quickstart
 
-Install stable Core in a fresh Python 3.11+ environment:
+Install current stable Implicit Core **1.0.1** in a fresh Python 3.11+ environment:
 
 ```console
 pip install implicit-ai

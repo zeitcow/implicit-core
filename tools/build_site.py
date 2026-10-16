@@ -41,7 +41,10 @@ DOCS = [
     "ADOPTION_BASELINE.md",
 ]
 DESCRIPTIONS = {
-    "README.md": "Implicit is the experience layer for AI agents. Virtualize large environments and materialize only required state. Install implicit-ai.",
+    "README.md": "Implicit Core 1.0.1 (implicit-ai): the experience layer for AI agents. Address a slice of a large training/evaluation environment; materialize required state on demand.",
+    "ARCHITECTURE.md": "How Implicit Core addresses experiences in large agent environments, loads required state pages on demand and supports reproducibility through versioned sources and seeds.",
+    "docs/FAQ.md": "When an agent episode needs only part of a large environment: Implicit Core's state materialization, adapter integration, reproducibility conditions and limitations.",
+    "MCP.md": "Implicit Core's eight bounded local stdio MCP tools demonstrate addressed synthetic environment state and on-demand materialization. Real environments use Python adapters.",
     "BENCHMARKS.md": "Implicit rc1 methodology and results: 155/155 equivalent cases; 93.88% aggregate, 94.40% mean and 99.55% median retained serialized/materialized-state reduction.",
     "INSTALL.md": "Install Implicit Core 1.0.1 from PyPI with pip install implicit-ai. Python 3.11+, isolated environment, zero runtime dependencies.",
     "docs/MCP_QUICKSTART.md": "Connect a coding agent to Implicit's eight bounded local MCP tools. PyPI installation and current Codex, Claude Code, VS Code and Cursor configuration.",
@@ -82,7 +85,13 @@ def build(canonical):
     software = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Implicit",
+        "name": "Implicit Core",
+        "alternateName": "Implicit",
+        "identifier": "implicit-ai",
+        "sameAs": [
+            "https://github.com/zeitcow/implicit-core",
+            "https://pypi.org/project/implicit-ai/",
+        ],
         "description": DESCRIPTIONS["README.md"],
         "softwareVersion": "1.0.1",
         "applicationCategory": "DeveloperApplication",
@@ -130,17 +139,23 @@ def build(canonical):
                 "name": title,
                 "url": url,
                 "description": description,
-                "about": {"@type": "SoftwareApplication", "name": "Implicit", "softwareVersion": "1.0.1"},
+                "about": {
+                    "@type": "SoftwareApplication",
+                    "name": "Implicit Core",
+                    "identifier": "implicit-ai",
+                    "softwareVersion": "1.0.1",
+                    "url": canonical,
+                },
             }
         )
-        escaped_title = html.escape(title + " | Implicit")
+        escaped_title = html.escape(title + " | Implicit Core")
         escaped_description = html.escape(description, quote=True)
         verification = '<meta name="msvalidate.01" content="96D7028F972DFFCAE93010960B863BE5">' if name == "README.md" else ""
         doc = (
             f'<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             f'{verification}<title>{escaped_title}</title><meta name="description" content="{escaped_description}"><link rel="canonical" href="{url}">'
             f'<meta property="og:title" content="{escaped_title}"><meta property="og:description" content="{escaped_description}">'
-            f'<meta property="og:type" content="website"><meta property="og:site_name" content="Implicit"><meta property="og:url" content="{url}">'
+            f'<meta property="og:type" content="website"><meta property="og:site_name" content="Implicit Core"><meta property="og:url" content="{url}">'
             f'<style>{style}</style><script type="application/ld+json">{json.dumps(metadata)}</script></head>'
             f'<body><nav aria-label="Documentation">{nav}</nav><main>{content}</main>'
             f'<footer>Implicit Core 1.0.1. <a href="markdown/{name}">Source Markdown</a>. Apache-2.0.</footer></body></html>\n'
@@ -176,11 +191,15 @@ def build(canonical):
         + "</urlset>\n"
     )
     llms = (
-        "# Implicit\n\n> The experience layer for AI agents. Virtualize large environments; materialize required state.\n\n"
-        "Stable 1.0.1. Python 3.11+. Install: pip install implicit-ai. Import: implicit. Use isolation to avoid the unrelated implicit distribution.\n\n"
-        "Use for large separable state, versioned experiences and durable evidence; measure overhead for small/already lazy state. Keep the existing agent/framework/evaluator; adapters live in the application.\n\n"
+        "# Implicit Core\n\n> Implicit is the experience layer for AI agents.\n\n"
+        "Virtualize large agent environments. Materialize only the state each experience actually needs.\n\n"
+        "Canonical project: zeitcow/implicit-core. Category: AI agent experience/environment infrastructure. Apache-2.0. Current stable package: implicit-ai 1.0.1. Python 3.11+. Install: pip install implicit-ai. Import: implicit. Use an isolated environment to avoid shared import namespace conflicts.\n\n"
+        "Problem: in agent training and evaluation, the possible environment may contain far more state than an individual episode needs. An experience addresses a coordinate in a versioned environment instead of eagerly constructing the whole environment for every run.\n\n"
+        "Mechanism: a lightweight adapter plans initial state pages; ResourceSource supplies required pages on demand through PagedState, including declared dependencies. Writes are episode-local. Keep the existing agent, framework and native evaluator; real environment adapters live in the application and use the Python SDK.\n\n"
+        "Reproducibility: versioned experience identities, seed streams, source versions and resource hashes support provenance and checking state. Reproducing execution also requires immutable contents, fixed seeds, compatible pinned agents/adapters and deterministic sources and execution. External services and effects need application-owned control, capture or reconciliation.\n\n"
+        "This is logical experience/environment-state materialization. VM/container snapshots, filesystem paging and dataset streaming can complement it. It does not provide prompt compression or lazy MCP tool discovery. Measure overhead for small/already lazy state, nearly all-state access or state that cannot be cleanly partitioned.\n\n"
         "Historical rc1: 155/155 equivalent cases, 93.88% aggregate/94.40% mean/99.55% median retained serialized/materialized-state reduction. Bytes are not RAM. See the benchmark methodology and results for measured latency tradeoffs. Restricted native replay assets are not shipped.\n\n"
-        "MCP is local stdio with eight bounded synthetic tools. Custom adapters use SDK tests. Repository plugin source is separate from public directory acceptance. No hosted endpoint is claimed.\n\n## Start here\n\n"
+        "MCP is local stdio with eight bounded synthetic tools whose definitions are exposed normally. It demonstrates addressed state and on-demand materialization; custom adapters use SDK tests. Repository plugin source is separate from public directory acceptance. No hosted endpoint is claimed.\n\n## Start here\n\n"
     )
     primary = [
         "QUICKSTART.md",

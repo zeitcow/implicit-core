@@ -1,8 +1,10 @@
-# Implicit
+# Implicit Core
 
-**The experience layer for AI agents.**
+**Implicit is the experience layer for AI agents.**
 
 Virtualize large agent environments. Materialize only the state each experience actually needs.
+
+Implicit Core is AI agent experience/environment infrastructure from [zeitcow/implicit-core](https://github.com/zeitcow/implicit-core), distributed as **implicit-ai** under Apache-2.0. Current stable: **1.0.1**.
 
 ```console
 pip install implicit-ai
@@ -12,9 +14,13 @@ pip install implicit-ai
 
 ## Why virtualize an experience?
 
-Large agent environments often contain far more possible state than one interaction needs. A warehouse may contain millions of orders; processing one order needs only its inventory and policy records. Implicit keeps versioned addresses and loads pages when your adapter requests them.
+In agent training and evaluation, the possible environment can be much larger than any individual episode. A warehouse may contain millions of orders; processing one order needs only its inventory and policy records. Instead of eagerly constructing the complete environment for every episode, an Implicit experience addresses a coordinate in a versioned environment. Your adapter supplies the initial pages and loads further required state on demand, including declared dependencies.
 
 An experience is one addressable interaction: instruction, required state, execution and evaluation. The address identifies the environment version and coordinate. Your adapter chooses pages; your existing agent executes; your native evaluator verifies the result. Core records execution state, provenance and explicit recovery.
+
+Immutable source versions, fixed seeds and deterministic adapters, state sources and agents support reproducible episodes. External services and effects need application-owned control or reconciliation; Implicit does not make arbitrary programs deterministic. [Architecture](ARCHITECTURE.md) explains the conditions.
+
+This works at the logical experience/environment-state layer. VM or container snapshots can supply an execution sandbox; Implicit determines which addressed state is needed inside an experience. [FAQ](docs/FAQ.md) distinguishes this from filesystem paging, dataset streaming, prompt compression and lazy MCP tool discovery.
 
 Use Implicit for large separable state, repeatable identities, expensive environment construction or durable execution evidence. Measure overhead for small, already lazy or mostly accessed environments.
 

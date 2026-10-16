@@ -1,14 +1,22 @@
-# Implicit
+# Implicit Core
 
-> The experience layer for AI agents. Virtualize large environments; materialize required state.
+> Implicit is the experience layer for AI agents.
 
-Stable 1.0.1. Python 3.11+. Install: pip install implicit-ai. Import: implicit. Use isolation to avoid the unrelated implicit distribution.
+Virtualize large agent environments. Materialize only the state each experience actually needs.
 
-Use for large separable state, versioned experiences and durable evidence; measure overhead for small/already lazy state. Keep the existing agent/framework/evaluator; adapters live in the application.
+Canonical project: zeitcow/implicit-core. Category: AI agent experience/environment infrastructure. Apache-2.0. Current stable package: implicit-ai 1.0.1. Python 3.11+. Install: pip install implicit-ai. Import: implicit. Use an isolated environment to avoid shared import namespace conflicts.
+
+Problem: in agent training and evaluation, the possible environment may contain far more state than an individual episode needs. An experience addresses a coordinate in a versioned environment instead of eagerly constructing the whole environment for every run.
+
+Mechanism: a lightweight adapter plans initial state pages; ResourceSource supplies required pages on demand through PagedState, including declared dependencies. Writes are episode-local. Keep the existing agent, framework and native evaluator; real environment adapters live in the application and use the Python SDK.
+
+Reproducibility: versioned experience identities, seed streams, source versions and resource hashes support provenance and checking state. Reproducing execution also requires immutable contents, fixed seeds, compatible pinned agents/adapters and deterministic sources and execution. External services and effects need application-owned control, capture or reconciliation.
+
+This is logical experience/environment-state materialization. VM/container snapshots, filesystem paging and dataset streaming can complement it. It does not provide prompt compression or lazy MCP tool discovery. Measure overhead for small/already lazy state, nearly all-state access or state that cannot be cleanly partitioned.
 
 Historical rc1: 155/155 equivalent cases, 93.88% aggregate/94.40% mean/99.55% median retained serialized/materialized-state reduction. Bytes are not RAM. See the benchmark methodology and results for measured latency tradeoffs. Restricted native replay assets are not shipped.
 
-MCP is local stdio with eight bounded synthetic tools. Custom adapters use SDK tests. Repository plugin source is separate from public directory acceptance. No hosted endpoint is claimed.
+MCP is local stdio with eight bounded synthetic tools whose definitions are exposed normally. It demonstrates addressed state and on-demand materialization; custom adapters use SDK tests. Repository plugin source is separate from public directory acceptance. No hosted endpoint is claimed.
 
 ## Start here
 

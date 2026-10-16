@@ -1,6 +1,8 @@
 # Local MCP
 
-Install with `pip install implicit-ai` in a fresh environment; see INSTALL.md. implicit-mcp --version and --help work independently; implicit-mcp serves newline-delimited UTF-8 JSON-RPC on stdio. No cloud or authentication is required.
+Current stable Implicit Core is **1.0.1**. Install with `pip install implicit-ai` in a fresh environment; see INSTALL.md. implicit-mcp --version and --help work independently; implicit-mcp serves newline-delimited UTF-8 JSON-RPC on stdio. No cloud or authentication is required.
+
+The bounded synthetic environment demonstrates how an experience can address one coordinate in a larger possible state space and materialize inventory or policy only when requested. All eight MCP tool definitions are exposed normally: selective materialization concerns environment state, rather than lazy tool discovery. Integrate real agent training/evaluation environments through the [Python adapter layer](ADAPTERS.md), keeping your existing agent and evaluator.
 
 See the [MCP quickstart](docs/MCP_QUICKSTART.md) for absolute executable paths, current client-specific commands and first tool workflow.
 

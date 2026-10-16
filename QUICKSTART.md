@@ -1,6 +1,6 @@
 # Quickstart
 
-Install with `pip install implicit-ai` in a fresh environment (see INSTALL.md), then run:
+Current stable Implicit Core is **1.0.1**. Install with `pip install implicit-ai` in a fresh environment (see INSTALL.md), then run:
 
 ```console
 implicit --version
